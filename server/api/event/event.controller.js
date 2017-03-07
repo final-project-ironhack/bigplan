@@ -68,3 +68,14 @@ exports.finishEvent = (req, res) => {
     });
   });
 };
+
+exports.removeEvent = (req, res) => {
+  userModel.findByIdAndRemove(req.params.id, (err) => {
+      if(err){
+        res.json({
+          message: 'impossible to remove event',
+          error: err
+        });
+      }
+    });
+};
