@@ -32,5 +32,18 @@ exports.editUser = (req, res, next) => {
           error: err
         });
       }
+      res.json({message: 'user succesfully updated', user: user});
   });
+};
+
+exports.removeUser = (req, res) => {
+  userModel
+    .findByIdAndRemove(req.params.id, (err) => {
+      if(err){
+        res.json({
+          message: 'impossible to remove user',
+          error: err
+        });
+      }
+    });
 };
