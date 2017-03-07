@@ -23,8 +23,8 @@ exports.editUser = (req, res, next) => {
   const userId = req.params.id;
 
   userModel.findByIdAndUpdate(userId, {
-      $set: req.body
-    }, (err, user) => {
+    $set: req.body
+  }, (err, user) => {
       if(err){
         return res.status(400).json({
           message: 'Unable to update user',

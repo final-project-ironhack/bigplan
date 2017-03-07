@@ -1,5 +1,6 @@
 /*jshint esversion: 6*/
 mongoose = require( ' mongoose' );
+eventModel = require( './event.model');
 userModel = require( './user.model');
 
 exports.createEvent = (req, res, next) => {
@@ -47,5 +48,23 @@ exports.editEvent = (req, res, next) => {
         error: err
       });
     }
+  });
+};
+
+exports.finishEvent = (req, res) => {
+  const eventId = req.params.id;
+  eventModel.findByIdAndUpdate(eventId, {
+    $set: {status: false}
+  }, (err, user) => {
+    if(err){
+      return res.status(400).json({
+        message: 'unable to finish event',
+        error: err
+      });
+    }
+    res.json({
+      message: 'event succesfully finished',
+      event: event
+    });
   });
 };
