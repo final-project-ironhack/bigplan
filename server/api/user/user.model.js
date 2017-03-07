@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema ({
   username: { type: String, require: true },
   name: { type: String, require: true },
   description: { type: String, required: false },
-  //language: { type: [String], require: true},
   createdEvents : [{ type: ObjectId, ref: 'Event' }],
   assistedEvents: [{ type: ObjectId, ref: 'Event' }],
   rating: [{ type: ObjectId, ref:'RatingUser' }]
