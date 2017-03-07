@@ -3,8 +3,11 @@ mongoose = require( ' mongoose' );
 userModel = require( './user.model');
 
 exports.createEvent = (req, res, next) => {
-  let creator;
-  creator = userModel.findOne({email: req.body.email})._id;
+  let eventCreator;
+
+  userModel.findOne({email: req.body.email}, (err, user)=> {
+    eventCreator = user._id;
+  });
 
   const newEvent = new eventModel({
     name: req.body.name,
@@ -13,7 +16,7 @@ exports.createEvent = (req, res, next) => {
     description: req.body.description,
     image: req.body.image,
     status: true,
-    creator: creator
+    creator: eventCreator
   });
 
   newEvent.save((err, event) => {
@@ -21,6 +24,13 @@ exports.createEvent = (req, res, next) => {
       return res.send(500);
     }
   });
-};
 
-exports.editEvent
+  userEvent.findOne({email: req.body.email}, (err, user)=> {
+    creator = user._id;
+  });
+
+  userModel.findByIdAndUpdate(eventCreator,
+  { $push: { createdEvents: newEvent._id }}, () =>{
+    return res.send(event);
+  });
+};
