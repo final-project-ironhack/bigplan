@@ -1,4 +1,7 @@
 /*jshint esversion: 6*/
+mongoose = require( ' mongoose' );
+userModel = require( './user.model');
+
 exports.createUser = (req, res, next) => {
   const newUser = new userModel({
     email: req.body.email,
@@ -16,6 +19,18 @@ exports.createUser = (req, res, next) => {
   });
 };
 
-// exports.editUser = (req, res, next) => {
-//
-// };
+exports.editUser = (req, res, next) => {
+  const userId = req.params.id;
+
+  userModel
+    .findByIdAndUpdate(userId, {
+      $set: req.body
+    }, (err, user) => {
+      if(err){
+        return res.status(400).json({
+          message: 'Unable to update user',
+          error: err
+        });
+      }
+  });
+};
