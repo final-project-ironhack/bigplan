@@ -3,7 +3,7 @@ const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const ratingUserSchema = new mongoose.Schema({
+const ratingUserSchema = new mongoose.Schema ({
   userId: { type: ObjectId, require: true },
   punctual: { type: Number, require: true },
   responsable: { type: Number, require: true },
