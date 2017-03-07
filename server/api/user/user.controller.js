@@ -31,7 +31,10 @@ exports.editUser = (req, res, next) => {
           error: err
         });
       }
-      res.json({message: 'user succesfully updated', user: user});
+      res.json({
+        message: 'user succesfully updated',
+        user: user
+      });
   });
 };
 
