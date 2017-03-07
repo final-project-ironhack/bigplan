@@ -22,8 +22,7 @@ exports.createUser = (req, res, next) => {
 exports.editUser = (req, res, next) => {
   const userId = req.params.id;
 
-  userModel
-    .findByIdAndUpdate(userId, {
+  userModel.findByIdAndUpdate(userId, {
       $set: req.body
     }, (err, user) => {
       if(err){
@@ -37,8 +36,7 @@ exports.editUser = (req, res, next) => {
 };
 
 exports.removeUser = (req, res) => {
-  userModel
-    .findByIdAndRemove(req.params.id, (err) => {
+  userModel.findByIdAndRemove(req.params.id, (err) => {
       if(err){
         res.json({
           message: 'impossible to remove user',

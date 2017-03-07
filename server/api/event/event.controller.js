@@ -28,9 +28,24 @@ exports.createEvent = (req, res, next) => {
   userEvent.findOne({email: req.body.email}, (err, user)=> {
     creator = user._id;
   });
-
+  //introduce el evento a su creador
   userModel.findByIdAndUpdate(eventCreator,
   { $push: { createdEvents: newEvent._id }}, () =>{
     return res.send(event);
+  });
+};
+
+exports.editEvent = (req, res, next) => {
+  const eventId = req.params.id;
+
+  eventModel.findByIdAndRemove(eventId, {
+    $set: req.body
+  }, (err, user) => {
+    if(err){
+      return res.status(400).json({
+        message: 'Unable to update event',
+        error: err
+      });
+    }
   });
 };
