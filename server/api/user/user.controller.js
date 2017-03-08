@@ -40,29 +40,32 @@ exports.editUser = (req, res, next) => {
         user: user
       });
   });
+
 };
 
 exports.getAllUsers = (req, res, next) => {
   userModel.find({}, (err, users) => {
-    if(err){
-      return res.json(err);
-    }
+    if(err){ return res.json(err);}
     return res.json( users );
   });
 };
-
-exports.removeUser = (req, res) => {
-  userModel.findByIdAndRemove(req.params.id, (err) => {
+exports.removeUser = (req, res, next) => {
+  console.log('Hola');
+  console.log(req.params.id);
+  userModel.findById(req.params.id, (err, user) => {
+    console.log(err);
       if(err){
         res.json({
           message: 'impossible to remove user',
           error: err
         });
       }else{
-        res.json({
-          message: 'user removed'
+        user.remove((err)=>{
+          if (err) return next(err);
+          res.json({
+            message: 'user removed'
+          });
         });
       }
     });
-
 };
