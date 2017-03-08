@@ -58,6 +58,11 @@ exports.removeUser = (req, res) => {
           message: 'impossible to remove user',
           error: err
         });
+      }else{
+        res.json({
+          message: 'user removed'
+        });
       }
     });
+
 };
