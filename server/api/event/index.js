@@ -1,12 +1,13 @@
 /*jshint esversion:6*/
 let express = require('express');
-let controller = require('./card.controller');
+let controller = require('./rating-event.controller');
 
 let router = express.Router();
-router.get('/', controller.getAllEvents);
-router.post('/', controller.createEvent);
-router.put('/:id', controller.editEvent);
-router.put('/:id/finishEvent', controller.finishEvent);
-router.delete('/:id', controller.removeEvent);
+
+router.post('/createEvent',controller.createEvent);
+router.put('/editEvent/:id', controller.editEvent);
+router.put('/finishEvent/:id', controller.finishEvent);
+router.get('/getAllEvents', controller.getAllEvents);
+router.delete('/removeEvent/:id', controller.removeEvent);
 
 module.exports = router;

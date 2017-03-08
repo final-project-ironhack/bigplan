@@ -1,11 +1,12 @@
 /*jshint esversion:6*/
 let express = require('express');
-let controller = require('./card.controller');
+let controller = require('./user.controller');
 
 let router = express.Router();
 
-router.post('/', controller.createUser);
-router.put('/:id', controller.editUser);
-router.delete('/:id', controller.removeUser);
+router.post('/createUser', controller.createUser);
+couter.put('/editUser/:id', controller.editUser);
+router.get('/getAllUsers', controller.getAllUsers);
+router.delete('/removeUser/:id', controller.removeUser);
 
 module.exports = router;

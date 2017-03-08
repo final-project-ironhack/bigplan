@@ -3,15 +3,6 @@ mongoose = require( ' mongoose' );
 eventModel = require( './event.model' );
 userModel = require( './user.model' );
 
-exports.getAllEvents = (req, res, next) => {
-  eventModel.find({}, (err, events) => {
-    if(err){
-      return res.json(err);
-    }
-    return res.json( events );
-  });
-};
-
 exports.createEvent = (req, res, next) => {
   let eventCreator;
   userModel.findOne({email: req.body.email}, (err, user) => {
@@ -77,7 +68,14 @@ exports.finishEvent = (req, res) => {
   });
 };
 
-
+exports.getAllEvents = (req, res, next) => {
+  eventModel.find({}, (err, events) => {
+    if(err){
+      return res.json(err);
+    }
+    return res.json( events );
+  });
+};
 
 exports.removeEvent = (req, res) => {
   userModel.findByIdAndRemove(req.params.id, (err) => {

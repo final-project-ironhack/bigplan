@@ -2,15 +2,6 @@
 mongoose = require( ' mongoose' );
 userModel = require( './user.model');
 
-exports.getAllUsers = (req, res, next) => {
-  userModel.find({}, (err, users) => {
-    if(err){
-      return res.json(err);
-    }
-    return res.json( users );
-  });
-};
-
 exports.createUser = (req, res, next) => {
   const newUser = new userModel({
     email: req.body.email,
@@ -44,6 +35,15 @@ exports.editUser = (req, res, next) => {
         message: 'user succesfully updated',
         user: user
       });
+  });
+};
+
+exports.getAllUsers = (req, res, next) => {
+  userModel.find({}, (err, users) => {
+    if(err){
+      return res.json(err);
+    }
+    return res.json( users );
   });
 };
 
