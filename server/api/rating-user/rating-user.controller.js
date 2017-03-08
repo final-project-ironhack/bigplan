@@ -3,7 +3,7 @@ mongoose = require( ' mongoose' );
 eventModel = require('./ratingUser.model.js');
 
 exports.createRatingUser = (req, res, next) => {
-  const newRatingUser = new ratingEvent({
+  const newRatingUser = new ratingUser({
     punctual: req.body.punctual,
     responsable: req.body.responsable,
     funny: req.body.funny,
