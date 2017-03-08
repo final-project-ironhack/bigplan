@@ -1,5 +1,5 @@
 /*jshint esversion: 6*/
-mongoose = require( ' mongoose' );
+mongoose = require( 'mongoose' );
 eventModel = require('./ratingUser.model.js');
 
 exports.createRatingUser = (req, res, next) => {

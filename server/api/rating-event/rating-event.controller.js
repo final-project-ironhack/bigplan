@@ -1,6 +1,6 @@
 /*jshint esversion: 6*/
-mongoose = require( ' mongoose' );
-eventModel = require('./ratingUser.model.js');
+const mongoose = require( 'mongoose' );
+const eventModel = require('./ratingEvent.model.js');
 
 exports.createRatingEvent = (req, res, next) => {
   const newRatingEvent = new ratingEvent({

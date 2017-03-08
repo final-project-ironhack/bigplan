@@ -1,7 +1,7 @@
 /*jshint esversion: 6*/
-mongoose = require( ' mongoose' );
-eventModel = require( './event.model' );
-userModel = require( './user.model' );
+const mongoose = require( 'mongoose' );
+const eventModel = require( './event.model' );
+const userModel = require( '../user/user.model' );
 
 exports.createEvent = (req, res, next) => {
   let eventCreator;

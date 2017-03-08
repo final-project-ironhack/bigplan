@@ -1,5 +1,5 @@
 /*jshint esversion: 6*/
-mongoose = require( ' mongoose' );
+mongoose = require( 'mongoose' );
 userModel = require( './user.model');
 
 exports.createUser = (req, res, next) => {
@@ -16,6 +16,10 @@ exports.createUser = (req, res, next) => {
       console.log(err);
       return res.send(500);
     }
+  });
+  res.json({
+    message: 'user succesfully created',
+    user: newUser
   });
 };
 

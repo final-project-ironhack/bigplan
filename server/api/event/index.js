@@ -1,6 +1,6 @@
 /*jshint esversion:6*/
 let express = require('express');
-let controller = require('./rating-event.controller');
+let controller = require('./event.controller');
 
 let router = express.Router();
 
