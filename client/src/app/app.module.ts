@@ -11,7 +11,7 @@ import { RaitingUserComponent } from './raiting-user/raiting-user.component';
 import { RaitingEventComponent } from './raiting-event/raiting-event.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { AgmCoreModule } from 'angular2-google-maps/core';
+
 
 @NgModule({
   declarations: [
@@ -27,11 +27,9 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_KEY'
-       })
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }
