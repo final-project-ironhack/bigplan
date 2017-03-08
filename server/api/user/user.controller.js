@@ -25,7 +25,6 @@ exports.createUser = (req, res, next) => {
 
 exports.editUser = (req, res, next) => {
   const userId = req.params.id;
-
   userModel.findByIdAndUpdate(userId, {
     $set: req.body
   }, (err, user) => {
