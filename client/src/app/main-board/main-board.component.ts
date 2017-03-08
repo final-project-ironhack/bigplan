@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as GoogleMapsLoader  from 'google-maps';
-
+// import { InfoBubble } from 'js-info-bubble';
 
 @Component({
   selector: 'app-main-board',
@@ -13,7 +13,6 @@ export class MainBoardComponent implements OnInit {
   constructor() {
 
   }
-
 
   ngOnInit() {
     GoogleMapsLoader.load(function(google) {
@@ -30,19 +29,11 @@ export class MainBoardComponent implements OnInit {
 
       var contentString = '<div id="content">' +
         '<div id="siteNotice">' +
-        '</div>' +
-        '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+        '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
+        '<h2 id="event-name" class="event-name">Quedada para preguntar dudas de Java</h2>' +
+        '<h5 id="user-name" class="user-name">JavaMaister2000</h5>' +
         '<div id="bodyContent">' +
-        '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-        'sandstone rock formation in the southern part of the ' +
-        'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
-        'south west of the nearest large town, Alice Springs; 450&#160;km ' +
-        '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
-        'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
-        'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
-        'Aboriginal people of the area. It has many springs, waterholes, ' +
-        'rock caves and ancient paintings. Uluru is listed as a World ' +
-        'Heritage Site.</p>' +
+        '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae nunc quis metus iaculis blandit id nec quam. Morbi non purus eu metus dapibus tincidunt. Mauris aliquam, nisl eget malesuada euismod, enim turpis fermentum ex, non consequat leo lorem sit amet sem. Aenean ornare mauris in libero tristique dictum id non ligula. Nam blandit, erat et consectetur efficitur, purus ipsum commodo sapien, ac ultricies quam tortor a sapien. Nulla facilisi. Praesent condimentum, sem in vehicula ultricies, magna felis sagittis eros, vel porttitor augue eros sed ipsum. Mauris ut lectus purus. Proin aliquam mattis sapien vitae tempor. Nulla sed lorem nunc.</p>' +
         '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
         'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
         '(last visited June 22, 2009).</p>' +
@@ -51,7 +42,7 @@ export class MainBoardComponent implements OnInit {
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
-        maxWidth: 200
+        maxWidth: 200,
       });
 
       var image = {
@@ -66,11 +57,30 @@ export class MainBoardComponent implements OnInit {
         icon: image
 
       });
+
+      // var InfoBubble = new InfoBubble({
+      // map: map,
+      // content: '<div class="mylabel">The label</div>',
+      // shadowStyle: 1,
+      // padding: 0,
+      // backgroundColor: 'rgb(57,57,57)',
+      // borderRadius: 5,
+      // arrowSize: 10,
+      // borderWidth: 1,
+      // borderColor: '#2c2c2c',
+      // disableAutoPan: true,
+      // hideCloseButton: true,
+      // arrowPosition: 30,
+      // backgroundClassName: 'transparent',
+      // arrowStyle:
+      // });
+
       marker.addListener('click', function() {
         infowindow.open(map, marker);
       });
 
 
     });
+
   }
 }
