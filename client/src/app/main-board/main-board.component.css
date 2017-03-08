@@ -33,15 +33,12 @@ float: right;
 background-color: transparent;
 }
 
-.create-event-button {
-  border-radius: 50%;
-  border: 3px solid #fff;
+.create-event-button img {
   margin: -47px 10px;
   float:right;
   width: 40px;
   height: 40px;
 }
-
 
 #map {
   height: 100vh;

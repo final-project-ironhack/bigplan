@@ -11,7 +11,7 @@ import { RaitingUserComponent } from './raiting-user/raiting-user.component';
 import { RaitingEventComponent } from './raiting-event/raiting-event.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     EventComponent,
     EventOngoingComponent,
     RaitingUserComponent,
-    RaitingEventComponent
+    RaitingEventComponent,
+    SignInComponent,
+
   ],
   imports: [
     BrowserModule,
