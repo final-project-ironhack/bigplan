@@ -9,6 +9,16 @@ exports.createRatingUser = (req, res, next) => {
     funny: req.body.funny,
     average: req.body.average
   });
-
-
+  newRatingUser.save((err, ratingUser) => {
+    if(err){
+      console.log(err);
+      return res.send(500);
+    }
+    userModel.update(
+      {_id: ratingUser.user},
+      { $push: { rating: ratingUser._id}},
+      () => {
+        return res.send(ratingUser);
+      });
+    });
 };
