@@ -20,7 +20,7 @@ exports.createEvent = (req, res, next)  => {
           creator: user._id
       })
       .save()
-    //  .then((event) => userModel.findByIdAndUpdate(user._id, {$push: {createdEvents: newEvent._id}}));
+      .then((event) => userModel.findByIdAndUpdate(user._id, {$push: {createdEvents: newEvent._id}}));
     })
     .then((user) => res.status(200).json({message:"Event has been created"}))
     .catch((err) => {console.log(err); res.status(500).json({message:"Event has been created"});});
@@ -29,7 +29,7 @@ exports.createEvent = (req, res, next)  => {
 exports.editEvent = (req, res, next) => {
     const eventId = req.params.id;
 
-    eventModel.findByIdAndRemove(eventId, {
+    eventModel.findByIdAndUpdate(eventId, {
         $set: req.body
     }, (err, user) => {
         if (err) {
@@ -37,6 +37,11 @@ exports.editEvent = (req, res, next) => {
                 message: 'Unable to update event',
                 error: err
             });
+        }
+        else{
+          return res.status(200).json({
+            message: 'event update'
+          });
         }
     });
 };
