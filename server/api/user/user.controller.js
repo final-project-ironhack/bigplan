@@ -48,8 +48,8 @@ exports.getAllUsers = (req, res, next) => {
   });
 };
 
-exports.getuserById = (req, res, next) => {
-  userModel.findOne({name: 'julia'}, (err, user) => {
+exports.getUserById = (req, res, next) => {
+  userModel.findOne({}, (err, user) => {
     if(err){
       return res.status(500).json({
         message: 'user not found',

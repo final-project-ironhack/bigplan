@@ -57,23 +57,6 @@ export class MainBoardComponent implements OnInit {
 
       });
 
-      // const InfoBubble = new InfoBubble({
-      // map: map,
-      // content: '<div class="mylabel">The label</div>',
-      // shadowStyle: 1,
-      // padding: 0,
-      // backgroundColor: 'rgb(57,57,57)',
-      // borderRadius: 5,
-      // arrowSize: 10,
-      // borderWidth: 1,
-      // borderColor: '#2c2c2c',
-      // disableAutoPan: true,
-      // hideCloseButton: true,
-      // arrowPosition: 30,
-      // backgroundClassName: 'transparent',
-      // arrowStyle:
-      // });
-
       marker.addListener('click', function() {
         infowindow.open(map, marker);
       });
