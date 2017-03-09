@@ -10,6 +10,7 @@ const users = [
     username: 'jutler',
     name: 'julia',
     description: 'Pinta y colorea',
+    img: 'img'
     // createdEvents: [],
     // assistedEvents: [],
     // rating: []
@@ -20,6 +21,7 @@ const users = [
     username: 'segis',
     name: 'segismundo',
     description: 'Me gusta el campo y pasar tiempo al aire libre',
+    img: 'img'
     // createdEvents: [],
     // assistedEvents: [],
     // rating: []
@@ -30,6 +32,7 @@ const users = [
     username: 'borjaonrails',
     name: 'borja',
     description: 'Da boss',
+    img: 'img'
     // createdEvents: [],
     // assistedEvents: [],
     // rating: []
