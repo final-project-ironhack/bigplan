@@ -39,7 +39,6 @@ exports.editUser = (req, res, next) => {
         //user: user
       });
   });
-
 };
 
 exports.getAllUsers = (req, res, next) => {
@@ -48,6 +47,22 @@ exports.getAllUsers = (req, res, next) => {
     return res.json( users );
   });
 };
+
+exports.getuserById = (req, res, next) => {
+  userModel.findOne({name: 'julia'}, (err, user) => {
+    if(err){
+      return res.status(500).json({
+        message: 'user not found',
+        error: err
+      });
+    } else {
+      return res.status(200).json(
+        user
+      );
+    }
+  });
+};
+
 exports.removeUser = (req, res, next) => {
   userModel.findById(req.params.id, (err, user) => {
       if(err){
