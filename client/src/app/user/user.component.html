@@ -1,0 +1,12 @@
+<p>
+  user works!
+</p>
+
+<h1> User details </h1>
+   <a [routerLink]="['']"> Back to list </a>
+
+   <div *ngFor="let item of user">
+     <div class="user-info">
+       <h2> {{item.name}}</h2>
+     </div>
+   </div>
