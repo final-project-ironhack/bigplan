@@ -162,6 +162,7 @@ exports.getuserById = (req, res, next) => {
     });
 };
 
+
 exports.removeUser = (req, res, next) => {
     User.findById(req.params.id, (err, user) => {
         if (err) {

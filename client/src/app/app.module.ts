@@ -14,8 +14,12 @@ import { RaitingUserComponent } from './raiting-user/raiting-user.component';
 import { RaitingEventComponent } from './raiting-event/raiting-event.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UserComponent } from './user/user.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 import { UserService } from './user.service';
+import { EventsAttendedComponent } from './events-attended/events-attended.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+
 
 
 
@@ -29,6 +33,9 @@ import { UserService } from './user.service';
     RaitingEventComponent,
     SignInComponent,
     UserComponent,
+    UserMenuComponent,
+    EventsAttendedComponent,
+    CreateEventComponent,
 
   ],
   imports: [

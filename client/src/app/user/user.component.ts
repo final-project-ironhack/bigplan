@@ -10,6 +10,7 @@ import { UserService } from './../user.service';
 })
 export class UserComponent implements OnInit {
   user: any
+  id: any
 
   constructor(
     private route: ActivatedRoute,
@@ -17,14 +18,7 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.UserService.getList()
-      .subscribe((user) => {
-        this.user = user;
-      });
-  }
 
-  getUserDetails() {
-
-  }
+      }
 
 }
