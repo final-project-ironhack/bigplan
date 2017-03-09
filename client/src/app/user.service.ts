@@ -7,6 +7,7 @@ export class UserService {
 
   BASE_URL: string = 'http://localhost:3000';
     constructor(private http: Http) {}
+
     getList() {
       return this.http.get(`${this.BASE_URL}/api/user/getAllUsers`)
         .map((res) => {
@@ -16,7 +17,7 @@ export class UserService {
     }
 
     get(id) {
-      return this.http.get(`${this.BASE_URL}/user/${id}`)
+      return this.http.get(`${this.BASE_URL}/api/user/getAllUsers/${id}`)
         .map((res) => res.json());
     }
 
