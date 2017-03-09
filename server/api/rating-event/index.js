@@ -4,6 +4,6 @@ let controller = require('./rating-event.controller');
 
 let router = express.Router();
 
-router.post('/createRatingEvent', controller.createRatingEvent);
+router.post('/create-rating-event', controller.createRatingEvent);
 
 module.exports = router;

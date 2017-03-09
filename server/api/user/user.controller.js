@@ -25,7 +25,6 @@ exports.createUser = (req, res, next) => {
 
 exports.editUser = (req, res, next) => {
   const userId = req.params.id;
-
   userModel.findByIdAndUpdate(userId, {
     $set: req.body
   }, (err, user) => {
@@ -37,33 +36,48 @@ exports.editUser = (req, res, next) => {
       }
       res.json({
         message: 'user succesfully updated',
-        user: user
+        //user: user
       });
   });
 };
 
 exports.getAllUsers = (req, res, next) => {
   userModel.find({}, (err, users) => {
-    if(err){
-      return res.json(err);
-    }
+    if(err){ return res.json(err);}
     return res.json( users );
   });
 };
 
+exports.getuserById = (req, res, next) => {
+  userModel.findOne({name: 'julia'}, (err, user) => {
+    if(err){
+      return res.status(500).json({
+        message: 'user not found',
+        error: err
+      });
+    } else {
+      return res.status(200).json(
+        user
+      );
+    }
+  });
+};
 
-exports.removeUser = (req, res) => {
-  userModel.findByIdAndRemove(req.params.id, (err) => {
+
+exports.removeUser = (req, res, next) => {
+  userModel.findById(req.params.id, (err, user) => {
       if(err){
         res.json({
           message: 'impossible to remove user',
           error: err
         });
       }else{
-        res.json({
-          message: 'user removed'
+        user.remove((err)=>{
+          if (err) return next(err);
+          res.json({
+            message: 'user removed'
+          });
         });
       }
     });
-
 };

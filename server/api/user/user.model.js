@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, require: true },
   username: { type: String, require: true },
   name: { type: String, require: true },
+  image: {type: String, require: false},
   description: { type: String, required: false },
   createdEvents : [{ type: ObjectId, ref: 'Event' }],
   assistedEvents: [{ type: ObjectId, ref: 'Event' }],
