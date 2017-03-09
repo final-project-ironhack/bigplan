@@ -8,7 +8,9 @@ router.post('/create-user', controller.createUser);
 //Works!
 router.put('/edit-user/:id', controller.editUser);
 //Works
-router.get('/getAll-users', controller.getAllUsers);
+router.get('/get-all-users', controller.getAllUsers);
+//Works!
+router.get('/get-user-by-id/:id', controller.getUserById);
 //Works!
 router.delete('/remove-user/:id', controller.removeUser);
 
