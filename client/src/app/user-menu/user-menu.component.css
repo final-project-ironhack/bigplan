@@ -55,16 +55,20 @@ h5.logo {
   background-color: #00346B;
 }
 
-@media (min-width: 415px) and (max-width: 800px) {
+@media (min-width: 648px) and (max-width: 800px) {
   .container {
-    width: 80%;
+    width: 50%;
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 648px) {
   .container {
     width: 100%;
   }
+}
+
+ul {
+  margin-top: 65px;
 }
 
 li {
@@ -75,9 +79,6 @@ li {
   background-color: #00346B;
 }
 
-li:first-child {
-  margin-top: 80px;
-}
 
 li:hover {
   background-color: #FFF;

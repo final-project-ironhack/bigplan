@@ -35,10 +35,7 @@ export class MainBoardComponent implements OnInit {
         '<h2 id="event-name" class="event-name">Quedada para preguntar dudas de Java</h2>' +
         '<h5 id="user-name" class="user-name">JavaMaister2000</h5>' +
         '<div id="bodyContent">' +
-        '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae nunc quis metus iaculis blandit id nec quam. Morbi non purus eu metus dapibus tincidunt. Mauris aliquam, nisl eget malesuada euismod, enim turpis fermentum ex, non consequat leo lorem sit amet sem. Aenean ornare mauris in libero tristique dictum id non ligula. Nam blandit, erat et consectetur efficitur, purus ipsum commodo sapien, ac ultricies quam tortor a sapien. Nulla facilisi. Praesent condimentum, sem in vehicula ultricies, magna felis sagittis eros, vel porttitor augue eros sed ipsum. Mauris ut lectus purus. Proin aliquam mattis sapien vitae tempor. Nulla sed lorem nunc.</p>' +
-        '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-        'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-        '(last visited June 22, 2009).</p>' +
+        '<p>Lorem ipsum dolor sit amet, consectetur.</p>' +
         '</div>' +
         '</div>';
 
