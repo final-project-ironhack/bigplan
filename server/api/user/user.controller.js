@@ -36,7 +36,7 @@ exports.editUser = (req, res, next) => {
       }
       res.json({
         message: 'user succesfully updated',
-        user: user
+        //user: user
       });
   });
 

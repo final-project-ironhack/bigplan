@@ -5,11 +5,11 @@ let controller = require('./user.controller');
 let router = express.Router();
 //Works!
 router.post('/createUser', controller.createUser);
-//toTest
+//Works!
 router.put('/editUser/:id', controller.editUser);
 //Works
 router.get('/getAllUsers', controller.getAllUsers);
-//toTest
+//Works!
 router.delete('/removeUser/:id', controller.removeUser);
 
 module.exports = router;
