@@ -6,6 +6,7 @@
 
 # dependencies
 /node_modules
+/bower_components
 
 # IDEs and editors
 /.idea
@@ -39,4 +40,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/bower_components
+# sensitive info
+.env
