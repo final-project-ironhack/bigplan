@@ -1,89 +1,82 @@
 /*jshint esversion: 6*/
-const mongoose = require( 'mongoose' );
-const eventModel = require( './event.model' );
-const userModel = require( '../user/user.model' );
+const mongoose = require('mongoose');
+const eventModel = require('./event.model');
+const userModel = require('../user/user.model');
 
-exports.createEvent = (req, res, next) => {
-  let eventCreator;
-  userModel.findOne({email: req.body.email}, (err, user) => {
-    eventCreator = user._id;
-  });
-
-  const newEvent = new eventModel({
-    name: req.body.name,
-    category: req.body.category,
-    tags: req.body.tags,
-    description: req.body.description,
-    image: req.body.image,
-    status: true,
-    creator: eventCreator
-  });
-
-  newEvent.save((err, event) => {
-    if(err){
-      return res.send(500);
-    }
-  });
-
-  userEvent.findOne({email: req.body.email}, (err, user)=> {
-    creator = user._id;
-  });
-  //introduce el evento a su creador
-  userModel.findByIdAndUpdate(eventCreator,
-  { $push: { createdEvents: newEvent._id }}, () =>{
-    return res.send(event);
-  });
+exports.createEvent = (req, res, next)  => {
+    console.log(req.body.mail);
+    userModel
+    .findOne({email: req.body.email})
+    .then((user) => {
+      console.log("Creating event");
+      console.log(user);
+      const userEvent = new eventModel({
+          name: req.body.name,
+          category: req.body.category,
+          tags: req.body.tags,
+          description: req.body.description,
+          image: req.body.image,
+          status: true,
+          creator: user._id
+      })
+      .save()
+    //  .then((event) => userModel.findByIdAndUpdate(user._id, {$push: {createdEvents: newEvent._id}}));
+    })
+    .then((user) => res.status(200).json({message:"Event has been created"}))
+    .catch((err) => {console.log(err); res.status(500).json({message:"Event has been created"});});
 };
 
 exports.editEvent = (req, res, next) => {
-  const eventId = req.params.id;
+    const eventId = req.params.id;
 
-  eventModel.findByIdAndRemove(eventId, {
-    $set: req.body
-  }, (err, user) => {
-    if(err){
-      return res.status(400).json({
-        message: 'Unable to update event',
-        error: err
-      });
-    }
-  });
+    eventModel.findByIdAndRemove(eventId, {
+        $set: req.body
+    }, (err, user) => {
+        if (err) {
+            return res.status(400).json({
+                message: 'Unable to update event',
+                error: err
+            });
+        }
+    });
 };
 
 exports.finishEvent = (req, res) => {
-  const eventId = req.params.id;
-  eventModel.findByIdAndUpdate(eventId, {
-    $set: {status: false}
-  }, (err, user) => {
-    if(err){
-      return res.status(400).json({
-        message: 'unable to finish event',
-        error: err
-      });
-    }
-    res.json({
-      message: 'event succesfully finished',
-      event: event
+    const eventId = req.params.id;
+    eventModel.findByIdAndUpdate(eventId, {
+        $set: {
+            status: false
+        }
+    }, (err, user) => {
+        if (err) {
+            return res.status(400).json({
+                message: 'unable to finish event',
+                error: err
+            });
+        }
+        res.json({
+            message: 'event succesfully finished',
+            event: event
+        });
     });
-  });
 };
 
 exports.getAllEvents = (req, res, next) => {
-  eventModel.find({}, (err, events) => {
-    if(err){
-      return res.json(err);
-    }
-    return res.json( events );
-  });
+    eventModel.find({}, (err, events) => {
+        if (err) {
+            return res.json(err);
+        }
+        return res.json(events);
+    });
 };
 
 exports.removeEvent = (req, res) => {
-  userModel.findByIdAndRemove(req.params.id, (err) => {
-      if(err){
-        res.json({
-          message: 'impossible to remove event',
-          error: err
-        });
-      }
+    userModel.findByIdAndRemove(req.params.id, (err) => {
+        if (err) {
+            res.json({
+                message: 'impossible to remove event',
+                error: err
+            });
+        }
     });
 };
