@@ -3,27 +3,60 @@ const mongoose = require('mongoose');
 const eventModel = require('./event.model');
 const userModel = require('../user/user.model');
 
-exports.createEvent = (req, res, next)  => {
-    console.log(req.body.mail);
+exports.createEvent = (req, res, next) => {
+    console.log("email",req.body);
     userModel
-    .findOne({email: req.body.email})
-    .then((user) => {
-      console.log("Creating event");
-      console.log(user);
-      const userEvent = new eventModel({
-          name: req.body.name,
-          category: req.body.category,
-          tags: req.body.tags,
-          description: req.body.description,
-          image: req.body.image,
-          status: true,
-          creator: user._id
-      })
-      .save()
-      .then((event) => userModel.findByIdAndUpdate(user._id, {$push: {createdEvents: newEvent._id}}));
-    })
-    .then((user) => res.status(200).json({message:"Event has been created"}))
-    .catch((err) => {console.log(err); res.status(500).json({message:"Event has been created"});});
+        .findOne({
+            name: "julia"
+        }).exec((user) => {
+          console.log(user);
+            console.log("Creating event");
+            const eventCreated = {
+                name: req.body.name,
+                category: req.body.category,
+                tags: req.body.tags,
+                description: req.body.description,
+                image: req.body.image,
+                status: true,
+                creator: user._id
+            };
+            eventModel.create(eventCreated, (err, event) => {
+                if (err) {
+                    return next(err);
+                } else {
+                  userModel.update({_id: user._id}, {
+                      $push: {
+                          createdEvents: event._id
+                      }}, (err)=>{
+                        if(err) return next(err);
+                        return res.status(200).json({
+                        message: "Event has been createdand user updated"
+                    });
+                  });
+                }
+            });
+
+            // userModel
+            //     .findOne({
+            //         email: req.body.email
+            //     })
+            //     .then((user) => {console.log(user);
+            //         userModel.update({_id: user._id}, {
+            //             $push: {
+            //                 createdEvents: event._id
+            //             }
+            //         }, (err)=>{
+            //           if(err) return next(err);
+            //         });
+            //     });
+        // });
+        // //  .then((user) => res.status(200).json({message:"Event has been created"}))
+        // .catch((err) => {
+        //     console.log(err);
+        //     res.status(500).json({
+        //         message: "Event has been created"
+        //     });
+      });
 };
 
 exports.editEvent = (req, res, next) => {
@@ -37,11 +70,10 @@ exports.editEvent = (req, res, next) => {
                 message: 'Unable to update event',
                 error: err
             });
-        }
-        else{
-          return res.status(200).json({
-            message: 'event update'
-          });
+        } else {
+            return res.status(200).json({
+                message: 'event update'
+            });
         }
     });
 };
@@ -59,8 +91,8 @@ exports.finishEvent = (req, res) => {
                 error: err
             });
         }
-            return res.status(200).json({
-              message: 'event succesfully finished'
+        return res.status(200).json({
+            message: 'event succesfully finished'
         });
     });
 };
@@ -74,22 +106,20 @@ exports.getAllEvents = (req, res, next) => {
     });
 };
 
-
-
 exports.removeEvent = (req, res, next) => {
-  eventModel.findById(req.params.id, (err, event) => {
-      if(err){
-        return res.status(400).json({
-          message: 'impossible to remove event',
-          error: err
-        });
-      }else{
-        event.remove((event)=>{
-          if (err) return next(err);
-          return res.status(200).json({
-            message: 'event removed'
-          });
-        });
-      }
+    eventModel.findById(req.params.id, (err, event) => {
+        if (err) {
+            return res.status(400).json({
+                message: 'impossible to remove event',
+                error: err
+            });
+        } else {
+            event.remove((event) => {
+                if (err) return next(err);
+                return res.status(200).json({
+                    message: 'event removed'
+                });
+            });
+        }
     });
 };
