@@ -18,6 +18,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 
 import { UserService } from './user.service';
 import { EventsAttendedComponent } from './events-attended/events-attended.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 
 
@@ -34,6 +35,7 @@ import { EventsAttendedComponent } from './events-attended/events-attended.compo
     UserComponent,
     UserMenuComponent,
     EventsAttendedComponent,
+    CreateEventComponent,
 
   ],
   imports: [

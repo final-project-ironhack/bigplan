@@ -16,10 +16,22 @@ export class UserService {
         });
     }
 
-    get(id) {
-      return this.http.get(`${this.BASE_URL}/api/user/getAllUsers/${id}`)
-        .map((res) => res.json());
-    }
+    // getUser(id){
+    //   let  allUsers;
+    //   let userSelected;
+    //
+    //   this.http.get(`${this.BASE_URL}/api/user/getAllUsers`)
+    //     .map((res) => {
+    //       console.log(res.json());
+    //       allUsers = res.json();
+    //     });
+    //     for(let user of allUsers){
+    //       if(user._id === id){
+    //         userSelected = user;
+    //       }
+    //     }
+    //     return userSelected;
+    // }
 
     edit(user) {
       return this.http.put(`${this.BASE_URL}/user/${user.id}`, user)
