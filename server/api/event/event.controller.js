@@ -52,16 +52,15 @@ exports.finishEvent = (req, res) => {
         $set: {
             status: false
         }
-    }, (err, user) => {
+    }, (err, event) => {
         if (err) {
             return res.status(400).json({
                 message: 'unable to finish event',
                 error: err
             });
         }
-        res.json({
-            message: 'event succesfully finished',
-            event: event
+            return res.status(200).json({
+              message: 'event succesfully finished'
         });
     });
 };
