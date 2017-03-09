@@ -8,7 +8,7 @@ exports.createEvent = (req, res, next) => {
     userModel
         .findOne({
             name: "julia"
-        }).exec((user) => {
+        }).exec((err,user) => {
           console.log(user);
             console.log("Creating event");
             const eventCreated = {
