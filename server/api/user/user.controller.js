@@ -49,10 +49,7 @@ exports.getAllUsers = (req, res, next) => {
   });
 };
 exports.removeUser = (req, res, next) => {
-  console.log('Hola');
-  console.log(req.params.id);
   userModel.findById(req.params.id, (err, user) => {
-    console.log(err);
       if(err){
         res.json({
           message: 'impossible to remove user',

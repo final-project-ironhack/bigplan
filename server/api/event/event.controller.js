@@ -68,19 +68,28 @@ exports.finishEvent = (req, res) => {
 exports.getAllEvents = (req, res, next) => {
     eventModel.find({}, (err, events) => {
         if (err) {
-            return res.json(err);
+            return res.status(500).json(err);
         }
-        return res.json(events);
+        return res.status(200).json(events);
     });
 };
 
-exports.removeEvent = (req, res) => {
-    userModel.findByIdAndRemove(req.params.id, (err) => {
-        if (err) {
-            res.json({
-                message: 'impossible to remove event',
-                error: err
-            });
-        }
+
+
+exports.removeEvent = (req, res, next) => {
+  eventModel.findById(req.params.id, (err, event) => {
+      if(err){
+        return res.status(400).json({
+          message: 'impossible to remove event',
+          error: err
+        });
+      }else{
+        event.remove((event)=>{
+          if (err) return next(err);
+          return res.status(200).json({
+            message: 'event removed'
+          });
+        });
+      }
     });
 };

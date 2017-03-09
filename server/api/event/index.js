@@ -4,14 +4,14 @@ let controller = require('./event.controller');
 
 let router = express.Router();
 //Woks but need checkout
-router.post('/createEvent',controller.createEvent);
+router.post('/create-event',controller.createEvent);
 //Works!
-router.put('/editEvent/:id', controller.editEvent);
+router.put('/edit-event/:id', controller.editEvent);
 //Works!
-router.put('/finishEvent/:id', controller.finishEvent);
-//toTest
-router.get('/getAllEvents', controller.getAllEvents);
-//toTest
-router.delete('/removeEvent/:id', controller.removeEvent);
+router.put('/finish-event/:id', controller.finishEvent);
+//Works!
+router.get('/get-all-events', controller.getAllEvents);
+//Works!
+router.delete('/remove-event/:id', controller.removeEvent);
 
 module.exports = router;
