@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="info-container">
+<h3> Post a Plan </h3>
+
+<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
+  <p> Plan Title
+    <input type="text" name="username" [(ngModel)]="username" required />
+  </p>
+  <p> Plan Description
+    <input type="text" name="description" [(ngModel)]="description" required />
+  </p>
+  <button type="submit"> Post </button>
+</form>
+
+
+</div>
+</div>

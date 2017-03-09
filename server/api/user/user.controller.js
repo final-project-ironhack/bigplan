@@ -51,6 +51,7 @@ exports.getAllUsers = (req, res, next) => {
   });
 };
 
+
 exports.removeUser = (req, res) => {
   userModel.findByIdAndRemove(req.params.id, (err) => {
       if(err){

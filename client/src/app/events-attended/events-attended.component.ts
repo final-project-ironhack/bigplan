@@ -17,7 +17,7 @@ export class EventsAttendedComponent implements OnInit {
     private UserService: UserService
   ) { }
 
-  
+
     ngOnInit() {
       this.UserService.getList()
         .subscribe((user) => {
@@ -25,8 +25,6 @@ export class EventsAttendedComponent implements OnInit {
         });
     }
 
-    getUserDetails() {
 
-    }
 
   }
