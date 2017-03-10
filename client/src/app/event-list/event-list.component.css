@@ -1,0 +1,22 @@
+.container {
+    z-index:100;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FF8F61;
+
+}
+
+.info-container {
+  margin-top: 65px;
+  z-index: 102;
+  position: fixed;
+  left: 50%;
+  background-color: #red;
+  color: #00346B;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 24px;
+
+}

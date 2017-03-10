@@ -4,6 +4,7 @@ import { MainBoardComponent } from './main-board/main-board.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { UserComponent } from './user/user.component';
 import { EventComponent } from './event/event.component';
+import { EventListComponent } from './event-list/event-list.component';
 import { EventsAttendedComponent } from './events-attended/events-attended.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -21,7 +22,9 @@ export const routes: Routes = [
     //Paths for USER
     { path: 'user/:id', component: UserComponent },
     { path: 'user/events-attended/:id',  component: EventsAttendedComponent },
+
     //Paths for EVENTS
+    { path: 'event-list',  component: EventListComponent },
     { path: 'event/:id',  component: EventComponent },
 
 

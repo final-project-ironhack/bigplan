@@ -1,19 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from './../event.service';
 import * as GoogleMapsLoader  from 'google-maps';
 // import { InfoBubble } from 'js-info-bubble';
 
 @Component({
   selector: 'app-main-board',
   templateUrl: './main-board.component.html',
-  styleUrls: ['./main-board.component.css']
+  styleUrls: ['./main-board.component.css'],
+  providers: [EventService]
 })
 export class MainBoardComponent implements OnInit {
 
-  constructor() {
+  event: any
+
+  constructor(
+    private route: ActivatedRoute,
+    private EventService: EventService
+  ) {
 
   }
 
   ngOnInit() {
+
+    this.EventService.getEventList()
+      .subscribe((event) => {
+        this.event = event;
+      });
 
     // const GoogleKey = .env;
 
