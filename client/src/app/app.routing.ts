@@ -10,6 +10,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 
 
 export const routes: Routes = [
+
     //Path for MAIN BOARD & NAVIGATION
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home/:id',  component: MainBoardComponent },

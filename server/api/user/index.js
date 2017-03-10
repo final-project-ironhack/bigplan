@@ -3,6 +3,16 @@ let express = require('express');
 let controller = require('./user.controller');
 
 let router = express.Router();
+//works!
+router.post('/signup', controller.createUser);
+//Works!
+router.post('/login', controller.logUser);
+//toTest
+router.post('/logout', controller.logOutUser);
+//toTest
+router.post('/loggedin', controller.authUser);
+
+
 //Works!
 router.post('/create-user', controller.createUser);
 //Works!
