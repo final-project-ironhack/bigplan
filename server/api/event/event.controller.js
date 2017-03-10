@@ -108,7 +108,7 @@ exports.getAllEvents = (req, res, next) => {
     });
 };
 
-exports.getEventByParams((req, res, next) => {
+/*exports.getEventByParams((req, res, next) => {
     editEvent.find({
         _id: params.id
     }, (err, event) => {
@@ -118,7 +118,7 @@ exports.getEventByParams((req, res, next) => {
         return res.status(200).json(event);
     });
 });
-
+*/
 exports.removeEvent = (req, res, next) => {
     eventModel.findById(req.params.id, (err, event) => {
         if (err) {

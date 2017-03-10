@@ -12,7 +12,7 @@ router.post('/logout', controller.logOutUser);
 //toTest
 router.post('/loggedin', controller.authUser);
 
-
+router.get('/get-private-date', controller.getPrivateData);
 //Works!
 router.post('/create-user', controller.createUser);
 //Works!

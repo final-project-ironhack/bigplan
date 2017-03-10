@@ -116,6 +116,22 @@ exports.authUser = function(req, res) {
     });
 };
 
+/*authController.get("/private", (req, res) => {
+  if(req.isAuthenticated()) {
+    return res.json({ message: 'This is a private message' });
+  }
+
+  return res.status(403).json({ message: 'Unauthorized' });
+});
+*/
+
+exports.getPrivateData = (req, res, next) => {
+  if(req.isAuthenticated()) {
+    return res.status(200).json({message: 'You are authenticate'});
+  }
+  return res.status(403).json({ message: 'Unauthorized' });
+};
+
 exports.editUser = (req, res, next) => {
     const userId = req.params.id;
     User.findByIdAndUpdate(userId, {
