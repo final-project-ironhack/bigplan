@@ -32,13 +32,11 @@ const bcryptSalt = 10;
 */
 
 exports.createUser = function(req, res, next) {
-    const email = req.body.email;
     const password = req.body.password;
     const username = req.body.username;
-    const name = req.body.name;
-    const description = req.body.description;
 
-    if (!username || !password || !username || !name) {
+
+    if (!username || !password) {
         res.status(400).json({
             message: "Provide all fields"
         });
@@ -57,10 +55,7 @@ exports.createUser = function(req, res, next) {
         const hashPass = bcrypt.hashSync(password, salt);
         const newUser = new User({
             password: hashPass,
-            email: email,
             username: username,
-            name: name,
-            description: description,
         });
         newUser.save((err) => {
             if (err) {
@@ -99,7 +94,7 @@ exports.logUser = function(req, res, next) {
             }
             res.status(200).json(req.user);
         });
-    })(req, res, next);
+    });
 };
 exports.logOutUser = function(req, res) {
     req.logout();
@@ -107,7 +102,7 @@ exports.logOutUser = function(req, res) {
         message: 'Success'
     });
 };
-exports.authUser = function(req, res) {
+exports.loggedIn = function(req, res) {
     if (req.isAuthenticated()) {
         return res.status(200).json(req.user);
     }

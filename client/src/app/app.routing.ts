@@ -23,6 +23,4 @@ export const routes: Routes = [
     { path: 'user/events-attended/:id',  component: EventsAttendedComponent },
     //Paths for EVENTS
     { path: 'event/:id',  component: EventComponent },
-
-
 ];

@@ -10,7 +10,7 @@ router.post('/login', controller.logUser);
 //toTest
 router.post('/logout', controller.logOutUser);
 //toTest
-router.post('/loggedin', controller.authUser);
+router.post('/loggedin', controller.loggedIn);
 
 router.get('/get-private-date', controller.getPrivateData);
 //Works!
