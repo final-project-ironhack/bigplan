@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class EventService {
@@ -11,7 +12,6 @@ export class EventService {
   getEventList() {
     return this.http.get(`${this.BASE_URL}/api/event/get-all-events`)
       .map((res) => {
-        console.log(res.json())
         return res.json()
       });
   }

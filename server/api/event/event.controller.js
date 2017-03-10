@@ -104,20 +104,22 @@ exports.getAllEvents = (req, res, next) => {
         if (err) {
             return res.status(500).json(err);
         }
+        console.log(events);
         return res.status(200).json(events);
     });
 };
 
-exports.getEventByParams((req, res, next) => {
-    editEvent.find({
-        _id: params.id
-    }, (err, event) => {
-        if (err) {
-            return res.status(500).json(err);
-        }
-        return res.status(200).json(event);
-    });
-});
+//Commented because it crashed when not logged-in
+// exports.getEventByParams((req, res, next) => {
+//     editEvent.find({
+//         _id: params.id
+//     }, (err, event) => {
+//         if (err) {
+//             return res.status(500).json(err);
+//         }
+//         return res.status(200).json(event);
+//     });
+// });
 
 exports.removeEvent = (req, res, next) => {
     eventModel.findById(req.params.id, (err, event) => {

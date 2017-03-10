@@ -12,7 +12,8 @@ import * as GoogleMapsLoader  from 'google-maps';
 })
 export class MainBoardComponent implements OnInit {
 
-  event: any
+  events: any
+  eventLocation : Object
 
   constructor(
     private route: ActivatedRoute,
@@ -22,25 +23,50 @@ export class MainBoardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    let eventLocation
     this.EventService.getEventList()
-      .subscribe((event) => {
-        this.event = event;
+      .subscribe((events) => {
+        this.events = events;
+        eventLocation = this.events[0].location
       });
 
     // const GoogleKey = .env;
 
     GoogleMapsLoader.load(function(google) {
 
-      const location = { lat: -25.363, lng: 131.044 };
+      // Must be browser coordinates
+      const location = { lat: -12.363, lng: 120.044 };
+      // console.log(eventLocation)
+
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+
+
+
+      const locations = [
+      { lat: -12.363, lng: 120.044 },
+      { lat: -18.363, lng: 160.044 }
+    ]
+
+      // console.log(locations);
 
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: location,
         zoomControl: false,
         scaleControl: false,
-        streetViewControl: false
+        streetViewControl: false,
+        mapTypeControl: false,
       });
+
+      // infoWindow.setPosition(pos);
+      // infoWindow.setContent('Location found.');
+      map.setCenter(pos);
 
       const contentString = '<div id="content">' +
         '<div id="siteNotice">' +
@@ -62,20 +88,26 @@ export class MainBoardComponent implements OnInit {
 		        scaledSize: new google.maps.Size(35, 35)
       }
 
-      const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        animation: google.maps.Animation.DROP,
-        icon: image
 
-      });
+      for (var i = 0; i < locations.length; i++) {
+        console.log(locations[i]);
+       const marker = new google.maps.Marker({
+          position: locations[i],
+          map: map,
+          animation: google.maps.Animation.DROP,
+          icon: image
+        });
 
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-      });
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            // infowindow.setContent(locations[i]);
+            infowindow.open(map, marker);
+          }
+        })(marker, i));
+      }
 
 
     });
 
-  }
+  });}
 }
