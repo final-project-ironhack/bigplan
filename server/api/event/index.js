@@ -16,5 +16,8 @@ router.delete('/remove-event/:id', controller.removeEvent);
 
 // router.get('/get-event-params', controller.getEventByParams);
 
+//router.get('/get-event-params', controller.getEventByParams);
+
+
 
 module.exports = router;

@@ -6,7 +6,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
-        require: true
+        require: false
     },
     password: {
         type: String,
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        require: true
+        require: false
     },
     image: {
         type: String,

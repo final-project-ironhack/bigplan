@@ -109,6 +109,7 @@ exports.getAllEvents = (req, res, next) => {
     });
 };
 
+
 //Commented because it crashed when not logged-in
 // exports.getEventByParams((req, res, next) => {
 //     editEvent.find({
@@ -120,6 +121,8 @@ exports.getAllEvents = (req, res, next) => {
 //         return res.status(200).json(event);
 //     });
 // });
+
+
 
 exports.removeEvent = (req, res, next) => {
     eventModel.findById(req.params.id, (err, event) => {

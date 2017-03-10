@@ -21,6 +21,8 @@ import { EventsAttendedComponent } from './events-attended/events-attended.compo
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventListComponent } from './event-list/event-list.component';
 
+import { SessionService } from "./session.service";
+
 
 
 
@@ -47,7 +49,7 @@ import { EventListComponent } from './event-list/event-list.component';
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [UserService],
+  providers: [UserService,SessionService],
   bootstrap: [AppComponent]
 
 })
