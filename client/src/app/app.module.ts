@@ -20,6 +20,8 @@ import { UserService } from './user.service';
 import { EventsAttendedComponent } from './events-attended/events-attended.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 
+import { SessionService } from "./session.service";
+
 
 
 
@@ -36,7 +38,6 @@ import { CreateEventComponent } from './create-event/create-event.component';
     UserMenuComponent,
     EventsAttendedComponent,
     CreateEventComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [UserService],
+  providers: [UserService,SessionService],
   bootstrap: [AppComponent]
 
 })

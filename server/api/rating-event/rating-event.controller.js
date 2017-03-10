@@ -14,8 +14,9 @@ exports.createRatingEvent = (req, res, next) => {
       console.log(err);
       return res.send(500);
     }
+    //COMPROBAR SI FUNCTIONA
     eventModel.update(
-      {_id: ratingevent.event},
+      {_id: req.params._id},
       { $push: { rating: ratingEvent._id}},
       () => {
         return res.send(ratingEvent);

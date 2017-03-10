@@ -27,7 +27,7 @@ var corsOptions = {
     },
     credentials: true
 };
-app.use(cors());
+app.use(cors(corsOptions));
 // Mongoose configuration
 mongoose.connect("mongodb://localhost/big-plan");
 app.set('views', path.join(__dirname, 'views'));
