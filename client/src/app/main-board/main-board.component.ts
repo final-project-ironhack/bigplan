@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from './../event.service';
 import * as GoogleMapsLoader  from 'google-maps';
+
+
 // import { InfoBubble } from 'js-info-bubble';
 
 @Component({
@@ -26,7 +28,6 @@ export class MainBoardComponent implements OnInit {
 
     const eventS = this.EventService;
     GoogleMapsLoader.load(function(google) {
-
 
       // if available, fetches browser geolocalitzacion
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -59,25 +60,11 @@ export class MainBoardComponent implements OnInit {
         // infoWindow.setContent('Location found.');
         map.setCenter(pos);
 
-        const contentString = '<div id="content">' +
-          '<div id="siteNotice">' +
-          '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
-          '<h2 id="event-name" class="event-name">Quedada para preguntar dudas de Java</h2>' +
-          '<h5 id="user-name" class="user-name">JavaMaister2000</h5>' +
-          '<div id="bodyContent">' +
-          '<p>Lorem ipsum dolor sit amet, consectetur.</p>' +
-          '</div>' +
-          '</div>';
-
-        const infowindow = new google.maps.InfoWindow({
-          content: contentString,
-          maxWidth: 200,
-        });
-
         const image = {
           url: 'https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72',
 		        scaledSize: new google.maps.Size(35, 35)
         }
+
         eventS.getEventList()
           .subscribe((events) => {
             events.map((e) => {
@@ -88,6 +75,22 @@ export class MainBoardComponent implements OnInit {
                   animation: google.maps.Animation.DROP,
                   icon: image
                 });
+
+                const contentString =
+                  '<div id="content">' +
+                  '<div id="siteNotice">' +
+                  '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
+                  '<h2 id="event-name" class="event-name" style="color:red">'+ e.name + '</h2>' +
+                  '<p>'+ e.description +'</p>' +
+                  '<h5 id="user-name" class="user-name"> '+ e.creator +' </h5>' +
+                  '</div>';
+
+                const infowindow = new google.maps.InfoWindow({
+                  content: contentString,
+                  maxWidth: 200,
+                });
+
+
               marker.addListener('click',
                   () => infowindow.open(map, marker));
             });
