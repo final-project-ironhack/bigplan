@@ -9,9 +9,11 @@ const events = [
       category: 'cultura',
       tags: ['#chachi'],
       description: 'Tengo ganas de pasear con alguien por el prado',
-      image: 'imagen',
+      image: 'http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg',
       status: true,
       rating: [],
+      location: { lat: 40.41, lng: 3.70 },
+
       // creator:
       // participant: []
   },
@@ -20,9 +22,11 @@ const events = [
     category: 'ocio',
     tags: ['#chachi','#piruli'],
     description: 'Tomar un cafe',
-    image: 'imagen',
+    image: 'http://dreamatico.com/data_images/kitten/kitten-3.jpg',
     status: true,
     rating: [],
+    location: { lat: 60.363, lng: 5.044 },
+
     // creator:
     // participant: []
   },
