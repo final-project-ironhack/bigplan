@@ -4,12 +4,12 @@ const eventModel = require('./event.model');
 const userModel = require('../user/user.model');
 
 exports.createEvent = (req, res, next) => {
-    console.log("email",req.body);
+    console.log("email", req.body);
     userModel
         .findOne({
-            name: "julia"
-        }).exec((err,user) => {
-          console.log(user);
+            _id: req.session.currentUser._id
+        }).exec((err, user) => {
+            console.log(user);
             console.log("Creating event");
             const eventCreated = {
                 name: req.body.name,
@@ -24,18 +24,20 @@ exports.createEvent = (req, res, next) => {
                 if (err) {
                     return next(err);
                 } else {
-                  userModel.update({_id: user._id}, {
-                      $push: {
-                          createdEvents: event._id
-                      }}, (err)=>{
-                        if(err) return next(err);
+                    userModel.update({
+                        _id: user._id
+                    }, {
+                        $push: {
+                            createdEvents: event._id
+                        }
+                    }, (err) => {
+                        if (err) return next(err);
                         return res.status(200).json({
-                        message: "Event has been createdand user updated"
+                            message: "Event has been createdand user updated"
+                        });
                     });
-                  });
                 }
             });
-
             // userModel
             //     .findOne({
             //         email: req.body.email
@@ -49,14 +51,14 @@ exports.createEvent = (req, res, next) => {
             //           if(err) return next(err);
             //         });
             //     });
-        // });
-        // //  .then((user) => res.status(200).json({message:"Event has been created"}))
-        // .catch((err) => {
-        //     console.log(err);
-        //     res.status(500).json({
-        //         message: "Event has been created"
-        //     });
-      });
+            // });
+            // //  .then((user) => res.status(200).json({message:"Event has been created"}))
+            // .catch((err) => {
+            //     console.log(err);
+            //     res.status(500).json({
+            //         message: "Event has been created"
+            //     });
+        });
 };
 
 exports.editEvent = (req, res, next) => {
@@ -105,6 +107,17 @@ exports.getAllEvents = (req, res, next) => {
         return res.status(200).json(events);
     });
 };
+
+exports.getEventByParams((req, res, next) => {
+    editEvent.find({
+        _id: params.id
+    }, (err, event) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        return res.status(200).json(event);
+    });
+});
 
 exports.removeEvent = (req, res, next) => {
     eventModel.findById(req.params.id, (err, event) => {

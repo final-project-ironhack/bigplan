@@ -116,8 +116,6 @@ exports.authUser = function(req, res) {
     });
 };
 
-
-
 exports.editUser = (req, res, next) => {
     const userId = req.params.id;
     User.findByIdAndUpdate(userId, {
@@ -147,7 +145,7 @@ exports.getAllUsers = (req, res, next) => {
 
 exports.getuserById = (req, res, next) => {
     User.findOne({
-        name: 'julia'
+        name: req.session.currentUser._id
     }, (err, user) => {
         if (err) {
             return res.status(500).json({
