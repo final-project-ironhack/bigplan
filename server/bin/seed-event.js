@@ -12,6 +12,8 @@ const events = [
       image: 'imagen',
       status: true,
       rating: [],
+      location: { lat: -22.363, lng: 120.044 },
+
       // creator:
       // participant: []
   },
@@ -23,6 +25,8 @@ const events = [
     image: 'imagen',
     status: true,
     rating: [],
+    location: { lat: -24.363, lng: 130.044 },
+
     // creator:
     // participant: []
   },

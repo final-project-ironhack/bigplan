@@ -10,6 +10,7 @@ const users = [
     username: 'jutler',
     name: 'julia',
     description: 'Pinta y colorea',
+    location: { lat: -22.363, lng: 120.044 },
     // createdEvents: [],
     // assistedEvents: [],
     // rating: []
@@ -20,6 +21,7 @@ const users = [
     username: 'segis',
     name: 'segismundo',
     description: 'Me gusta el campo y pasar tiempo al aire libre',
+    location: { lat: -24.363, lng: 130.044 },
     // createdEvents: [],
     // assistedEvents: [],
     // rating: []
@@ -30,6 +32,7 @@ const users = [
     username: 'borjaonrails',
     name: 'borja',
     description: 'Da boss',
+    location: { lat: -25.363, lng: 131.044 },
     // createdEvents: [],
     // assistedEvents: [],
     // rating: []
