@@ -143,21 +143,20 @@ exports.getAllUsers = (req, res, next) => {
     });
 };
 
-exports.getuserById = (req, res, next) => {
-    User.findOne({
-        name: req.session.currentUser._id
-    }, (err, user) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'user not found',
-                error: err
-            });
-        } else {
-            return res.status(200).json(
-                user
-            );
-        }
-    });
+
+exports.getUserById = (req, res, next) => {
+  userModel.findOne({}, (err, user) => {
+    if(err){
+      return res.status(500).json({
+        message: 'user not found',
+        error: err
+      });
+    } else {
+      return res.status(200).json(
+        user
+      );
+    }
+  });
 };
 
 

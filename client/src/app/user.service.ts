@@ -9,7 +9,17 @@ export class UserService {
     constructor(private http: Http) {}
 
     getList() {
-      return this.http.get(`${this.BASE_URL}/api/user/getAllUsers`)
+      return this.http.get(`${this.BASE_URL}/api/user/get-all-users`)
+        .map((res) => {
+          console.log(res.json())
+          return res.json()
+        });
+    }
+
+// In develop status
+    getUserById() {
+      return this.http.get(`${this.BASE_URL}/api/user/get-user-by-id/'
+`)
         .map((res) => {
           console.log(res.json())
           return res.json()
