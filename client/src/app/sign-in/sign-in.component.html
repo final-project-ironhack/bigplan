@@ -1,7 +1,7 @@
 <div class="container">
 
   <h1> Authentication Sample </h1>
-  <form>
+  <form *ngIf="!user">
     <h2> Login or Signup </h2>
     <label> Username </label>
     <input type="text" [(ngModel)]="formInfo.username" name="username"/>
@@ -13,7 +13,7 @@
     <button (click)="signup()"> signup </button>
   </form>
 
-  <div *ngIf="user">
+  <div  *ngIf="user">
     <h2> You are now logged in as {{ user.username }}!! </h2>
     <p> Here's the user object </p>
     <pre> {{ user | json }} </pre>

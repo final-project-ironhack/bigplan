@@ -14,6 +14,7 @@ router.get('/get-all-events', controller.getAllEvents);
 //Works!
 router.delete('/remove-event/:id', controller.removeEvent);
 
+router.put('/go-event', controller.goEvent);
 // router.get('/get-event-params', controller.getEventByParams);
 
 //router.get('/get-event-params', controller.getEventByParams);

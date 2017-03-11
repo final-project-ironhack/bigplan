@@ -9,7 +9,6 @@ exports.createEvent = (req, res, next) => {
         .findOne({
             _id: req.session.currentUser._id
         }).exec((err, user) => {
-            console.log(user);
             console.log("Creating event");
             const eventCreated = {
                 name: req.body.name,
@@ -59,6 +58,27 @@ exports.createEvent = (req, res, next) => {
             //         message: "Event has been created"
             //     });
         });
+};
+
+exports.goEvent = (req, res, next) => {
+    const eventId = req.params.id;
+
+    eventModel.update({
+        _id: eventId
+
+    }, {
+        $push: {
+            participant: req.session._id
+        }
+    });
+
+    userModel.update({
+      _id: req.session._id
+    }, {
+      $push: {
+        assistedEvents: eventId
+      }
+    });
 };
 
 exports.editEvent = (req, res, next) => {

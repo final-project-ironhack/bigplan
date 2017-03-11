@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from './../event.service';
 import * as GoogleMapsLoader  from 'google-maps';
+import { SessionService } from '../session.service';
 
 
 // import { InfoBubble } from 'js-info-bubble';
@@ -14,10 +15,14 @@ import * as GoogleMapsLoader  from 'google-maps';
 })
 export class MainBoardComponent implements OnInit {
 
-  events: any
-  eventLocation: Object
+  user: any;
+  events: any;
+  eventLocation: Object;
+  error: string;
+
 
   constructor(
+    private session: SessionService,
     private route: ActivatedRoute,
     private EventService: EventService
   ) {
@@ -25,6 +30,11 @@ export class MainBoardComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.session.isLoggedIn()
+      .subscribe(
+        (user) => this.successCb(user)
+      );
 
     const eventS = this.EventService;
     GoogleMapsLoader.load(function(google) {
@@ -37,6 +47,7 @@ export class MainBoardComponent implements OnInit {
         };
 
         // if not, fetches static geolocalitzacion
+        //Puerta del Sol coords: 40.417160, -3.703539
         const location = { lat: -12.363, lng: 120.044 };
 
 
@@ -97,5 +108,10 @@ export class MainBoardComponent implements OnInit {
           });
       });
     });
+  }
+
+  successCb(user) {
+    this.user = user;
+    this.error = null;
   }
 }
