@@ -6,11 +6,11 @@ let router = express.Router();
 //works!
 router.post('/signup', controller.createUser);
 //Works!
-router.post('/login', controller.logUser);
+router.post('/login', controller.logInUser);
 //toTest
 router.post('/logout', controller.logOutUser);
 //toTest
-router.post('/loggedin', controller.loggedIn);
+router.get('/loggedin', controller.loggedIn);
 router.post('/create-user', controller.createUser);
 //Works!
 router.put('/edit-user/:id', controller.editUser);

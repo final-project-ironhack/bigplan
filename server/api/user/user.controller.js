@@ -88,25 +88,23 @@ exports.createUser = function(req, res, next) {
     });
 };
 
-exports.logUser = function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-        if (err) {
-            return next(err);
-        }
-        if (!user) {
-            return res.status(401).json(info);
-        }
-        req.login(user, function(err) {
-            if (err) {
-                console.log('holacaracola');
-                return res.status(500).json({
-                    message: 'something went wrong.'
-                });
-            }
-            res.status(200).json(req.user);
-        });
-    });
-};
+exports.logInUser = function(req, res, next) {
+	passport.authenticate('local', function(err, user, info) {
+		if (err) { return next(err); }
+
+		if (!user) { return res.status(401).json(info); }
+
+		req.login(user, function(err) {
+			if (err) {
+				return res.status(500).json({
+					message: 'something went wrong :('
+				});
+			}
+			res.status(200).json(req.user);
+		});
+	})(req, res, next);
+};  
+
 exports.logOutUser = function(req, res) {
     req.logout();
     res.status(200).json({
