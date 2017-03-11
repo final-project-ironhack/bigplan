@@ -31,6 +31,17 @@ const bcryptSalt = 10;
 };
 */
 
+exports.getUserLogged = function(req, res, next){
+  userModel
+    .findOne({_id: req.session.currentUser._id}).exec((err, user) => {
+      if(err){
+        return next(err);
+      }else{
+        return res.status(200).json(user);
+      }
+      });
+};
+
 exports.createUser = function(req, res, next) {
     const password = req.body.password;
     const username = req.body.username;

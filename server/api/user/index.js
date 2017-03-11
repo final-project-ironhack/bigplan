@@ -11,9 +11,6 @@ router.post('/login', controller.logUser);
 router.post('/logout', controller.logOutUser);
 //toTest
 router.post('/loggedin', controller.loggedIn);
-
-router.get('/get-private-date', controller.getPrivateData);
-//Works!
 router.post('/create-user', controller.createUser);
 //Works!
 router.put('/edit-user/:id', controller.editUser);
@@ -23,5 +20,7 @@ router.get('/get-all-users', controller.getAllUsers);
 router.get('/get-user-by-id/:id', controller.getUserById);
 //Works!
 router.delete('/remove-user/:id', controller.removeUser);
+//toTest
+router.get('/get-user-logged', controller.getUserLogged);
 
 module.exports = router;
