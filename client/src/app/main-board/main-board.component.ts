@@ -67,7 +67,7 @@ export class MainBoardComponent implements OnInit {
           mapTypeControl: false,
         });
 
-        // infoWindow.setPosition(pos);
+        ///infoWindow.setPosition(pos);
         // infoWindow.setContent('Location found.');
         map.setCenter(pos);
 
