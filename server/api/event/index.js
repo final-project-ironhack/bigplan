@@ -19,6 +19,4 @@ router.put('/go-event', controller.goEvent);
 
 //router.get('/get-event-params', controller.getEventByParams);
 
-
-
 module.exports = router;

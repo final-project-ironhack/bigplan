@@ -3,6 +3,12 @@ const mongoose = require('mongoose');
 const eventModel = require('./event.model');
 const userModel = require('../user/user.model');
 
+let Server = require('socket.io');
+//add options as params to server if want change pings
+let io = new Server();
+
+let listOfEvents;
+
 exports.createEvent = (req, res, next) => {
     console.log("email", req.body);
     userModel
@@ -124,10 +130,13 @@ exports.getAllEvents = (req, res, next) => {
         if (err) {
             return res.status(500).json(err);
         }
+        listOfEvents = events;
         console.log(events);
         return res.status(200).json(events);
     });
 };
+
+
 
 
 //Commented because it crashed when not logged-in
@@ -161,3 +170,19 @@ exports.removeEvent = (req, res, next) => {
         }
     });
 };
+
+function getEvents(){
+  eventModel.find({}, (err, events) => {
+      if (err) {
+        console.log(err);
+      }
+      listOfEvents = events;
+      console.log(listOfEvents);
+  });
+}
+
+
+io.on('connection', (socket) => {
+  //mirar como se envia con send
+  io.send("updateSocketListOfEvents", clientListNames);
+});

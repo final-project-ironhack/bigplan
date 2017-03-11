@@ -16,11 +16,15 @@ const User = require('./api/user/user.model');
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const app = express();
+//socket.io
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 require("dotenv").config();
-var whitelist = [
+const whitelist = [
     'http://localhost:4200',
 ];
-var corsOptions = {
+const corsOptions = {
     origin: function(origin, callback) {
         var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
         callback(null, originIsWhitelisted);
