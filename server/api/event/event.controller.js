@@ -37,32 +37,14 @@ exports.createEvent = (req, res, next) => {
                         }
                     }, (err) => {
                         if (err) return next(err);
+                        //socket.io
+                        updateEvents();
                         return res.status(200).json({
-                            message: "Event has been createdand user updated"
+                            message: "eventCreated"
                         });
                     });
                 }
             });
-            // userModel
-            //     .findOne({
-            //         email: req.body.email
-            //     })
-            //     .then((user) => {console.log(user);
-            //         userModel.update({_id: user._id}, {
-            //             $push: {
-            //                 createdEvents: event._id
-            //             }
-            //         }, (err)=>{
-            //           if(err) return next(err);
-            //         });
-            //     });
-            // });
-            // //  .then((user) => res.status(200).json({message:"Event has been created"}))
-            // .catch((err) => {
-            //     console.log(err);
-            //     res.status(500).json({
-            //         message: "Event has been created"
-            //     });
         });
 };
 
@@ -171,7 +153,7 @@ exports.removeEvent = (req, res, next) => {
     });
 };
 
-function getEvents(){
+function updateEvents(){
   eventModel.find({}, (err, events) => {
       if (err) {
         console.log(err);
@@ -182,7 +164,6 @@ function getEvents(){
 }
 
 
-io.on('connection', (socket) => {
-  //mirar como se envia con send
+io.on('eventCreated', (socket) => {
   io.send("updateSocketListOfEvents", clientListNames);
 });
