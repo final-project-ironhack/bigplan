@@ -3,39 +3,44 @@ import { ActivatedRoute } from '@angular/router';
 import { EventService } from './../event.service';
 import * as GoogleMapsLoader  from 'google-maps';
 import { SessionService } from '../session.service';
-
+//socket.io
+//import { FormControl } from '@angular/common';
+import { UpdateEventsService } from '../update-events.service';
 
 // import { InfoBubble } from 'js-info-bubble';
 
 @Component({
+  //moduleId: module.id,
   selector: 'app-main-board',
   templateUrl: './main-board.component.html',
   styleUrls: ['./main-board.component.css'],
-  providers: [EventService]
+  providers: [EventService, UpdateEventsService]
 })
 export class MainBoardComponent implements OnInit {
 
   user: any;
-  events: any;
+  eventS: any;
   eventLocation: Object;
   error: string;
 
+  //socket.io
+  connection: any;
 
   constructor(
     private session: SessionService,
     private route: ActivatedRoute,
-    private EventService: EventService
-  ) {
-
-  }
+    private EventService: EventService,
+    //socket.io
+    private UpdateEventsService: UpdateEventsService
+  ) { }
 
   ngOnInit() {
 
     this.session.isLoggedIn()
       .subscribe(
-        (user) => this.successCb(user)
+      (user) => this.successCb(user)
       );
-
+    const updateEvent = this.UpdateEventsService;
     const eventS = this.EventService;
     GoogleMapsLoader.load(function(google) {
 
@@ -76,34 +81,67 @@ export class MainBoardComponent implements OnInit {
 		        scaledSize: new google.maps.Size(35, 35)
         }
 
+        //socket.io
+        /*this.connection = this.UpdateEventsService.updateEvent()
+        .subscribe((events) => {
+          events.map((e) => {
+            console.log(e);
+            const marker = new google.maps.Marker({
+                position: e.location,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: image
+              });
+
+              const contentString =
+                '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
+                '<h2 id="event-name" class="event-name" style="color:red">'+ e.name + '</h2>' +
+                '<p>'+ e.description +'</p>' +
+                '<h5 id="user-name" class="user-name"> '+ e.creator +' </h5>' +
+                '</div>';
+
+              const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                maxWidth: 200,
+              });
+
+
+            marker.addListener('click',
+                () => infowindow.open(map, marker));
+          });
+        });
+*/
+
         eventS.getEventList()
           .subscribe((events) => {
             events.map((e) => {
               console.log(e);
               const marker = new google.maps.Marker({
-                  position: e.location,
-                  map: map,
-                  animation: google.maps.Animation.DROP,
-                  icon: image
-                });
+                position: e.location,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: image
+              });
 
-                const contentString =
-                  '<div id="content">' +
-                  '<div id="siteNotice">' +
-                  '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
-                  '<h2 id="event-name" class="event-name" style="color:red">'+ e.name + '</h2>' +
-                  '<p>'+ e.description +'</p>' +
-                  '<h5 id="user-name" class="user-name"> '+ e.creator +' </h5>' +
-                  '</div>';
+              const contentString =
+                '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
+                '<h2 id="event-name" class="event-name" style="color:red">' + e.name + '</h2>' +
+                '<p>' + e.description + '</p>' +
+                '<h5 id="user-name" class="user-name"> ' + e.creator + ' </h5>' +
+                '</div>';
 
-                const infowindow = new google.maps.InfoWindow({
-                  content: contentString,
-                  maxWidth: 200,
-                });
+              const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                maxWidth: 200,
+              });
 
 
               marker.addListener('click',
-                  () => infowindow.open(map, marker));
+                () => infowindow.open(map, marker));
             });
           });
       });
