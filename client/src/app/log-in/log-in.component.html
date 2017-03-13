@@ -7,8 +7,10 @@
       </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
+     <li><a routerLink="/logout"></a></li>
      <li><a routerLink="/">Home</a></li>
      <li><a routerLink="/sign-up">Sign up</a></li>
+
         </ul>
   </div>
 </nav>
@@ -27,10 +29,7 @@
           <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
         </form>
         <a routerLink="/sign-up" class="text-center new-account">Don't have an account? Sign-up</a>
-        <div class="logged-in" *ngIf="user">
-          <app-main-board></app-main-board>
         </div>
       </div>
     </div>
   </div>
-</div>
