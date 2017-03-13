@@ -22,6 +22,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { EventListComponent } from './event-list/event-list.component';
 
 import { SessionService } from "./session.service";
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 
 
@@ -40,6 +42,8 @@ import { SessionService } from "./session.service";
     EventsAttendedComponent,
     CreateEventComponent,
     EventListComponent,
+    SignUpComponent,
+    LogInComponent,
 
   ],
   imports: [
