@@ -10,11 +10,12 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { LandingComponent } from './landing/landing.component'
 export const routes: Routes = [
 
     //Path for MAIN BOARD & NAVIGATION
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'landing', pathMatch: 'full' },
+    { path: 'landing', component: LandingComponent},
     { path: 'home/:id',  component: MainBoardComponent },
     { path: 'usermenu/:id', component: UserMenuComponent },
     { path: 'create-event', component: CreateEventComponent },

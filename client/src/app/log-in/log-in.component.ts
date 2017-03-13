@@ -29,6 +29,9 @@ export class LogInComponent implements OnInit {
       .subscribe(
       (user) => this.successCb(user)
       );
+      if(this.user){
+      //  this.router.navigate(['home/'+this.user._id]);
+      }
   }
 
   login() {
@@ -36,8 +39,8 @@ export class LogInComponent implements OnInit {
       .subscribe(
       (user) => {
         this.successCb(user),
-        this.loggedin.checkLogged(user);
-        this.router.navigate(['home/' + user._id]);
+          this.loggedin.checkLogged(user);
+          this.router.navigate(['home/' + user._id]);
       },
       (err) => this.errorCb(err)
       );

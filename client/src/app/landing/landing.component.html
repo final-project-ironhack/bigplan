@@ -9,9 +9,10 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav navbar-right home-links">
-        <li><a [routerLink]="['log-in']">Log in</a></li>
-        <li><a routerLink="/sign-up">Sign up</a></li>
+        <li><a [routerLink]="['/log-in']">Log in</a></li>
+        <li><a [routerLink]="['/sign-up']">Sign up</a></li>
       </ul>
+      <li><button (click)="logout()" class="btn btn-lg btn-primary btn-block" type="submit">Log out</button></li>
     </div>
   </nav>
 
