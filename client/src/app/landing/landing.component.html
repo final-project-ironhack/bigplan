@@ -4,24 +4,55 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 </head>
+
 <body>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand logo" href="#">
-          <h3>Big.Plan</h3>
-        </a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-       <li><a [routerLink]="['log-in']">Log in</a></li>
-       <li><a routerLink="/sign-up">Sign up</a></li>
-          </ul>
+      <ul class="nav navbar-nav navbar-right home-links">
+        <li><a [routerLink]="['log-in']">Log in</a></li>
+        <li><a routerLink="/sign-up">Sign up</a></li>
+      </ul>
     </div>
   </nav>
-  <div class="jumbotron">
-    <div class="container">
-  <h1>Big.Plan</h1>
+
+  <div class="jumbotron video-container">
+    <video id="video-background" preload="" muted="" autoplay="" loop="">
+   <source src="../assets/video/bigplan05.mp4" type="video/mp4">
+ </video>
+    <h1 class="big-logo">Big.Plan</h1>
+  </div>
+
+<div class="container info-container">
+<div class="row">
+  <div class="col-md-8 info-col">
+    <h2>Make plans, <br> make them bigger.</h2>
+    <p>Share your plans, meet new people,
+      expand your interests. <strong>Big.Plan</strong> let's you
+      post your hangouts on the go.
+    Sign up now to attend the best local plans near you.<br><br></p>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
+  </div>
+  <div class="col-md-4 info-col">
+  </div>
+  </div>
 </div>
-</div>
+
+<!-- <div class="container info-container-2">
+<div class="row">
+  <div class="col-md-6 info-col">
+    <h2>Make plans, <br> make them bigger.</h2>
+    <p>Share your plans, meet new people,
+      expand your interests. <strong>Big.Plan</strong> let's you
+      post your hangouts on the go.</p>
+    <p>Sign up now to attend the best local plans near you.</p>
+  </div>
+  <div class="col-md-6 info-col">
+  </div>
+  </div>
+</div> -->
+
+<footer></footer>
 
 </body>

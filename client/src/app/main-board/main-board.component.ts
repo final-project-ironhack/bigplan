@@ -64,7 +64,7 @@ export class MainBoardComponent implements OnInit {
         // console.log(locations);
 
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 10,
           center: location,
           zoomControl: false,
           scaleControl: false,
