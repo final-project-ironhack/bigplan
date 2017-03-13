@@ -18,8 +18,7 @@ export const routes: Routes = [
     { path: 'home/:id',  component: MainBoardComponent },
     { path: 'usermenu/:id', component: UserMenuComponent },
     { path: 'create-event', component: CreateEventComponent },
-    { path: 'sign-in', component: SignInComponent },
-    { path : 'log-in', component: LogInComponent},
+    { path: 'log-in', component: LogInComponent},
     { path: 'sign-up', component: SignUpComponent},
 
     //Paths for USER
