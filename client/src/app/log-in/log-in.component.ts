@@ -30,7 +30,7 @@ export class LogInComponent implements OnInit {
       (user) => this.successCb(user)
       );
       if(this.user){
-        this.router.navigate(['home/'+this.user._id]);
+      //  this.router.navigate(['home/'+this.user._id]);
       }
   }
 
@@ -40,7 +40,7 @@ export class LogInComponent implements OnInit {
       (user) => {
         this.successCb(user),
           this.loggedin.checkLogged(user);
-        this.router.navigate(['home/' + user._id]);
+          this.router.navigate(['home/' + user._id]);
       },
       (err) => this.errorCb(err)
       );
