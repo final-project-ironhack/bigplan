@@ -22,7 +22,7 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-  
+
   login(user) {
     return this.http.post(`${this.BASE_URL}/api/user/login`,user, this.options)
       .map(res => res.json())

@@ -9,44 +9,51 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-    user: any;
-    formInfo = {
-      username: '',
-      password: ''
-    };
-    error: string;
-    privateData: any = '';
+  user: any;
+  formInfo = {
+    username: '',
+    password: ''
+  };
+  error: string;
+  privateData: any = '';
 
-    constructor(
-      private router: Router,
-      private session: SessionService) { }
+  constructor(
+    private router: Router,
+    private session: SessionService) { }
 
-    ngOnInit() {
-      this.session.isLoggedIn()
-        .subscribe(
-          (user) => this.successCb(user)
-        );
-    }
-
-    signup() {
-
-      this.session.signup(this.formInfo)
-        .subscribe(
-          (user) =>{
-            this.successCb(user),
-            this.router.navigate(['home/'+user._id]);
-          },
-          (err) => this.errorCb(err)
-        );
-    }
-
-    errorCb(err) {
-      this.error = err;
-      this.user = null;
-    }
-
-    successCb(user) {
-      this.user = user;
-      this.error = null;
-    }
+  ngOnInit() {
+    this.session.isLoggedIn()
+      .subscribe(
+      (user) => this.successCb(user)
+      );
   }
+
+  signup() {
+
+    this.session.signup(this.formInfo)
+      .subscribe(
+      (user) => {
+        this.successCb(user),
+        this.router.navigate(['home/' + user._id]);
+      },
+      (err) => this.errorCb(err)
+      );
+  }
+  logout() {
+    this.session.logout()
+      .subscribe(
+      () => this.successCb(null),
+      (err) => this.errorCb(err)
+      );
+  }
+
+  errorCb(err) {
+    this.error = err;
+    this.user = null;
+  }
+
+  successCb(user) {
+    this.user = user;
+    this.error = null;
+  }
+}

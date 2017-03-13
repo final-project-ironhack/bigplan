@@ -20,14 +20,11 @@ import { UserService } from './user.service';
 import { EventsAttendedComponent } from './events-attended/events-attended.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventListComponent } from './event-list/event-list.component';
-
+import { EventService} from './event.service';
 import { SessionService } from "./session.service";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LandingComponent } from './landing/landing.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -55,7 +52,7 @@ import { LandingComponent } from './landing/landing.component';
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [UserService,SessionService],
+  providers: [UserService,SessionService, EventService],
   bootstrap: [AppComponent]
 
 })

@@ -1,40 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../event.service'
+import { EventService } from '../event.service';
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { LoggedinService } from '../loggedin.service';
+import { SessionService } from '../session.service';
+
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.css']
+  styleUrls: ['./create-event.component.css'],
+  providers: [LoggedinService]
 })
 export class CreateEventComponent implements OnInit {
-
+  user: any;
   formInfo = {
-    username: String,
-    category: String,
-    tags: String,
-    description: String,
+    username: '',
+    category: '',
+    tags: '',
+    description: '',
   };
 
-  constructor( private eventS: EventService  ) { }
+  constructor(
+    private router: Router,
+    private loggedin: LoggedinService,
+    private session: SessionService,
+    private eventService: EventService
+  ){
+
+  };
 
   ngOnInit() {
-  }
+    this.loggedin.getUser()
+    .subscribe((user)=> {
+      this.user = user
+      console.log(user);
+    }
+    );
+  };
 
-  createEvent(){
-    this.eventS.createEvent({
-      username: this.formInfo.username,
-      category: this.formInfo.category,
-      description: this.formInfo.description,
-      tags: this.formInfo.tags,
-      location: this.getBrowserPosition()
-    });
-  }
+    createEvent(){
+      console.log("create event", this.user._id);
+      this.eventService.createEvent({
+        creator: this.user._id,
+        category: this.formInfo.category,
+        description: this.formInfo.description,
+        tags: this.formInfo.tags,
+        location: this.getBrowserPosition()
+      }).subscribe((event)=>{
+        console.log('tu madre es un pendón')
+        this.router.navigate(['home/' + this.user._id]);
+      });
+    }
 
-  getBrowserPosition(){
-    let coords;
-    navigator.geolocation.getCurrentPosition(function(position){
-       coords = position.coords;
-    });
-    return coords;
-  }
+    getBrowserPosition(){
+      let coords;
+      navigator.geolocation.getCurrentPosition(function(position) {
+        coords = position.coords;
+      });
+      return coords;
+    }
 
   }

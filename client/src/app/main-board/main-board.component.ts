@@ -36,10 +36,10 @@ export class MainBoardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    
     this.session.isLoggedIn()
       .subscribe(
-      (user) => this.successCb(user)
+      (user) => {console.log(user);this.successCb(user)}
       );
     const updateEvent = this.UpdateEventsService;
     const eventS = this.EventService;
@@ -67,7 +67,7 @@ export class MainBoardComponent implements OnInit {
         // console.log(locations);
 
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 13,
           center: location,
           zoomControl: false,
           scaleControl: false,
@@ -149,9 +149,11 @@ export class MainBoardComponent implements OnInit {
           });
       });
     });
+
   }
 
   successCb(user) {
+    console.log('USER:::::::::::::::::',user)
     this.user = user;
     this.error = null;
   }
