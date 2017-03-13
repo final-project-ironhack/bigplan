@@ -13,15 +13,6 @@
   </form>
 
   <div  *ngIf="user">
-    <h2> You are now logged in as {{ user.username }}!! </h2>
-    <p> Here's the user object </p>
-    <pre> {{ user | json }} </pre>
-
-    <p *ngIf="privateData"> Here's some data fetched from a protected API </p>
-    <pre> {{ privateData | json }} </pre>
-    <button (click)="logout()"> logout </button>
-    <button (click)="getPrivateData()"> Get private data </button>
+    <app-main-board></app-main-board>
   </div>
-
-  <p class="error"> {{ error }} </p>
 </div>

@@ -1,9 +1,35 @@
 body {
   font-family: 'Work Sans', sans-serif;
+  background: transparent;
 }
-.navbar-default .navbar-brand {
+
+a, a:active, a:hover {
+ color:  #FF8F61;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color:  #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:  #FF8F61;
+}
+
+.navbar-default {
   font-family: 'Work Sans', sans-serif;
   height: 0px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: #FF8F61;
+}
+
+.navbar-default li:nth-child(2) {
+  padding-right: 100px;
 }
 
 .navbar-btn {
@@ -11,6 +37,7 @@ body {
 }
 
 .logo {
+  z-index: 100;
   font-family: 'Work Sans', sans-serif;
   font-size: 24px;
   color: #FF8F61;
@@ -24,10 +51,112 @@ h3 {
   color: #FF8F61;
 }
 
-.jumbotron {
-  margin-top: -20px;
+.video-container {
+  z-index:-2;
+  position: relative;
+  top: 0px;
+  padding: 0;
+  text-align: center;
+  color: #FF8F61;
+}
+
+#video-background {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+  width:100vw;
+}
+
+.big-logo {
+  z-index: 100;
+  width: 100vw;
+  text-align: center;
+  position: fixed;
+  top: 130px;
+  background: transparent;
+  color: #FF8F61;
+}
+
+.jumbotron h1 {
+  font-size: 150px;
+}
+
+.info-container {
+  background-image: url("../assets/img/002.png");
+  padding: 0;
+  margin-top: -40px;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100vw;
+  height: 500px;
   position: relative;
   text-align: center;
-  color: #00F4F4;
-  background-color: #00346B;
+  color: #FF8F61;
+}
+
+.info-container-2 {
+  background-image: url("../assets/img/mobile.png");
+  background-size:100%;
+  display:block;
+  padding: 0;
+  margin-top: -40px;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100vw;
+  height: 500px;
+  position: relative;
+  text-align: center;
+  color: #FF8F61;
+}
+
+.info-col {
+  padding-top: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: left;
+}
+
+.info-col h2 {
+  font-size: 40px;
+  font-weight: 600;
+  padding: 0;
+  color: #FF8F61;
+  text-align: left;
+}
+
+.info-col p {
+  color: #fff;
+  padding-top: 10%;
+  padding-right: 0;
+  font-size: 15px;
+}
+
+.btn-block {
+  margin-top: 10%;
+  background-color: transparent;
+  color: #FF8F61;
+  border: 1px solid #FF8F61;
+  border-radius: 50px;
+}
+
+.btn-block:hover {
+  background-color: #FF8F61;
+  color: #00346B;
+}
+
+footer {
+  background-color: #111;
+  position: relative;
+  width: 100vw;
+  height: 70px;
+}
+
+@media screen and (max-width: 480px) {
+  .jumbotron h1 {
+    font-size: 70px;
+  }
 }

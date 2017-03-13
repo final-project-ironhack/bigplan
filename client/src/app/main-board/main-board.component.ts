@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from './../event.service';
-import * as GoogleMapsLoader  from 'google-maps';
+declare function require(name:string);
+var GoogleMapsLoader = require('google-maps');
 import { SessionService } from '../session.service';
 //socket.io
 //import { FormControl } from '@angular/common';
@@ -38,10 +39,12 @@ export class MainBoardComponent implements OnInit {
 
     this.session.isLoggedIn()
       .subscribe(
-      (user) => this.successCb(user)
+      (user) => {console.log(user);this.successCb(user)}
       );
     const updateEvent = this.UpdateEventsService;
     const eventS = this.EventService;
+    GoogleMapsLoader.KEY = 'AIzaSyBmHIjgfyzkhCKmCgMBGJgsr7Ad4rRuiAY';
+
     GoogleMapsLoader.load(function(google) {
 
       // if available, fetches browser geolocalitzacion
@@ -64,7 +67,7 @@ export class MainBoardComponent implements OnInit {
         // console.log(locations);
 
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 13,
           center: location,
           zoomControl: false,
           scaleControl: false,
@@ -146,9 +149,11 @@ export class MainBoardComponent implements OnInit {
           });
       });
     });
+
   }
 
   successCb(user) {
+    console.log('USER:::::::::::::::::',user)
     this.user = user;
     this.error = null;
   }
