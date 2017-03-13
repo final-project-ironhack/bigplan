@@ -47,6 +47,39 @@ export class MainBoardComponent implements OnInit {
 
     GoogleMapsLoader.load(function(google) {
 
+      var styles = [
+    {
+        "stylers": [
+            {
+                "hue": "#001730"
+            },
+            {
+                "saturation": 0
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": 100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    }
+];
       // if available, fetches browser geolocalitzacion
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
@@ -142,7 +175,7 @@ export class MainBoardComponent implements OnInit {
                 maxWidth: 200,
               });
 
-
+              map.setOptions({styles: styles});
               marker.addListener('click',
                 () => infowindow.open(map, marker));
             });
