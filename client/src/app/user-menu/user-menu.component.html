@@ -1,7 +1,7 @@
 <nav>
   <div class="menu">
-      <a [routerLink]="['']"><img class="img-user" src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72"></a>
-      <h5 class="logo">big.plan</h5>
+    <a [routerLink]="['']"><img class="img-user" src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72"></a>
+    <h5 class="logo">big.plan</h5>
   </div>
 </nav>
 
@@ -9,15 +9,14 @@
   <!-- <ul *ngIf="user"> -->
 
   <ul>
-    <a routerLink="/user/1"><li>Profile</li></a>
+    <li><a routerLink="/">Index</a></li>
+    <li><a routerLink="/user/1">Profile</a></li>
     <li>Record</li>
-    <a routerLink="/user/events-attended/1"><li>Plans you attended</li></a>
+    <li><a routerLink="/user/events-attended/1">Plans you attended</a></li>
     <li>Plans you managed</li>
-    <li>Post a Plan</li>
+    <li><a routerLink="/event/create-event">Post a Plan</a></li>
+    <li><a routerLink="/log-in">Log In</a></li>
+    <li><a routerLink="/sign-up">Sign In</a></li>
     <li>Log-out</li>
   </ul>
-
-  <!-- <ul *ngIf="user"> -->
-    <a routerLink="/sign-in"><li>Sign In</li></a>
-  <!-- </ul>  -->
 </div>
