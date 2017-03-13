@@ -3,13 +3,18 @@ const mongoose = require('mongoose');
 const eventModel = require('./event.model');
 const userModel = require('../user/user.model');
 
+let Server = require('socket.io');
+//add options as params to server if want change pings
+let io = new Server();
+
+let listOfEvents;
+
 exports.createEvent = (req, res, next) => {
     console.log("email", req.body);
     userModel
         .findOne({
             _id: req.session.currentUser._id
         }).exec((err, user) => {
-            console.log(user);
             console.log("Creating event");
             const eventCreated = {
                 name: req.body.name,
@@ -32,33 +37,36 @@ exports.createEvent = (req, res, next) => {
                         }
                     }, (err) => {
                         if (err) return next(err);
+                        //socket.io
+                        updateEvents();
                         return res.status(200).json({
-                            message: "Event has been createdand user updated"
+                            message: "eventCreated"
                         });
                     });
                 }
             });
-            // userModel
-            //     .findOne({
-            //         email: req.body.email
-            //     })
-            //     .then((user) => {console.log(user);
-            //         userModel.update({_id: user._id}, {
-            //             $push: {
-            //                 createdEvents: event._id
-            //             }
-            //         }, (err)=>{
-            //           if(err) return next(err);
-            //         });
-            //     });
-            // });
-            // //  .then((user) => res.status(200).json({message:"Event has been created"}))
-            // .catch((err) => {
-            //     console.log(err);
-            //     res.status(500).json({
-            //         message: "Event has been created"
-            //     });
         });
+};
+
+exports.goEvent = (req, res, next) => {
+    const eventId = req.params.id;
+
+    eventModel.update({
+        _id: eventId
+
+    }, {
+        $push: {
+            participant: req.session._id
+        }
+    });
+
+    userModel.update({
+      _id: req.session._id
+    }, {
+      $push: {
+        assistedEvents: eventId
+      }
+    });
 };
 
 exports.editEvent = (req, res, next) => {
@@ -104,10 +112,13 @@ exports.getAllEvents = (req, res, next) => {
         if (err) {
             return res.status(500).json(err);
         }
+        listOfEvents = events;
         console.log(events);
         return res.status(200).json(events);
     });
 };
+
+
 
 
 //Commented because it crashed when not logged-in
@@ -141,3 +152,18 @@ exports.removeEvent = (req, res, next) => {
         }
     });
 };
+
+function updateEvents(){
+  eventModel.find({}, (err, events) => {
+      if (err) {
+        console.log(err);
+      }
+      listOfEvents = events;
+      console.log(listOfEvents);
+  });
+}
+
+
+io.on('eventCreated', (socket) => {
+  io.send("updateSocketListOfEvents", clientListNames);
+});

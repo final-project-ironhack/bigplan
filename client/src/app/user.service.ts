@@ -8,6 +8,14 @@ export class UserService {
   BASE_URL: string = 'http://localhost:3000';
     constructor(private http: Http) {}
 
+    getUserLogged(){
+      return this.http.get(`${this.BASE_URL}/api/user/get-user-logged`)
+        .map((res) => {
+          console.log(res.json())
+          return res.json()
+        });
+    }
+
     getList() {
       return this.http.get(`${this.BASE_URL}/api/user/get-all-users`)
         .map((res) => {

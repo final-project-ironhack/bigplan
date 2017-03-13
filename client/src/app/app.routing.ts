@@ -8,7 +8,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventsAttendedComponent } from './events-attended/events-attended.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-
+import { LogInComponent } from ''
 
 export const routes: Routes = [
 
@@ -18,6 +18,8 @@ export const routes: Routes = [
     { path: 'usermenu/:id', component: UserMenuComponent },
     { path: 'create-event', component: CreateEventComponent },
     { path: 'sign-in', component: SignInComponent },
+  //  { path : 'log-in', component: LogInComponent},
+    //{ path: 'sign-up', component: SignUpComponent},
 
     //Paths for USER
     { path: 'user/:id', component: UserComponent },
