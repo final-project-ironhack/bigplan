@@ -2,28 +2,23 @@
   <div class="info-container">
     <h3> Post a Plan </h3>
 
-    <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
-      <p> Plan Title
-        <input type="text" name="username" [(ngModel)]="formInfo.username" required />
-      </p>
+    <form  #myForm="ngForm">
+      <label> Plan Title</label>
+      <input type="text" name="creator" [(ngModel)]="formInfo.creator" placeholder="LUKAS" required />
+      <br>
 
-      <p> Category
-        <input type="text" name="catefory" [(ngModel)]="formInfo.category" required />
-      </p>
+      <label> Category</label>
+      <input type="text" name="category" [(ngModel)]="formInfo.category" required />
+      <br>
 
-      <p> Plan Description
-        <input type="text" name="description" [(ngModel)]="formInfo.description" required />
-      </p>
+      <label> Plan Description</label>
+      <input type="text" name="description" [(ngModel)]="formInfo.description" required />
+      <br>
+      <label> Tags</label>
+      <input type="text" name="tags" [(ngModel)]="formInfo.tags" required />
+      <br>
+      <button type="submit" (click)="createEvent()"> Create plan! </button>
 
-      <p> Tags
-        <input type="text" name="tags" [(ngModel)]="formInfo.tags" required />
-      </p>
-
-      <!-- <p> Image
-    <input type="text" name="tags" [(ngModel)]="formInfo.tags" required />
-  </p> -->
-
-      <button type="submit"> Post </button>
     </form>
 
 
