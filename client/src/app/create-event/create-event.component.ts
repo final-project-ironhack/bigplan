@@ -29,12 +29,13 @@ export class CreateEventComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.loggedin.getUser()
-    .subscribe((user)=> {
-      this.user = user
-      console.log(user);
-    }
-    );
+    console.log(this.loggedin.getUser())
+    // this.loggedin.getUser()
+    // .subscribe((user)=> {
+    //   this.user = user
+    //   console.log(user);
+    // }
+    // );
   };
 
     createEvent(){

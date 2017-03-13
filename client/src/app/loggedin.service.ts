@@ -16,10 +16,12 @@ export class LoggedinService {
   }
 
   getUser() {
+    console.log(this.user)
     return this.user;
   }
 
   checkLogged(user) {
+    console.log('USERUSER: ',user);
     this.user = user;
     this.userLogged.emit(user);
   }
