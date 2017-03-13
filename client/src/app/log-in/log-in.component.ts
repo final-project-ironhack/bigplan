@@ -31,6 +31,14 @@ export class LogInComponent implements OnInit {
         (err) => this.errorCb(err)
       );
   }
+  
+  logout() {
+  this.session.logout()
+    .subscribe(
+      () => this.successCb(null),
+      (err) => this.errorCb(err)
+    );
+}
 
   errorCb(err) {
     this.error = err;

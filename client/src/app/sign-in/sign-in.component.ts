@@ -32,6 +32,14 @@ export class SignInComponent implements OnInit {
       );
   }
 
+  logout() {
+  this.session.logout()
+    .subscribe(
+      () => this.successCb(null),
+      (err) => this.errorCb(err)
+    );
+}
+
   errorCb(err) {
     this.error = err;
     this.user = null;
