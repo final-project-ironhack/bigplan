@@ -8,7 +8,6 @@ import { SessionService } from '../session.service';
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.css'],
-  providers: [LoggedinService]
 })
 export class CreateEventComponent implements OnInit {
   user: any;
@@ -30,7 +29,7 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.loggedin.getUser())
-    // this.loggedin.getUser()
+    this.user=this.loggedin.getUser()
     // .subscribe((user)=> {
     //   this.user = user
     //   console.log(user);
@@ -58,6 +57,9 @@ export class CreateEventComponent implements OnInit {
         coords = position.coords;
       });
       return coords;
+    }
+    logUser(){
+      console.log(this.user);
     }
 
   }
