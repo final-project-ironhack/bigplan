@@ -8,10 +8,6 @@ import { SessionService } from '../session.service';
 //import { FormControl } from '@angular/common';
 import { UpdateEventsService } from '../update-events.service';
 
-import * as $ from 'jquery';
-
-// import { InfoBubble } from 'js-info-bubble';
-
 @Component({
   //moduleId: module.id,
   selector: 'app-main-board',
@@ -20,12 +16,12 @@ import * as $ from 'jquery';
   providers: [EventService, UpdateEventsService]
 })
 export class MainBoardComponent implements OnInit {
-
+  uri: any;
   user: any;
   eventS: any;
   eventLocation: Object;
   error: string;
-
+  infobubble: any;
   //socket.io
   connection: any;
 
@@ -197,11 +193,6 @@ export class MainBoardComponent implements OnInit {
         // infoWindow.setContent('Location found.');
         map.setCenter(pos);
 
-        const image = {
-          url: 'https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72',
-		        scaledSize: new google.maps.Size(35, 35)
-        }
-
         //socket.io
         /*this.connection = this.UpdateEventsService.updateEvent()
         .subscribe((events) => {
@@ -244,14 +235,26 @@ export class MainBoardComponent implements OnInit {
         eventS.getEventList()
           .subscribe((events) => {
             events.map((e) => {
+
+              const image = {url: '../assets/img/' + e.category +'.png',}
+
               console.log(e);
-              const marker = new google.maps.Marker({
+              console.log(e.category);
+              console.log(e._id);
+              //console.log('USER||||||||||||||||||||||||||',this.user);
+
+
+
+                let marker = new google.maps.Marker({
                 position: e.location,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                icon: image
+                icon: image,
+                url: "home/" + '58c82793e7bbc466da9738a7/' + "event/" + e._id,
               });
 
+               marker.setValues = ({type: "identificador", id: e._id});
+               console.log('marker', marker)
               const contentString =
 
                 '<div data-id-event=' + e._id + ' id="content">' +
@@ -271,12 +274,11 @@ export class MainBoardComponent implements OnInit {
 
               map.setOptions({ styles: styles });
               marker.addListener('click',
-                () => infowindow.open(map, marker));
+                () => window.location.href = marker.url);
             });
           });
       });
     });
-
   }
 
   successCb(user) {
