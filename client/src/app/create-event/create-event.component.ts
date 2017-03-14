@@ -41,7 +41,7 @@ export class CreateEventComponent implements OnInit {
         console.log('USER',this.user._id)
         console.log('CASA DE BORJA ' , coords);
         const coord = coords;
-        this.eventService.createEvent(coords,{
+        this.eventService.createEvent({
           name: this.formInfo.name,
           category: this.formInfo.category,
           tags: this.formInfo.tags,
