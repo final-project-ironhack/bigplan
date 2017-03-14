@@ -18,6 +18,7 @@ export class CreateEventComponent implements OnInit {
     tags: '',
     description: '',
   };
+  coords = {};
 
   constructor(
     private router: Router,
@@ -40,17 +41,19 @@ export class CreateEventComponent implements OnInit {
     createEvent(){
       this.getBrowserPosition().then((coords) => {
         console.log('USER',this.user._id)
-        console.log('CASA DE BORJA ' , coords);
-        const coord = coords;
-        this.eventService.createEvent(coords,{
+        this.coords = coords;
+        console.log('CASA DE BORJA ' , this.coords);
+        let eventObject = {
           name: this.formInfo.name,
           category: this.formInfo.category,
           tags: this.formInfo.tags,
           description: this.formInfo.description,
           image: '',
-          location: coords,
+          location: {lat:this.coords} ,
           creator: this.user._id
-        }).subscribe((event)=>{
+        };
+
+        this.eventService.createEvent(eventObject).subscribe((event)=>{
           console.log('tu madre es un pendón');
           this.router.navigate(['home/' + this.user._id]);
         });

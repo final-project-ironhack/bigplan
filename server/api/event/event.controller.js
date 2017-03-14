@@ -10,12 +10,12 @@ let io = new Server();
 let listOfEvents;
 
 exports.createEvent = (req, res, next) => {
-    console.log("email", req.body);
     userModel
         .findOne({
             _id: req.body.creator
         }).exec((err, user) => {
             console.log("Creating event");
+            console.log('LOCATION TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',req.body)
             const eventCreated = {
                 name: req.body.name,
                 category: req.body.category,
@@ -26,7 +26,7 @@ exports.createEvent = (req, res, next) => {
                 rating: [],
                 creator: req.body.creator,
                 participant: [],
-                location: {location:req.body.location}
+                location: {location: req.body.location}
             };
             console.log(eventCreated);
             eventModel.create(eventCreated, (err, event) => {
