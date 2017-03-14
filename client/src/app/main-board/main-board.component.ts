@@ -16,7 +16,7 @@ import { UpdateEventsService } from '../update-events.service';
   providers: [EventService, UpdateEventsService]
 })
 export class MainBoardComponent implements OnInit {
-
+  uri: any;
   user: any;
   eventS: any;
   eventLocation: Object;
@@ -235,6 +235,8 @@ export class MainBoardComponent implements OnInit {
               console.log(e);
               console.log(e.category);
               console.log(e._id);
+              //console.log('USER||||||||||||||||||||||||||',this.user);
+
 
 
                 let marker = new google.maps.Marker({
@@ -242,10 +244,11 @@ export class MainBoardComponent implements OnInit {
                 map: map,
                 animation: google.maps.Animation.DROP,
                 icon: image,
+                url: "home/" + '58c82793e7bbc466da9738a7/' + "event/" + e._id,
               });
 
-              marker.metadata = {type: "identificador", id: e._id};
-
+               marker.setValues = ({type: "identificador", id: e._id});
+               console.log('marker', marker)
               const contentString =
                 '<div id="content">' +
                 '<div id="siteNotice">' +
@@ -264,12 +267,11 @@ export class MainBoardComponent implements OnInit {
 
               map.setOptions({styles: styles});
               marker.addListener('click',
-                () => infowindow.open(map, marker));
+                () => window.location.href = marker.url);
             });
           });
       });
     });
-
   }
 
   successCb(user) {
