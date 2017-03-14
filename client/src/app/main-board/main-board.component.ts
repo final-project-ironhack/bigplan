@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from './../event.service';
-declare function require(name:string);
+declare function require(name: string);
 var GoogleMapsLoader = require('google-maps');
 import { SessionService } from '../session.service';
 //socket.io
@@ -37,7 +37,7 @@ export class MainBoardComponent implements OnInit {
 
     this.session.isLoggedIn()
       .subscribe(
-      (user) => {console.log(user);this.successCb(user)}
+      (user) => { console.log(user); this.successCb(user) }
       );
     const updateEvent = this.UpdateEventsService;
     const eventS = this.EventService;
@@ -46,121 +46,121 @@ export class MainBoardComponent implements OnInit {
     GoogleMapsLoader.load(function(google) {
 
       var styles = [
-    {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        {
+          "featureType": "all",
+          "elementType": "labels.text.fill",
+          "stylers": [
             {
-                "color": "#ffffff"
+              "color": "#ffffff"
             }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "all",
+          "elementType": "labels.text.stroke",
+          "stylers": [
             {
-                "visibility": "on"
+              "visibility": "on"
             },
             {
-                "color": "#424b5b"
+              "color": "#424b5b"
             },
             {
-                "weight": 2
+              "weight": 2
             },
             {
-                "gamma": "1"
+              "gamma": "1"
             }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.icon",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "all",
+          "elementType": "labels.icon",
+          "stylers": [
             {
-                "visibility": "off"
+              "visibility": "off"
             }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "administrative",
+          "elementType": "geometry",
+          "stylers": [
             {
-                "weight": 0.6
+              "weight": 0.6
             },
             {
-                "color": "#545b6b"
+              "color": "#545b6b"
             },
             {
-                "gamma": "0"
+              "gamma": "0"
             }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "geometry",
+          "stylers": [
             {
-                "color": "#545b6b"
+              "color": "#545b6b"
             },
             {
-                "gamma": "1"
+              "gamma": "1"
             },
             {
-                "weight": "10"
+              "weight": "10"
             }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [
             {
-                "color": "#666c7b"
+              "color": "#666c7b"
             }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [
             {
-                "color": "#545b6b"
+              "color": "#545b6b"
             }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
             {
-                "color": "#424a5b"
+              "color": "#424a5b"
             },
             {
-                "lightness": "0"
+              "lightness": "0"
             }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [
             {
-                "color": "#666c7b"
+              "color": "#666c7b"
             }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
             {
-                "color": "#2e3546"
+              "color": "#2e3546"
             }
-        ]
-    }
-];
+          ]
+        }
+      ];
       // if available, fetches browser geolocalitzacion
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
@@ -226,6 +226,12 @@ export class MainBoardComponent implements OnInit {
         });
 */
 
+        function goDoSomething(d) {
+          console.log(d.getAttribute("data-event-id"));
+        }
+
+        $(".clickme").on("click",(e)=> console.log("heyyy"));
+
         eventS.getEventList()
           .subscribe((events) => {
             events.map((e) => {
@@ -250,13 +256,14 @@ export class MainBoardComponent implements OnInit {
                marker.setValues = ({type: "identificador", id: e._id});
                console.log('marker', marker)
               const contentString =
-                '<div id="content">' +
+
+                '<div data-id-event=' + e._id + ' id="content">' +
                 '<div id="siteNotice">' +
                 '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
                 '<h2 id="event-name" class="event-name" style="color:red">' + e.name + '</h2>' +
                 '<p>' + e.description + '</p>' +
-                '<a routerLink="/">holi</a>' +
-                '<a href="http://www.google.com">holi2</a>' +
+                '<a routerLink="/log-in">holi</a>' +
+                '<a class="clickme">CLICKME</a>' +
                 '<h5 id="user-name" class="user-name"> ' + e.creator + ' </h5>' +
                 '</div>';
 
@@ -265,7 +272,7 @@ export class MainBoardComponent implements OnInit {
                 maxWidth: 200,
               });
 
-              map.setOptions({styles: styles});
+              map.setOptions({ styles: styles });
               marker.addListener('click',
                 () => window.location.href = marker.url);
             });
@@ -275,7 +282,7 @@ export class MainBoardComponent implements OnInit {
   }
 
   successCb(user) {
-    console.log('USER:::::::::::::::::',user)
+    console.log('USER:::::::::::::::::', user)
     this.user = user;
     this.error = null;
   }

@@ -21,8 +21,7 @@ export class EventService {
       });
   }
 
-  createEvent(event) {
-    console.log('PAPU CAPULLO EL MUNDO ES TUYO: ' + event)
+  createEvent(location,event) {
     return this.http.post(`${this.BASE_URL}/api/event/create-event`, event, this.options)
       .map((res) => {
         console.log('EVENT:' + event);

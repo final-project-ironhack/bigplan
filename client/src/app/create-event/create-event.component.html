@@ -4,7 +4,7 @@
 
     <form  #myForm="ngForm">
       <label> Plan Title</label>
-      <input type="text" name="creator" [(ngModel)]="formInfo.creator" placeholder="LUKAS" required />
+      <input type="text" name="name" [(ngModel)]="formInfo.name" placeholder="" required />
       <br>
 
       <label> Category</label>
@@ -21,6 +21,7 @@
 
     </form>
 
+  <button (click)="logUser()"  type="button" name="button">Click Here</button>
 
   </div>
 </div>

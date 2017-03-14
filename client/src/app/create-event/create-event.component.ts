@@ -8,13 +8,12 @@ import { SessionService } from '../session.service';
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.css'],
-  providers: [LoggedinService]
 
 })
 export class CreateEventComponent implements OnInit {
   user: any;
   formInfo = {
-    username: '',
+    name: '',
     category: '',
     tags: '',
     description: '',
@@ -31,34 +30,44 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.loggedin.getUser())
-    // this.loggedin.getUser()
+    this.user=this.loggedin.getUser()
     // .subscribe((user)=> {
     //   this.user = user
     //   console.log(user);
     // }
     // );
   };
-
     createEvent(){
-      console.log("create event", this.user._id);
-      this.eventService.createEvent({
-        creator: this.user._id,
-        category: this.formInfo.category,
-        description: this.formInfo.description,
-        tags: this.formInfo.tags,
-        location: this.getBrowserPosition()
-      }).subscribe((event)=>{
-        console.log('tu madre es un pendón')
-        this.router.navigate(['home/' + this.user._id]);
+      this.getBrowserPosition().then((coords) => {
+        console.log('USER',this.user._id)
+        console.log('CASA DE BORJA ' , coords);
+        const coord = coords;
+        this.eventService.createEvent(coords,{
+          name: this.formInfo.name,
+          category: this.formInfo.category,
+          tags: this.formInfo.tags,
+          description: this.formInfo.description,
+          image: '',
+          location: coords,
+          creator: this.user._id
+        }).subscribe((event)=>{
+          console.log('tu madre es un pendón');
+          this.router.navigate(['home/' + this.user._id]);
+        });
       });
+
     }
 
     getBrowserPosition(){
-      let coords;
-      navigator.geolocation.getCurrentPosition(function(position) {
-        coords = position.coords;
+      return new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          resolve(position.coords);
+        });
       });
-      return coords;
+    }
+
+    logUser(){
+      console.log(this.user);
     }
 
   }

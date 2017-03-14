@@ -8,7 +8,6 @@ import { LoggedinService } from '../loggedin.service';
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css'],
-  providers: [LoggedinService]
 })
 export class LogInComponent implements OnInit {
   user: any;
