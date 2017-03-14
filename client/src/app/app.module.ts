@@ -25,6 +25,7 @@ import { SessionService } from "./session.service";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LandingComponent } from './landing/landing.component';
+import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LandingComponent } from './landing/landing.component';
     SignUpComponent,
     LogInComponent,
     LandingComponent,
+    MainNavbarComponent,
 
   ],
   imports: [
