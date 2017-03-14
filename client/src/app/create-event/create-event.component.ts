@@ -39,18 +39,15 @@ export class CreateEventComponent implements OnInit {
     // );
   };
     createEvent(){
-      this.getBrowserPosition().then((coords) => {
-        console.log('USER',this.user._id)
-        this.coords = coords;
-        console.log('CASA DE BORJA ' , this.coords);
+      this.getBrowserPosition().then((pos) => {
         let eventObject = {
           name: this.formInfo.name,
           category: this.formInfo.category,
           tags: this.formInfo.tags,
           description: this.formInfo.description,
           image: '',
-          location: {lat:this.coords} ,
-          creator: this.user._id
+          location: pos,
+          // creator: this.user._id
         };
 
         this.eventService.createEvent(eventObject).subscribe((event)=>{
@@ -64,7 +61,12 @@ export class CreateEventComponent implements OnInit {
     getBrowserPosition(){
       return new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition(function(position) {
-          resolve(position.coords);
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          resolve(pos);
+          console.log(pos);
         });
       });
     }

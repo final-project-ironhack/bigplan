@@ -11,9 +11,9 @@ const eventSchema = new mongoose.Schema({
   image: { type: String, required: false },
   status: { type: Boolean, required: true },
   rating: [{ type: ObjectId, ref: 'RatingEvent' }],
-  creator: { type: ObjectId, ref: 'User' },
+  creator: { type: ObjectId, ref: 'User', required:false },
   participant: [{ type: ObjectId, ref: 'User' }],
-  location: [{type:Object, required: true}]
+  location: {type:Object, required: true}
 });
 
 module.exports = mongoose.model('Event', eventSchema);

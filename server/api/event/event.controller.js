@@ -26,7 +26,7 @@ exports.createEvent = (req, res, next) => {
                 rating: [],
                 creator: req.body.creator,
                 participant: [],
-                location: {location: req.body.location}
+                location: req.body.location
             };
             console.log(eventCreated);
             eventModel.create(eventCreated, (err, event) => {
