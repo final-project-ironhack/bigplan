@@ -131,6 +131,7 @@ export class MainBoardComponent implements OnInit {
               const contentString =
                 '<div id="content">' +
                 '<div id="siteNotice">' +
+                //'<a [routerLink]=\"[\'/create-event\']\">HOLA</a>'+
                 '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
                 '<h2 id="event-name" class="event-name" style="color:red">' + e.name + '</h2>' +
                 '<p>' + e.description + '</p>' +
