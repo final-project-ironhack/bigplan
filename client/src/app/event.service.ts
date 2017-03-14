@@ -24,7 +24,7 @@ export class EventService {
   createEvent(event) {
     return this.http.post(`${this.BASE_URL}/api/event/create-event`, event, this.options)
       .map((res) => {
-        console.log('EVENT:' + event);
+        console.log('EVENT.............................................:' + res.json());
          return res.json();
       })
       .catch(this.handleError);

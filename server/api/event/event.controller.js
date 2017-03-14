@@ -15,6 +15,7 @@ exports.createEvent = (req, res, next) => {
             _id: req.body.creator
         }).exec((err, user) => {
             console.log("Creating event");
+            console.log('LOCATION TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',req.body)
             const eventCreated = {
                 name: req.body.name,
                 category: req.body.category,

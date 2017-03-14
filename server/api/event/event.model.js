@@ -13,7 +13,7 @@ const eventSchema = new mongoose.Schema({
   rating: [{ type: ObjectId, ref: 'RatingEvent' }],
   creator: { type: ObjectId, ref: 'User' },
   participant: [{ type: ObjectId, ref: 'User' }],
-  location: {type: Object, required: true}
+  location: [{type:Object, required: true}]
 });
 
 module.exports = mongoose.model('Event', eventSchema);
