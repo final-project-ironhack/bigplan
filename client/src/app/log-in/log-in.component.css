@@ -5,13 +5,16 @@
   box-shadow: none;
 }
 
-a {
-    color: #ccc;
+a, a:active, a:hover {
+ color:  #FF8F61;
 }
 
-a:hover {
-    color: #fff;
-    text-decoration: none;
+.navbar-default .navbar-nav>li>a:hover {
+  color:  #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:  #FF8F61;
 }
 
 .body {
@@ -32,7 +35,7 @@ a:hover {
   color: ##FF8F61;
 }
 
-.navbar-default li:nth-child(2) {
+.navbar-default li:nth-child(3) {
   padding-right: 100px;
 }
 
@@ -61,11 +64,11 @@ a:hover {
 
 .logo h3 {
   margin-top: 0px;
-  padding-left: 10px;
+  padding-left: 110px;
   color: #FF8F61;
 }
 
-.logo_main {
+.logo-main {
     text-align: center;
     color:#FF8F61;
     margin-bottom: 30px;
@@ -178,11 +181,62 @@ a:hover {
   color: #00346B;
 }
 
-.navbar-default .navbar-nav>li>a {
-  color: #ccc;
-}
-
 .logged-in {
   width: 100vw;
   height: 100ch;
+}
+
+.btn-logout {
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  padding-top: 16px;
+  margin: 0;
+}
+
+.btn-logout:hover {
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="submit"]:focus,
+button:focus,
+button:hover,
+button:active,
+button:link,
+button:visited,
+button,
+.uneditable-input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   background: none !important;
+}
+
+.responsive {display: none}
+
+@media screen and (max-width: 990px) {
+  .logo {display: none}
+  .navbar-right { display:none;}
+  .responsive {display: block }
 }

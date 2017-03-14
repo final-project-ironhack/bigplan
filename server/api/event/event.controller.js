@@ -13,7 +13,7 @@ exports.createEvent = (req, res, next) => {
     console.log("email", req.body);
     userModel
         .findOne({
-            _id: req.session.currentUser._id
+            _id: req.body.creator
         }).exec((err, user) => {
             console.log("Creating event");
             const eventCreated = {
@@ -23,14 +23,18 @@ exports.createEvent = (req, res, next) => {
                 description: req.body.description,
                 image: req.body.image,
                 status: true,
-                creator: user._id
+                rating: [],
+                creator: req.body.creator,
+                participant: [],
+                location: {location:req.body.location}
             };
+            console.log(eventCreated);
             eventModel.create(eventCreated, (err, event) => {
                 if (err) {
                     return next(err);
                 } else {
                     userModel.update({
-                        _id: user._id
+                        _id: req.body.creator
                     }, {
                         $push: {
                             createdEvents: event._id
@@ -61,11 +65,11 @@ exports.goEvent = (req, res, next) => {
     });
 
     userModel.update({
-      _id: req.session._id
+        _id: req.session._id
     }, {
-      $push: {
-        assistedEvents: eventId
-      }
+        $push: {
+            assistedEvents: eventId
+        }
     });
 };
 
@@ -153,17 +157,17 @@ exports.removeEvent = (req, res, next) => {
     });
 };
 
-function updateEvents(){
-  eventModel.find({}, (err, events) => {
-      if (err) {
-        console.log(err);
-      }
-      listOfEvents = events;
-      console.log(listOfEvents);
-  });
+function updateEvents() {
+    eventModel.find({}, (err, events) => {
+        if (err) {
+            console.log(err);
+        }
+        listOfEvents = events;
+        console.log(listOfEvents);
+    });
 }
 
 
 io.on('eventCreated', (socket) => {
-  io.send("updateSocketListOfEvents", clientListNames);
+    io.send("updateSocketListOfEvents", clientListNames);
 });

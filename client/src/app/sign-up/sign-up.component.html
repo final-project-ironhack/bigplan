@@ -12,10 +12,11 @@
       </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
+      <li><button (click)="logout()" class="btn btn-lg btn-primary btn-block btn-logout" type="submit">Log out</button></li>
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/log-in">Log-in</a></li>
-      <li><button (click)="logout()" class="btn btn-lg btn-primary btn-block" type="submit">Log out</button></li>
-    </ul>
+        </ul>
+
   </div>
 </nav>
 
@@ -33,7 +34,7 @@
           <button (click)="signup()" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
         </form>
         <a [routerLink]="['/log-in']" class="text-center new-account">Do you have an account? Log in</a>
-
+        <button (click)="logout()" class="btn btn-lg btn-primary btn-block responsive" type="submit">Log out</button>
       </div>
     </div>
   </div>
