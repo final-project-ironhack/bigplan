@@ -9,6 +9,7 @@ import { SessionService } from '../session.service';
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.css'],
   providers: [LoggedinService]
+
 })
 export class CreateEventComponent implements OnInit {
   user: any;

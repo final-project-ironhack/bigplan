@@ -32,7 +32,7 @@ a, a:active, a:hover {
   border-radius: 0;
   background: transparent;
   border: none;
-  color: ##FF8F61;
+  color: #FF8F61;
 }
 
 .navbar-default li:nth-child(3) {
@@ -41,9 +41,10 @@ a, a:active, a:hover {
 
 .img-user {
   border-radius: 50%;
-  margin: 8px 10px;
+  margin: 0px 30px;
   float:left;
-  width: 25px;
+  width: 50px;
+  border: 3px solid #FF8F61;
 }
 
 .container {
