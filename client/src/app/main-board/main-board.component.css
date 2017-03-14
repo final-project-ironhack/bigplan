@@ -1,11 +1,17 @@
-nav {
+/*Blue #00346B*/
+/*Orange #FF8F61*/
+
+.navbar-default {
+  font-family: 'Work Sans', sans-serif;
+  height: 0px;
+  z-index: 100;
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-  height: 40px;
-  background-color: #26ffb5;
+  width: 100vw;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: ##FF8F61;
 }
 
 h5.logo {
@@ -27,12 +33,19 @@ h5.logo {
   width: 25px;
 }
 
+
 .logo {
   font-family: 'Work Sans', sans-serif;
   font-size: 24px;
   color: #FF8F61;
   margin: 10px auto;
   padding: 5px;
+}
+
+.logo h3 {
+  margin-top: 0px;
+  padding-left: 110px;
+  color: #FF8F61;
 }
 
 .create-event-button {

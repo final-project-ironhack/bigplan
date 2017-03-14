@@ -3,6 +3,8 @@ body {
   background: transparent;
 }
 
+textarea, input, button { outline: none; }
+
 a, a:active, a:hover {
  color:  #FF8F61;
 }
@@ -28,7 +30,7 @@ a, a:active, a:hover {
   color: #FF8F61;
 }
 
-.navbar-default li:nth-child(2) {
+.navbar-default li:nth-child(3) {
   padding-right: 100px;
 }
 
@@ -159,4 +161,51 @@ footer {
   .jumbotron h1 {
     font-size: 70px;
   }
+}
+
+.btn-logout {
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  padding-top: 16px;
+  margin: 0;
+}
+
+.btn-logout:hover {
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="submit"]:focus,
+button:focus,
+button:hover,
+button:active,
+button:link,
+button:visited,
+button,
+.uneditable-input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   background: none !important;
 }

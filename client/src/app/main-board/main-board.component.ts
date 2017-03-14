@@ -49,75 +49,38 @@ export class MainBoardComponent implements OnInit {
 
       var styles = [
     {
-        "featureType": "water",
-        "elementType": "geometry",
+        "featureType": "all",
+        "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#193341"
+                "color": "#ffffff"
             }
         ]
     },
     {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#2c5a71"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#29768a"
-            },
-            {
-                "lightness": -37
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#406d80"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#406d80"
-            }
-        ]
-    },
-    {
+        "featureType": "all",
         "elementType": "labels.text.stroke",
         "stylers": [
             {
                 "visibility": "on"
             },
             {
-                "color": "#3e606f"
+                "color": "#424b5b"
             },
             {
                 "weight": 2
             },
             {
-                "gamma": 0.84
+                "gamma": "1"
             }
         ]
     },
     {
-        "elementType": "labels.text.fill",
+        "featureType": "all",
+        "elementType": "labels.icon",
         "stylers": [
             {
-                "color": "#ffffff"
+                "visibility": "off"
             }
         ]
     },
@@ -129,15 +92,34 @@ export class MainBoardComponent implements OnInit {
                 "weight": 0.6
             },
             {
-                "color": "#1a3541"
+                "color": "#545b6b"
+            },
+            {
+                "gamma": "0"
             }
         ]
     },
     {
-        "elementType": "labels.icon",
+        "featureType": "landscape",
+        "elementType": "geometry",
         "stylers": [
             {
-                "visibility": "off"
+                "color": "#545b6b"
+            },
+            {
+                "gamma": "1"
+            },
+            {
+                "weight": "10"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#666c7b"
             }
         ]
     },
@@ -146,7 +128,37 @@ export class MainBoardComponent implements OnInit {
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#2c5a71"
+                "color": "#545b6b"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#424a5b"
+            },
+            {
+                "lightness": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#666c7b"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#2e3546"
             }
         ]
     }
@@ -238,6 +250,8 @@ export class MainBoardComponent implements OnInit {
                 '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
                 '<h2 id="event-name" class="event-name" style="color:red">' + e.name + '</h2>' +
                 '<p>' + e.description + '</p>' +
+                '<a routerLink="/">holi</a>' +
+                '<a href="http://www.google.com">holi2</a>' +
                 '<h5 id="user-name" class="user-name"> ' + e.creator + ' </h5>' +
                 '</div>';
 
