@@ -21,7 +21,6 @@ export class MainBoardComponent implements OnInit {
   eventS: any;
   eventLocation: Object;
   error: string;
-  infobubble: any;
   //socket.io
   connection: any;
 
@@ -230,17 +229,15 @@ export class MainBoardComponent implements OnInit {
           console.log(d.getAttribute("data-event-id"));
         }
 
-        $(".clickme").on("click",(e)=> console.log("heyyy"));
-
         eventS.getEventList()
           .subscribe((events) => {
             events.map((e) => {
 
               const image = {url: '../assets/img/' + e.category +'.png',}
 
-              console.log(e);
-              console.log(e.category);
-              console.log(e._id);
+              // console.log(e);
+              // console.log(e.category);
+              // console.log(e._id);
               //console.log('USER||||||||||||||||||||||||||',this.user);
 
 
@@ -254,7 +251,6 @@ export class MainBoardComponent implements OnInit {
               });
 
                marker.setValues = ({type: "identificador", id: e._id});
-               console.log('marker', marker)
               const contentString =
 
                 '<div data-id-event=' + e._id + ' id="content">' +
