@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const eventModel = require('./event.model');
 const userModel = require('../user/user.model');
 
-let Server = require('socket.io');
-//add options as params to server if want change pings
-let io = new Server();
+// let Server = require('socket.io');
+// //add options as params to server if want change pings
+// let io = new Server();
 
 let listOfEvents;
 
@@ -15,7 +15,6 @@ exports.createEvent = (req, res, next) => {
             _id: req.body.creator
         }).exec((err, user) => {
             console.log("Creating event");
-            console.log('LOCATION TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',req.body)
             const eventCreated = {
                 name: req.body.name,
                 category: req.body.category,
@@ -122,7 +121,15 @@ exports.getAllEvents = (req, res, next) => {
     });
 };
 
-
+exports.getEventById = (req,res,next) => {
+  eventModel.find({ _id: req.headers.id }, (err, eventSelected) => {
+    if(err){
+      return res.status(500).json(err);
+    }
+    console.log('Event by id found', eventSelected);
+    return res.status(200).json(eventSelected);
+  });
+};
 
 
 //Commented because it crashed when not logged-in
@@ -167,7 +174,7 @@ function updateEvents() {
     });
 }
 
-
-io.on('eventCreated', (socket) => {
-    io.send("updateSocketListOfEvents", clientListNames);
-});
+//
+// io.on('eventCreated', (socket) => {
+//     io.send("updateSocketListOfEvents", clientListNames);
+//});

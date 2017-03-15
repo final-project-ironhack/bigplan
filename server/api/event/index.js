@@ -11,10 +11,13 @@ router.put('/edit-event/:id', controller.editEvent);
 router.put('/finish-event/:id', controller.finishEvent);
 //Works!
 router.get('/get-all-events', controller.getAllEvents);
+//toTest
+router.get('/get-event-by-id', controller.getEventById);
 //Works!
 router.delete('/remove-event/:id', controller.removeEvent);
 
 router.put('/go-event', controller.goEvent);
+
 // router.get('/get-event-params', controller.getEventByParams);
 
 //router.get('/get-event-params', controller.getEventByParams);

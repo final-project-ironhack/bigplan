@@ -4,17 +4,22 @@ import { EventService } from './../event.service';
 declare function require(name: string);
 var GoogleMapsLoader = require('google-maps');
 import { SessionService } from '../session.service';
+import { EventComponent } from '../event/event.component';
 //socket.io
 //import { FormControl } from '@angular/common';
 import { UpdateEventsService } from '../update-events.service';
+import { NgModule } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   //moduleId: module.id,
   selector: 'app-main-board',
   templateUrl: './main-board.component.html',
   styleUrls: ['./main-board.component.css'],
-  providers: [EventService, UpdateEventsService]
+  providers: [EventService, UpdateEventsService],
 })
+
+
 export class MainBoardComponent implements OnInit {
   uri: any;
   user: any;
@@ -23,14 +28,23 @@ export class MainBoardComponent implements OnInit {
   error: string;
   //socket.io
   connection: any;
-
+  sse: any = "Hola";
+  
   constructor(
     private session: SessionService,
     private route: ActivatedRoute,
     private EventService: EventService,
     //socket.io
-    private UpdateEventsService: UpdateEventsService
-  ) { }
+    //private UpdateEventsService: UpdateEventsService,
+    private router: Router
+  ) {
+  }
+
+  changeSelectedEvent(event){
+    console.log(event);
+    console.log("Changing selected event");
+    this.sse = "adios";
+  }
 
   ngOnInit() {
 
@@ -38,10 +52,11 @@ export class MainBoardComponent implements OnInit {
       .subscribe(
       (user) => { console.log(user); this.successCb(user) }
       );
-    const updateEvent = this.UpdateEventsService;
+      //socket.io
+    //const updateEvent = this.UpdateEventsService;
     const eventS = this.EventService;
     GoogleMapsLoader.KEY = 'AIzaSyBmHIjgfyzkhCKmCgMBGJgsr7Ad4rRuiAY';
-
+    const instance = this;
     GoogleMapsLoader.load(function(google) {
 
       var styles = [
@@ -166,22 +181,11 @@ export class MainBoardComponent implements OnInit {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
-        // if not, fetches static geolocalitzacion
-        //Puerta del Sol coords: 40.417160, -3.703539
-        const location = { lat: -12.363, lng: 120.044 };
-
-
-        //   const eventlocation = [
-        //   { lat: -12.363, lng: 120.044 },
-        //   { lat: -18.363, lng: 160.044 }
-        // ]
-
-        // console.log(locations);
+        console.log(pos);
 
         const map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
-          center: location,
+          center: pos,
           zoomControl: false,
           scaleControl: false,
           streetViewControl: false,
@@ -190,40 +194,40 @@ export class MainBoardComponent implements OnInit {
 
         ///infoWindow.setPosition(pos);
         // infoWindow.setContent('Location found.');
-        map.setCenter(pos);
+//        map.setCenter(pos);
 
-        //socket.io
-        /*this.connection = this.UpdateEventsService.updateEvent()
-        .subscribe((events) => {
-          events.map((e) => {
-            console.log(e);
-            const marker = new google.maps.Marker({
-                position: e.location,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                icon: image
-              });
-
-              const contentString =
-                '<div id="content">' +
-                '<div id="siteNotice">' +
-                '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
-                '<h2 id="event-name" class="event-name" style="color:red">'+ e.name + '</h2>' +
-                '<p>'+ e.description +'</p>' +
-                '<h5 id="user-name" class="user-name"> '+ e.creator +' </h5>' +
-                '</div>';
-
-              const infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                maxWidth: 200,
-              });
-
-
-            marker.addListener('click',
-                () => infowindow.open(map, marker));
-          });
-        });
-*/
+//         //socket.io
+//         /*this.connection = this.UpdateEventsService.updateEvent()
+//         .subscribe((events) => {
+//           events.map((e) => {
+//             console.log(e);
+//             const marker = new google.maps.Marker({
+//                 position: e.location,
+//                 map: map,
+//                 animation: google.maps.Animation.DROP,
+//                 icon: image
+//               });
+//
+//               const contentString =
+//                 '<div id="content">' +
+//                 '<div id="siteNotice">' +
+//                 '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
+//                 '<h2 id="event-name" class="event-name" style="color:red">'+ e.name + '</h2>' +
+//                 '<p>'+ e.description +'</p>' +
+//                 '<h5 id="user-name" class="user-name"> '+ e.creator +' </h5>' +
+//                 '</div>';
+//
+//               const infowindow = new google.maps.InfoWindow({
+//                 content: contentString,
+//                 maxWidth: 200,
+//               });
+//
+//
+//             marker.addListener('click',
+//                 () => infowindow.open(map, marker));
+//           });
+//         });
+// */
 
         function goDoSomething(d) {
           console.log(d.getAttribute("data-event-id"));
@@ -233,6 +237,10 @@ export class MainBoardComponent implements OnInit {
           .subscribe((events) => {
             events.map((e) => {
 
+              if(!e.location){
+                console.error("This event does not have location." + e._id);
+                return;
+              }
               const image = {url: '../assets/img/' + e.category +'.png',}
 
               // console.log(e);
@@ -240,14 +248,12 @@ export class MainBoardComponent implements OnInit {
               // console.log(e._id);
               //console.log('USER||||||||||||||||||||||||||',this.user);
 
-
-
                 let marker = new google.maps.Marker({
                 position: e.location,
                 map: map,
                 animation: google.maps.Animation.DROP,
                 icon: image,
-                url: "home/" + '58c82793e7bbc466da9738a7/' + "event/" + e._id,
+                url:'#'
               });
 
                marker.setValues = ({type: "identificador", id: e._id});
@@ -271,7 +277,10 @@ export class MainBoardComponent implements OnInit {
 
               map.setOptions({ styles: styles });
               marker.addListener('click',
-                () => window.location.href = marker.url);
+              function() {
+                console.log("YUHU CLICK");
+                instance.changeSelectedEvent(e);
+              });
             });
           });
       });

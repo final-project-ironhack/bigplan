@@ -53,7 +53,7 @@ import { LoggedinService } from './loggedin.service';
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [UserService,SessionService, EventService, LoggedinService],
   bootstrap: [AppComponent]
