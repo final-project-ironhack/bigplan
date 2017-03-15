@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventService } from './../event.service';
+  import { EventService } from './../event.service';
 declare function require(name: string);
 var GoogleMapsLoader = require('google-maps');
 import { SessionService } from '../session.service';
@@ -28,8 +28,8 @@ export class MainBoardComponent implements OnInit {
   error: string;
   //socket.io
   connection: any;
-  sse: any = "Hola";
-  
+  sse: any = 'Selecciona un evento';
+
   constructor(
     private session: SessionService,
     private route: ActivatedRoute,
@@ -43,7 +43,7 @@ export class MainBoardComponent implements OnInit {
   changeSelectedEvent(event){
     console.log(event);
     console.log("Changing selected event");
-    this.sse = "adios";
+    this.sse = event;
   }
 
   ngOnInit() {

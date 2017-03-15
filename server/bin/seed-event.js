@@ -8,7 +8,7 @@ const events = [
       name: 'Ironbeers',
       category: 'clubbing',
       tags: ['#chachi'],
-      description: 'Tengo ganas de pasear con alguien por el prado',
+      description: 'Tengo ganas de pasear con alguien por el prado y lo que surja',
       image: 'http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg',
       status: true,
       rating: [],
