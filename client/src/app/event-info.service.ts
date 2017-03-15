@@ -17,9 +17,6 @@ export class EventInfoService {
     private eventService: EventService
   ) { }
 
-    getEventInfo(){
-      console.log('TEST',this.route.params[0])
-    //  this.eventService.getEventById(this.route.params)
-    }
+  
 
 }
