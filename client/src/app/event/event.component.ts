@@ -21,8 +21,8 @@ export class EventComponent implements OnInit {
   }
 
   joinEvent(){
-    const eventId = '58c83783395bf229414898cd'
-    this.eventService.joinEventById(eventId);
+    // const eventId = '58c83783395bf229414898cd'
+    // this.eventService.joinEventById(eventId);
 
   }
 
