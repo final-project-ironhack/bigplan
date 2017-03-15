@@ -47,7 +47,7 @@ export class CreateEventComponent implements OnInit {
           description: this.formInfo.description,
           image: '',
           location: pos,
-          // creator: this.user._id
+          creator: this.user._id
         };
 
         this.eventService.createEvent(eventObject).subscribe((event)=>{

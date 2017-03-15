@@ -1,6 +1,13 @@
 <div *ngIf="eventDetail">
-  <div class=foo>Hola caracola</div>
-  <span> {{ eventDetail }} </span>
+  <div class=foo>Selecciona un evento</div>
+  <span> {{ eventDetail.name }} </span>
+  <br>
+  <span>{{eventDetail.category}}</span>
+  <br>
+  <span>{{eventDetail.description}}</span>
+  <br>
+
+
 </div>
 
 <button type="button" (click)="joinEvent()" name="button">Apuntate!</button>

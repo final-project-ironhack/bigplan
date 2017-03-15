@@ -28,7 +28,7 @@ export class MainBoardComponent implements OnInit {
   error: string;
   //socket.io
   connection: any;
-  sse: any = "Hola";
+  sse: any = 'Selecciona un evento';
 
   constructor(
     private session: SessionService,
@@ -43,7 +43,7 @@ export class MainBoardComponent implements OnInit {
   changeSelectedEvent(event){
     console.log(event);
     console.log("Changing selected event");
-    this.sse = "adios";
+    this.sse = event;
   }
 
   ngOnInit() {
