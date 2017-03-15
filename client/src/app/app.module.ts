@@ -27,6 +27,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { LandingComponent } from './landing/landing.component';
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { LoggedinService } from './loggedin.service';
+import { EventInfoComponent } from './event-info/event-info.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LoggedinService } from './loggedin.service';
     LogInComponent,
     LandingComponent,
     MainNavbarComponent,
+    EventInfoComponent,
 
   ],
   imports: [
