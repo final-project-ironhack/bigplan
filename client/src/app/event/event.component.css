@@ -1,9 +1,4 @@
-
-
-p {
-  z-index: 100;
-}
-
-.hola {
-  width: 10%;
+.foo {
+  width: 100%;
+  background: red;
 }
