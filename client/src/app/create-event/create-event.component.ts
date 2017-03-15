@@ -30,6 +30,8 @@ export class CreateEventComponent implements OnInit {
   };
 
   ngOnInit() {
+
+    const instance = this;
     console.log(this.loggedin.getUser())
     this.user=this.loggedin.getUser()
     // .subscribe((user)=> {

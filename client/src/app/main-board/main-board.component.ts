@@ -29,7 +29,7 @@ export class MainBoardComponent implements OnInit {
   //socket.io
   connection: any;
   sse: any = "Hola";
-  
+
   constructor(
     private session: SessionService,
     private route: ActivatedRoute,
