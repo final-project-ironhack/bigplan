@@ -36,4 +36,10 @@ export class EventService {
         return res.json()
       });
     }
+    joinEventById(id){
+      return this.http.post(`${this.BASE_URL}/api/event/get-event-by-id`, id,this.options)
+        .map((res) => {
+          return res.json();
+        })
+    }
 }
