@@ -1,4 +1,85 @@
-.foo {
-  width: 100%;
-  background: red;
+/*Orange #FF8F61*/
+/*Blue #00346B;*/
+
+* {
+  font-family: 'Work Sans', sans-serif;
+}
+
+.btn-block {
+  margin-top: 10%;
+  background-color: transparent;
+  color: #FF8F61;
+  border: 1px solid #FF8F61;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+.btn-block:hover {
+  background-color: #FF8F61;
+  color: #00346B;
+}
+
+.infobox {
+  padding: 3%;
+  z-index: 100;
+  position: fixed;
+  top: 20vh;
+  width: 30vw;
+  right: 0;
+  background: #002244;
+  color: #FF8F61;
+  opacity: 0.8;
+  overflow: auto;
+}
+
+.event-img {
+  width: 100px;
+}
+
+@media screen and (max-width: 1024px) {
+  .infobox {
+    padding: 3%;
+    z-index: 100;
+    position: fixed;
+    top: 50vh;
+    width: 100vw;
+    background: #002244;
+    color: #FF8F61;
+    height: 50vh;
+    opacity: 0.8;
+  }
+}
+
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="submit"]:focus,
+button:focus,
+button:hover,
+button:active,
+button:link,
+button:visited,
+button,
+.uneditable-input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   background: none !important;
 }

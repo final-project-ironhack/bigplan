@@ -34,11 +34,11 @@ export class CreateEventComponent implements OnInit {
     const instance = this;
     console.log(this.loggedin.getUser())
     this.user=this.loggedin.getUser()
-    // .subscribe((user)=> {
-    //   this.user = user
-    //   console.log(user);
-    // }
-    // );
+    .subscribe((user)=> {
+      this.user = user
+      console.log(user);
+    }
+    );
   };
     createEvent(){
       this.getBrowserPosition().then((pos) => {

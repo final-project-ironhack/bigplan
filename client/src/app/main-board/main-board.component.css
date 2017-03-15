@@ -57,20 +57,19 @@ h5.logo {
 
 #map {
   height: 100vh;
-  width: 70vw;
+  width: 100vw;
   float: left;
 }
 
 @media screen and (max-width: 480px) {
 #map {
-  height: 50vh;
+  height: 100vh;
   width: 100vw;
  }
 }
 
-
-#infobar{
+/*#infobar{
   float:left;
   width: 30vw;
   padding-top: 80px;
-}
+}*/

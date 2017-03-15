@@ -1,22 +1,246 @@
-.container {
-    z-index:100;
-    position: fixed;
-    right: 100px;
-    top: 50px;
-    width: 50vw;
-    height: 50vh;
-    background-color: #FF8F61;
-
+* {
+  font-family: 'Work Sans', sans-serif;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
-  
-.info-container {
-  margin-top: 65px;
-  z-index: 102;
+
+textarea, input, button { outline: none; }
+
+a, a:active, a:hover {
+ color:  #FF8F61;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color:  #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:  #FF8F61;
+}
+
+
+
+.body {
+  color: ##FF8F61;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.navbar-default {
+  font-family: 'Work Sans', sans-serif;
+  height: 0px;
+  z-index: 100;
   position: fixed;
-  left: 50%;
-  background-color: #red;
-  color: #00346B;
+  top: 0;
+  width: 100vw;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: ##FF8F61;
+}
+
+.navbar-default li:nth-child(3) {
+  padding-right: 100px;
+}
+
+.container {
+  top: 0px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/img/002.png");
+}
+
+.background-img {
+  top: 0;
+  left: 0;
+  z-index: -99;
+}
+
+.logo {
   font-family: 'Work Sans', sans-serif;
   font-size: 24px;
+  color: #FF8F61;
+  margin: 10px auto;
+  padding: 5px;
+}
 
+
+.logo h3 {
+  margin-top: 0px;
+  padding-left: 110px;
+  color: #FF8F61;
+}
+
+.logo_main {
+    text-align: center;
+    color:#FF8F61;
+    margin-bottom: 30px;
+}
+
+.label {
+  color:#00F4F4;
+}
+
+.form-signin {
+    font-family: 'Work Sans', sans-serif;
+    z-index: 102;
+    max-width: 330px;
+    padding: 15px;
+    top: 30px;
+    margin: 0 auto;
+  }
+
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    background-color: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-control {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: solid 1px #FF8F61;
+}
+
+
+.form-signin .form-control:focus
+{
+
+    z-index: 2;
+
+}
+.form-signin input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall
+{
+    margin-top: 50px;
+    padding: 40px 0px 20px 0px;
+    background-color: transparent;
+
+}
+
+.login-title
+{
+    color: #FF8F61;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+
+.btn-block {
+  margin-top: 70px;
+  background-color: transparent;
+  color: #FF8F61;
+  border: 1px solid #FF8F61;
+  border-radius: 50px;
+}
+
+.btn-block:hover {
+  background-color: #FF8F61;
+  color: #00346B;
+
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #ccc;
+}
+
+.btn-logout {
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  padding-top: 16px;
+  margin: 0;
+}
+
+.btn-logout:hover {
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="submit"]:focus,
+button:focus,
+button:hover,
+button:active,
+button:link,
+button:visited,
+button,
+.uneditable-input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   background: none !important;
+}
+
+.responsive {display: none}
+
+@media screen and (max-width: 990px) {
+  .logo {display: none}
+  .navbar-right { display:none;}
+  .responsive {display: block }
 }

@@ -1,6 +1,15 @@
-<div *ngIf="createEventForm">
-  <div class=foo>Hola caracola</div>
-  <span> {{ createEventForm }} </span>
+
+<div class=infobox>
+
+<div *ngIf="eventDetail">
+  <h2>{{ eventDetail.name }}</h2>
+  <h4>{{eventDetail.category}}</h4>
+  <p>{{eventDetail.description}}</p>
+  <p>{{eventDetail.participant}}</p>
+  <p>{{eventDetail.tags}}</p>
+  <br>
+</div>
+<button type="button" (click)="joinEvent()" name="button" class="btn-block" >Apuntate!</button>
 </div>
 
-<div *ngIf="!createEventForm">No hay nada madafucka</div>
+<!-- <div *ngIf="!createEventForm">No hay nada madafucka</div> -->
