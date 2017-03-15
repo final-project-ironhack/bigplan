@@ -30,16 +30,14 @@ export class CreateEventComponent implements OnInit {
   };
 
   ngOnInit() {
-
     const instance = this;
     console.log(this.loggedin.getUser())
-    this.user=this.loggedin.getUser()
-    .subscribe((user)=> {
-      this.user = user
-      console.log(user);
-    }
-    );
+    this.session.isLoggedIn()
+      .subscribe(
+      (user) => { console.log(user); this.successCb(user) }
+      );
   };
+
     createEvent(){
       this.getBrowserPosition().then((pos) => {
         let eventObject = {
@@ -49,7 +47,7 @@ export class CreateEventComponent implements OnInit {
           description: this.formInfo.description,
           image: '',
           location: pos,
-          // creator: this.user._id
+          creator: this.user._id
         };
 
         this.eventService.createEvent(eventObject).subscribe((event)=>{
@@ -75,6 +73,11 @@ export class CreateEventComponent implements OnInit {
 
     logUser(){
       console.log(this.user);
+    }
+
+    successCb(user) {
+      console.log('USER:::::::::::::::::', user)
+      this.user = user;
     }
 
   }
