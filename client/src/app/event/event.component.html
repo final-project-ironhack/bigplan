@@ -1,13 +1,12 @@
+<div class=infobox>
+
 <div *ngIf="eventDetail">
-  <div class=foo>Selecciona un evento</div>
-  <span> {{ eventDetail.name }} </span>
+  <h2>{{ eventDetail.name }}</h2>
+  <h4>{{eventDetail.category}}</h4>
+  <p>{{eventDetail.description}}</p>
+  <p>{{eventDetail.participant}}</p>
+  <p>{{eventDetail.tags}}</p>
   <br>
-  <span>{{eventDetail.category}}</span>
-  <br>
-  <span>{{eventDetail.description}}</span>
-  <br>
-
-
 </div>
-
-<button type="button" (click)="joinEvent()" name="button">Apuntate!</button>
+<button type="button" (click)="joinEvent()" name="button" class="btn-block" >Apuntate!</button>
+</div>

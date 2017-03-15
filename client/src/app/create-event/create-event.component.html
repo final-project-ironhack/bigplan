@@ -1,27 +1,58 @@
+<head>
+  <title>BigPlan</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+</head>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand logo" routerLink="/">
+        <h3>BigPlan</h3>
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><button (click)="logout()" class="btn btn-lg btn-primary btn-block btn-logout" type="submit">Log out</button></li>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/log-in">Log-in</a></li>
+        </ul>
+
+  </div>
+</nav>
+
 <div class="container">
-  <div class="info-container">
-    <h3> Post a Plan </h3>
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <div class="account-wall">
+        <div class="logo_main">
+          <h3>BigPlan</h3>
+        </div>
 
-    <form  #myForm="ngForm">
-      <label> Plan Title</label>
-      <input type="text" name="name" [(ngModel)]="formInfo.name" placeholder="" required />
-      <br>
+        <form  #myForm="ngForm">
+          <input type="text" name="name" [(ngModel)]="formInfo.name" class="form-control" placeholder="Name your plan" required />
 
-      <label> Category</label>
-      <input type="text" name="category" [(ngModel)]="formInfo.category" required />
-      <br>
+          <select name="category" [(ngModel)]="formInfo.category" class="form-control">
+            <option value="culture">Culture</option>
+            <option value="shopping">Shopping</option>
+            <option value="fitness">Fitness and wellbeing</option>
+            <option value="food">Foodie</option>
+            <option value="hobbies">Games and Hobbies</option>
+            <option value="music">Music</option>
+            <option value="clubbing">Clubbing</option>
+          </select>
 
-      <label> Plan Description</label>
-      <input type="text" name="description" [(ngModel)]="formInfo.description" required />
-      <br>
-      <label> Tags</label>
-      <input type="text" name="tags" [(ngModel)]="formInfo.tags" required />
-      <br>
-      <button type="submit" (click)="createEvent()"> Create plan! </button>
+          <input type="text" name="description" [(ngModel)]="formInfo.description" class="form-control" placeholder="Describe your plan" required />
 
-    </form>
+          <input type="text" name="tags" [(ngModel)]="formInfo.tags" class="form-control" required placeholder="tags" />
 
-  <button (click)="logUser()"  type="button" name="button">Click Here</button>
 
+
+          <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="createEvent()"> Create plan! </button>
+
+        </form>
+      </div>
+    </div>
   </div>
 </div>

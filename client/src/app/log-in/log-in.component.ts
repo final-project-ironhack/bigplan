@@ -29,7 +29,7 @@ export class LogInComponent implements OnInit {
       (user) => this.successCb(user)
       );
       if(this.user){
-        this.router.navigate(['home/'+this.user._id]);
+        this.router.navigate(['home/' + this.user._id]);
       }
   }
 
