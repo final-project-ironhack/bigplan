@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
   { path: 'home/:id', component: MainBoardComponent },
-  { path: 'home/:id/event-info/', component: EventInfoComponent },
+  { path: 'home/:id/event-info/:id', component: EventInfoComponent },
   { path: 'usermenu/:id', component: UserMenuComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: 'log-in', component: LogInComponent },

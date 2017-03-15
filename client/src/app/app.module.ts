@@ -28,6 +28,7 @@ import { LandingComponent } from './landing/landing.component';
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { LoggedinService } from './loggedin.service';
 import { EventInfoComponent } from './event-info/event-info.component';
+import { EventCreatorPageComponent } from './event-creator-page/event-creator-page.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { EventInfoComponent } from './event-info/event-info.component';
     LandingComponent,
     MainNavbarComponent,
     EventInfoComponent,
+    EventCreatorPageComponent,
 
   ],
   imports: [

@@ -27,7 +27,7 @@ export class EventComponent implements OnInit {
     const eventId = '58c83783395bf229414898cd'
     this.eventService.joinEventById(eventId);
     let param = eventId;
-    this.router.navigate(['event-info'], { queryParams: { eventid: param }});
+    this.router.navigate(['event-info/'+eventId]);
 
   }
 
