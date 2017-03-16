@@ -16,14 +16,15 @@ export class EventComponent implements OnInit {
   user: any;
   error: any;
   event: any;
-
+  changes:any
   @Input() eventDetail: string;
   constructor(
     private session: SessionService,
     private route: ActivatedRoute,
     private eventService: EventService,
     private router: Router
-  ) { }
+  ) {
+}
 
   ngOnInit() {
     this.session.isLoggedIn()
@@ -34,8 +35,12 @@ export class EventComponent implements OnInit {
     this.route.params.subscribe(item => {
       this.event = item;
     });
+  
+
   }
-  ngOnChanges(changes: any) {
+  ngOnChanges(changes: any){
+    console.log(changes);
+    console.log("Changes in Component");
   }
 
   // joinEvent() {

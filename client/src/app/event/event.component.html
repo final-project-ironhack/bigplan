@@ -1,5 +1,4 @@
 <div class=infobox>
-
   <div *ngIf="eventDetail">
     <h2>{{ eventDetail.name }}</h2>
     <h4>{{eventDetail.category}}</h4>
@@ -8,7 +7,5 @@
     <p>{{eventDetail.tags}}</p>
     <br>
   </div>
-  <a [routerLink]="['event-info', eventDetail._id]"><button type="button"  class="btn-block" name="button">Apuntate!</button></a>
+  <a [routerLink]="['event-info', eventDetail._id]"><button type="button" class="btn-block" name="button">Join!</button></a>
 </div>
-
-<div *ngIf="!createEventForm">No hay nada</div>

@@ -1,29 +1,8 @@
-a {
-  text-decoration: none;
-  color: #FF8F61;
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 102;
-  width: 100%;
-  height: 40px;
-  background: transparent;
-}
-
-.menu {
-    width: 95%;
-    max-width: 960px;
-    margin: 0 auto;
-}
-
 .img-user {
   border-radius: 50%;
   margin: 8px 10px;
-  float:left;
-  width: 25px;
+  width: 100px;
+  border: 2px solid #FF8F61;
 }
 
 .logo {
@@ -40,46 +19,229 @@ h5.logo {
   float:left;
 }
 
+* {
+  font-family: 'Work Sans', sans-serif;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+textarea, input, button { outline: none; }
+
+a, a:active, a:hover {
+ color:  #FF8F61;
+ text-decoration: none;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color:  #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:  #FF8F61;
+}
+
+.body {
+  color: ##FF8F61;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.navbar-default {
+  font-family: 'Work Sans', sans-serif;
+  height: 0px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: ##FF8F61;
+}
+
 .container {
-  z-index: 101;
-  position: absolute;
-  float: left;
+  top: 0px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("http://creamreader.com/bigplan/005.png");
+  background-size: cover;
+}
+
+.background-img {
   top: 0;
   left: 0;
-  margin-top: 0;
-  width: 35%;
-  height: 100vh;
+  z-index: -99;
+}
+
+.logo {
   font-family: 'Work Sans', sans-serif;
-  font-size: 16px;
+  font-size: 24px;
   color: #FF8F61;
-  background-color: #00346B;
+  margin: 10px auto;
+  padding: 5px;
 }
 
-@media (min-width: 648px) and (max-width: 800px) {
-  .container {
-    width: 50%;
-  }
+
+.logo h3 {
+  margin-top: 0px;
+  padding-left: 110px;
+  color: #FF8F61;
 }
 
-@media (max-width: 648px) {
-  .container {
-    width: 100%;
-  }
+.logo_main {
+    text-align: center;
+    color:#FF8F61;
+    margin-bottom: 30px;
 }
 
+.label {
+  color:#00F4F4;
+}
+
+.account-wall
+{
+    margin-top: 50px;
+    padding: 40px 0px 20px 0px;
+    background-color: transparent;
+
+}
+
+.login-title
+{
+    color: #FF8F61;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+
+.btn-block {
+  margin-top: 70px;
+  background-color: transparent;
+  color: #FF8F61;
+  border: 1px solid #FF8F61;
+  border-radius: 50px;
+}
+
+.btn-logout {
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  padding-top: 16px;
+  margin: 0;
+}
+
+.btn-logout:hover {
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="submit"]:focus,
+button:focus,
+button:hover,
+button:active,
+button:link,
+button:visited,
+button,
+.uneditable-input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   background: none !important;
+}
+
+.responsive {display: none}
+
+@media screen and (max-width: 990px) {
+  .logo {display: none}
+  .navbar-right { display:none;}
+  .responsive {display: block }
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color:  #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:  #FF8F61;
+}
+
+
+a, a:active, a:hover {
+ color:  #FF8F61;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color:  #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:  #FF8F61;
+}
+
+
+.navbar-default {
+  font-family: 'Work Sans', sans-serif;
+  height: 0px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: ##FF8F61;
+}
+
+.navbar-default li:nth-child(3) {
+  padding-right: 100px;
+}
 ul {
   margin-top: 65px;
 }
 
 li {
-  padding-left: 40px;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 24px;
-  background-color: #00346B;
-}
-
-
-li:hover {
-  background-color: #FFF;
+  background-color: #transparent;
 }

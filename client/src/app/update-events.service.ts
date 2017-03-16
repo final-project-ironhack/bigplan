@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
+import { environment } from '../environments/environment'
+
+
 @Injectable()
 export class UpdateEventsService {
 
   constructor() { }
-    private url = 'http://localhost:3000';
+    private url = 'environment';
     private socket;
 
     updateEvent() {
