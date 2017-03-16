@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
@@ -39,14 +39,15 @@ export class MainBoardComponent implements OnInit {
     private EventService: EventService,
     //socket.io
     //private UpdateEventsService: UpdateEventsService,
-    private router: Router
-  ) {
-  }
+    private router: Router,
+    private cd: ChangeDetectorRef
+  ) { }
 
   changeSelectedEvent(event){
-    console.log(event);
     console.log("Changing selected event");
     this.sse = event;
+    console.log(this);
+    this.cd.detectChanges();
   }
 
   ngOnInit() {
@@ -60,13 +61,13 @@ export class MainBoardComponent implements OnInit {
     //const updateEvent = this.UpdateEventsService;
     const eventS = this.EventService;
     GoogleMapsLoader.KEY = 'AIzaSyBmHIjgfyzkhCKmCgMBGJgsr7Ad4rRuiAY';
-    const instance = this;
+    var instance = this;
 
+    // GoogleMapsLoader.load((google) => {
+    //     console.log("READY");
+    // });
 
-    GoogleMapsLoader.load(function(google) {
-
-
-
+    GoogleMapsLoader.load((google) => {
       var styles = [
         {
           "featureType": "all",
@@ -239,7 +240,7 @@ export class MainBoardComponent implements OnInit {
 //           });
 //         });
 // */
-
+        console.log("LOAding!!!");
         function goDoSomething(d) {
           console.log(d.getAttribute("data-event-id"));
         }
