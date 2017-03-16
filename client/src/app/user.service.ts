@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { environment } from '../environments/environment'
+const BASE_URL  = environment.apiUrl;
 
 @Injectable()
 export class UserService {
 
-  BASE_URL: string = 'http://localhost:3000';
   constructor(private http: Http) { }
 
   getUserLogged() {
-    return this.http.get(`${this.BASE_URL}/api/user/get-user-logged`)
+    return this.http.get(`${BASE_URL}/api/user/get-user-logged`)
       .map((res) => {
         console.log(res.json())
         return res.json()
@@ -17,7 +18,7 @@ export class UserService {
   }
 
   getList() {
-    return this.http.get(`${this.BASE_URL}/api/user/get-all-users`)
+    return this.http.get(`${BASE_URL}/api/user/get-all-users`)
       .map((res) => {
         console.log(res.json())
         return res.json()
@@ -27,7 +28,7 @@ export class UserService {
   // In develop status
   getUserById(id) {
     console.log('ID',id)
-    return this.http.get(`${this.BASE_URL}/api/user/get-user-by-id/
+    return this.http.get(`${BASE_URL}/api/user/get-user-by-id/
 `+id)
       .map((res) => {
         console.log(res.json())
@@ -53,13 +54,12 @@ export class UserService {
   // }
 
   edit(user) {
-    return this.http.put(`${this.BASE_URL}/user/${user.id}`, user)
+    return this.http.put(`${BASE_URL}/user/${user.id}`, user)
       .map((res) => res.json());
   }
 
   remove(id) {
-    return this.http.delete(`${this.BASE_URL}/users/${id}`)
+    return this.http.delete(`${BASE_URL}/users/${id}`)
       .map((res) => res.json());
   }
-
 }
