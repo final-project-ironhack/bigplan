@@ -36,7 +36,7 @@ a, a:active, a:hover {
   color: #FF8F61;
 }
 
-.navbar-default li:nth-child(3) {
+.navbar-default li:nth-child(4) {
   padding-right: 100px;
 }
 
@@ -54,6 +54,7 @@ a, a:active, a:hover {
   width: 100vw;
   height: 100vh;
   background-image: url("../assets/img/002.png");
+  background-size: cover;
 }
 
 .background-img {
@@ -98,8 +99,9 @@ a, a:active, a:hover {
 .btn-logout {
   border: none;
   font-family: 'Work Sans', sans-serif;
-  font-size: 14px;
-  padding-top: 16px;
+  font-size: 16px;
+  background: transparent;
+  padding: 0;
   margin: 0;
 }
 
@@ -145,6 +147,7 @@ button,
 .responsive {display: none}
 
 @media screen and (max-width: 990px) {
-  .navbar-right { display:none;}
+  .navbar-right { display: none;
+  }
   .responsive {display: block }
 }

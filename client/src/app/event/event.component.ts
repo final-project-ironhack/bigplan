@@ -13,11 +13,13 @@ export class EventComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private router: Router
-  ) { }
+  ) {
+}
 
   ngOnInit() {
-
+    
   }
+
   ngOnChanges(changes: any){
     console.log(changes);
     console.log("Changes in Component");
