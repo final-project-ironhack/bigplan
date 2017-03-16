@@ -71,12 +71,16 @@ a, a:active, a:hover {
   padding-right: 100px;
 }
 
+.title {
+  color: #ccc;
+}
+
 .container {
   top: 0px;
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-image: url("../assets/img/004.png");
+  background-image: url("http://creamreader.com/bigplan/006.png");
   background-size: cover;
   overflow: auto;
 }

@@ -16,9 +16,7 @@
           <li><img class="img-user" src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72"><li>
           <li><h1>Congrats!</h1></li>
           <li><h4>You just joined a BigPlan:</h4><li>
-          <li><h1>{{item.name}} </h1></li>
-          <br>
-          <li><p> {{item.description}}</p></li>
+          <li><h1 class="title">{{item.name}} </h1></li>  
           <br>
           <li><h4 *ngIf='creator'>Planned by {{creator.name}} / Category: {{item.category}}</h4></li>
           <h4 *ngIf='participants'></h4>
@@ -35,7 +33,7 @@
 
           <li><a></a><button type="button" name="button" class="btn btn-lg btn-primary btn-block">Left</button></li>
           <br>
-          <li><p>You can attend just one plan at a time, but you can leave this plan before it's ended, if you need so. </p><li>
+          <li><p>You can only attend one plan at a time, but you can leave this plan before it's ended, if you need so. </p><li>
 
           </ul>
         </div>
