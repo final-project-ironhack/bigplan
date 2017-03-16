@@ -52,29 +52,28 @@ exports.createEvent = (req, res, next) => {
 };
 
 exports.goEvent = (req, res, next) => {
-    const eventId = req.params.id;
-
+    const eventId = req.body.event_id;
+    const userId = req.body.user_id;
+    console.log('PARAMS:::::::::::::::::::::::',req.body);
     eventModel.update({
         _id: eventId
 
     }, {
         $push: {
-            participant: req.session._id
-        }
+            participant: eventId
+        },
     });
-
+    
     userModel.update({
-        _id: req.session._id
+        _id: userId
     }, {
         $push: {
-            assistedEvents: eventId
+            assistedEvents: userId
         }
     });
 };
 
 exports.editEvent = (req, res, next) => {
-    const eventId = req.params.id;
-
     eventModel.findByIdAndUpdate(eventId, {
         $set: req.body
     }, (err, user) => {
@@ -92,8 +91,9 @@ exports.editEvent = (req, res, next) => {
 };
 
 exports.finishEvent = (req, res) => {
-    const eventId = req.params.id;
-    eventModel.findByIdAndUpdate(eventId, {
+  console.log('asdasd');
+    console.log('params',req.params.id);
+    eventModel.findByIdAndUpdate(req.params.id, {
         $set: {
             status: false
         }

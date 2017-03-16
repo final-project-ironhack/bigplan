@@ -31,7 +31,7 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit() {
     const instance = this;
-    console.log(this.loggedin.getUser())
+
     this.session.isLoggedIn()
       .subscribe(
       (user) => { console.log(user); this.successCb(user) }
@@ -64,7 +64,6 @@ export class CreateEventComponent implements OnInit {
           lng: position.coords.longitude
         };
         resolve(pos);
-        console.log(pos);
       });
     });
   }

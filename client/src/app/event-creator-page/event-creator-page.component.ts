@@ -16,6 +16,8 @@ export class EventCreatorPageComponent implements OnInit {
   error: any;
   event: any;
   participants: Array<any> = [];
+  creator: any;
+
 
 
   constructor(
@@ -33,35 +35,39 @@ export class EventCreatorPageComponent implements OnInit {
     this.session.isLoggedIn()
       .subscribe(
       (user) => {
-        console.log('USER///', user); this.successCb(user)
-
+        this.successCb(user)
 
         this.eventService.getEventByCreatorId(user)
           .subscribe((eventSelected) => {
+            this.creator = user;
             this.event = eventSelected;
+            console.log('oaskdkasdfjasdhfjaf')
+            console.log('caracolilla', this.event)
+            if (this.event.participant.length !== 0) {
 
-            if (this.event[0].participant.length !== 0) {
-              for (let i = 0; i < this.event.length; i++) {
-                console.log('I', i)
-                console.log('caracola', this.event[0].participant[i])
+              for (let i = 0; i < this.event.participant.length; i++) {
 
-                this.userService.getUserById(this.event[0].participant[i])
+                this.userService.getUserById(this.event.participant[i])
                   .subscribe((participant) => {
-                    console.log('::::::::::::.', participant)
-
                     this.participants.push(participant);
-                    console.log('PARTICIPANTES', this.participants)
                   });
               }
             }
           });
 
       });
-};
-  successCb(user) {
 
+  };
+  successCb(user) {
     this.user = user;
     console.log('ESTE USUARIO', user)
     this.error = null;
+  }
+
+  finishEvent() {
+    console.log('*/*/*/*/*/*/*/')
+    console.log('EVENTOTOOO',this.event)
+    this.eventService.closeEvent(this.event).subscribe();
+    this.router.navigate(['/home/'+this.creator._id]);
   }
 }

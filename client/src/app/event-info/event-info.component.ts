@@ -34,11 +34,15 @@ export class EventInfoComponent implements OnInit {
       );
 
     let eventId;
-    this.route.params.subscribe(paramsForEvent => {
+      this.route.params.subscribe(paramsForEvent => {
       this.eventService.getEventById(paramsForEvent)
         .subscribe((eventSelected) => {
           this.event = eventSelected;
           // console.log('PARTICIPANTE', this.event[0].participant)
+
+          //Apuntarte
+          this.eventService.joinEventById(this.user,this.event).subscribe();
+
 
           //Buscar creador
           this.userService.getUserById(this.event[0].creator)
@@ -82,7 +86,6 @@ export class EventInfoComponent implements OnInit {
   // }
 
   successCb(user) {
-    console.log('USER:::::::::::::::::', user)
     this.user = user;
     this.error = null;
   }
