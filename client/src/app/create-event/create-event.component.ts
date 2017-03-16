@@ -26,19 +26,30 @@ export class CreateEventComponent implements OnInit {
     private loggedin: LoggedinService,
     private session: SessionService,
     private eventService: EventService
-  ){
+  ) {
 
   };
 
   ngOnInit() {
     const instance = this;
-    console.log(this.loggedin.getUser())
     this.session.isLoggedIn()
       .subscribe(
       (user) => { console.log(user); this.successCb(user) }
       );
   };
+  createEvent() {
+    this.getBrowserPosition().then((pos) => {
+      let eventObject = {
+        name: this.formInfo.name,
+        category: this.formInfo.category,
+        tags: this.formInfo.tags,
+        description: this.formInfo.description,
+        image: '',
+        location: pos,
+        creator: this.user._id
+      };
 
+/*
   goBack() {
     this.session.login(this.formInfo)
       .subscribe(
@@ -52,41 +63,36 @@ export class CreateEventComponent implements OnInit {
       (err) => this.errorCb(err)
       );
   }
+*/
 
 
-    createEvent(){
-      this.getBrowserPosition().then((pos) => {
-        let eventObject = {
-          name: this.formInfo.name,
-          category: this.formInfo.category,
-          tags: this.formInfo.tags,
-          description: this.formInfo.description,
-          image: '',
-          location: pos,
-          creator: this.user._id
+
+      this.eventService.createEvent(eventObject).subscribe((event) => {
+        this.router.navigate(['home/' + this.user._id + '/event-creator-info']);
+      });
+    });
+
+  }
+
+  getBrowserPosition() {
+    return new Promise((resolve) => {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
         };
-
-        this.eventService.createEvent(eventObject).subscribe((event)=>{
-          console.log('tu madre es un pendón');
-          this.router.navigate(['home/' + this.user._id]);
-        });
+        resolve(pos);
       });
+    });
+  }
 
-    }
+  logUser() {
+    console.log(this.user);
+  }
 
-    getBrowserPosition(){
-      return new Promise((resolve) => {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          resolve(pos);
-          console.log(pos);
-        });
-      });
-    }
-
+  successCb(user) {
+    this.user = user;
+  /*
     logout() {
       this.session.logout()
         .subscribe(
@@ -110,6 +116,8 @@ export class CreateEventComponent implements OnInit {
       this.error = err;
       this.user = null;
     }
+    */
 
 
   }
+}

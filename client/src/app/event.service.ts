@@ -27,8 +27,7 @@ export class EventService {
   createEvent(event) {
     return this.http.post(`${BASE_URL}/api/event/create-event`, event, this.options)
       .map((res) => {
-        console.log('EVENT.............................................:' + res.json());
-         return res.json();
+        return res.json();
       })
       .catch(this.handleError);
   }
@@ -38,11 +37,37 @@ export class EventService {
       .map((res) => {
         return res.json()
       });
-    }
-    joinEventById(id){
-      return this.http.post(`${BASE_URL}/api/event/get-event-by-id`, id,this.options)
-        .map((res) => {
-          return res.json();
-        })
-    }
+  }
+
+  getEventByCreatorId(obj){
+    return this.http.get(`${this.BASE_URL}/api/event/get-event-by-creator-id/` + obj._id)
+      .map((res) => {
+        return res.json();
+      });
+  }
+
+  joinEventById(user,event) {
+    console.log('user::::',user);
+    console.log('event:::::',event);
+    let dupla = {user_id:user._id, event_id:event._id};
+    console.log(dupla)
+    return this.http.put(`${this.BASE_URL}/api/event/go-event`,dupla, this.options)
+      .map((res) => {
+        return res.json();
+      })
+  }
+  closeEvent(obj){
+
+    console.log('11111111111111',obj._id)
+    return this.http.put(`${this.BASE_URL}/api/event/finish-event/` + obj._id,this.options)
+    .map((res) => {
+      return res.json();
+    });
+  }
+
+  // leaveEvent(user,event){
+  //   return this.http.update(`${this.BASE_URL}/api/user`)
+  // }
+
+
 }

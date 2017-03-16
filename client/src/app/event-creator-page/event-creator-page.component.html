@@ -1,3 +1,4 @@
+
 <head>
   <title>BigPlan</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -5,8 +6,7 @@
   <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 </head>
 
-<div *ngFor="let item of event">
-
+<div *ngIf='event'>
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -16,11 +16,11 @@
           <li><img class="img-user" src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72"><li>
           <li><h1>Congrats!</h1></li>
           <li><h5>You just planned:</h5><li>
-          <li><h1 class="title">{{item.name}} </h1></li>
+          <li><h1 class="title">{{event.name}} </h1></li>
           <br>
-          <li><p> {{item.description}}</p></li>
+          <li><p> {{event.description}}</p></li>
             <br>
-          <li><h4 *ngIf='creator'>Planned by {{creator.name}} / Category: {{item.category}}</h4></li>
+          <!--<li><h4 *ngIf='creator'>Planned by {{creator.name}} / Category: {{item.category}}</h4></li>-->
           <h4 *ngIf='participants'></h4>
           <div *ngFor="let participant of participants">
           <h5>Joined to the plan: {{participant.name}}</h5>
@@ -38,3 +38,4 @@
           <li><a></a><button type="button" name="button" class="btn btn-lg btn-primary btn-block">End Plan</button></li>
           </ul>
         </div>
+

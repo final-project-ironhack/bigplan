@@ -11,6 +11,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LandingComponent } from './landing/landing.component';
 import { EventInfoComponent } from './event-info/event-info.component';
+import { EventCreatorPageComponent } from './event-creator-page/event-creator-page.component';
 
 export const routes: Routes = [
   //Path for MAIN BOARD & NAVIGATION
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'home/:id/event-info/:id', component: EventInfoComponent },
   { path: 'usermenu/:id', component: UserMenuComponent },
   { path: 'create-event', component: CreateEventComponent },
+  { path: 'home/:id/event-creator-info', component: EventCreatorPageComponent},
   { path: 'log-in', component: LogInComponent },
   { path: 'sign-up', component: SignUpComponent },
 
@@ -30,5 +32,4 @@ export const routes: Routes = [
   //Paths for EVENTS
   { path: 'event-list', component: EventListComponent },
   { path: 'home/:id/event/:id', component: EventComponent },
-  { path: '', component: EventInfoComponent }
 ];

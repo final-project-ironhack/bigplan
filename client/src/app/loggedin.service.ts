@@ -16,7 +16,6 @@ export class LoggedinService {
   }
 
   getUser() {
-    console.log('HOLAHOLA')
     return this.user;
   }
 

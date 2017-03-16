@@ -52,48 +52,71 @@ exports.createEvent = (req, res, next) => {
 };
 
 exports.goEvent = (req, res, next) => {
-    const eventId = req.params.id;
+  console.log('///////////////////////////////////////////////////////');
+  console.log('IMPORTANTE::::::::::::::::::::::::::::::::::::::::::::::::::', req.body);
+    const eventId = req.body.event_id;
+    const userId = req.body.user_id;
+    console.log('PARAMS:::::::::::::::::::::::', req.body);
+    let fail = false;
 
     eventModel.update({
         _id: eventId
 
     }, {
         $push: {
-            participant: req.session._id
+            participant: userId
+        }
+    }, (err, user) => {
+        if (err) {
+          fail = true;
+          msg='falla en user';
         }
     });
 
     userModel.update({
-        _id: req.session._id
+        _id: userId
     }, {
         $push: {
             assistedEvents: eventId
         }
-    });
-};
-
-exports.editEvent = (req, res, next) => {
-    const eventId = req.params.id;
-
-    eventModel.findByIdAndUpdate(eventId, {
-        $set: req.body
     }, (err, user) => {
-        if (err) {
-            return res.status(400).json({
-                message: 'Unable to update event',
-                error: err
-            });
-        } else {
-            return res.status(200).json({
-                message: 'event update'
-            });
-        }
+      if(fail){
+        fail=true;
+        msg='falla en user';
+      }
     });
+    if(fail){
+      return res.status(400).json({
+        message: msg
+      });
+    }else{
+      return res.status(200).json({
+        message: 'update succesfully'
+      });
+    }
 };
+
+// exports.ed400tEvent = (req, res, next) => {
+//     eventModel.findByIdAndUpdate(eventId, {
+//         $set: req.body
+//     }, (err, user) => {
+//         if (err) {
+//             return res.status(400).json({
+//                 message: 'Unable to update event',
+//                 error: err
+//             });
+//         } else {
+//             return res.status(200).json({
+//                 message: 'event update'
+//             });
+//         }
+//     });
+// };
 
 exports.finishEvent = (req, res) => {
-    const eventId = req.params.id;
-    eventModel.findByIdAndUpdate(eventId, {
+    console.log('asdasd');
+    console.log('params', req.params.id);
+    eventModel.findByIdAndUpdate(req.params.id, {
         $set: {
             status: false
         }
@@ -121,17 +144,31 @@ exports.getAllEvents = (req, res, next) => {
     });
 };
 
-exports.getEventById = (req,res,next) => {
-  console.log('params',req.params)
-  eventModel.find({ _id: req.params.id }, (err, eventSelected) => {
-    if(err){
-      return res.status(500).json(err);
-    }
-    console.log('Event by id found', eventSelected);
-    return res.status(200).json(eventSelected);
-  });
+exports.getEventById = (req, res, next) => {
+    console.log('params', req.params);
+    eventModel.find({
+        _id: req.params.id
+    }, (err, eventSelected) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        console.log('Event by id found', eventSelected);
+        return res.status(200).json(eventSelected);
+    });
 };
 
+exports.getEventByCreatorId = (req, res, next) => {
+    eventModel.findOne({
+        creator: req.params.id,
+        status: true
+    }, (err, eventSelected) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        console.log('Event by id found', eventSelected);
+        return res.status(200).json(eventSelected);
+    });
+};
 
 //Commented because it crashed when not logged-in
 // exports.getEventByParams((req, res, next) => {
@@ -174,6 +211,10 @@ function updateEvents() {
         console.log(listOfEvents);
     });
 }
+
+// function leaveEvent(user, event){
+//   eventModel.find
+// }
 
 //
 // io.on('eventCreated', (socket) => {
