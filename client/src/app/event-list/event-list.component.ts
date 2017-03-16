@@ -21,7 +21,6 @@ event: any
     this.EventService.getEventList()
       .subscribe((event) => {
         this.event = event;
-
       });
     }
 }

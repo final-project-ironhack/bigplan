@@ -53,6 +53,7 @@ export class CreateEventComponent implements OnInit {
       );
   }
 
+
     createEvent(){
       this.getBrowserPosition().then((pos) => {
         let eventObject = {
@@ -109,5 +110,6 @@ export class CreateEventComponent implements OnInit {
       this.error = err;
       this.user = null;
     }
+
 
   }
