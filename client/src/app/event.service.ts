@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
+import { environment } from '../environments/environment'
+
+const BASE_URL = environment.apiUrl;
+
 
 @Injectable()
 export class EventService {
   options: Object = { withCredentials: true };
 
-  BASE_URL: string = 'http://localhost:3000';
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -15,14 +18,14 @@ export class EventService {
   }
 
   getEventList() {
-    return this.http.get(`${this.BASE_URL}/api/event/get-all-events`)
+    return this.http.get(`${BASE_URL}/api/event/get-all-events`)
       .map((res) => {
         return res.json()
       });
   }
 
   createEvent(event) {
-    return this.http.post(`${this.BASE_URL}/api/event/create-event`, event, this.options)
+    return this.http.post(`${BASE_URL}/api/event/create-event`, event, this.options)
       .map((res) => {
         return res.json();
       })
@@ -30,7 +33,7 @@ export class EventService {
   }
 
   getEventById(obj) {
-    return this.http.get(`${this.BASE_URL}/api/event/get-event-by-id/` + obj.id)
+    return this.http.get(`${BASE_URL}/api/event/get-event-by-id/` + obj.id)
       .map((res) => {
         return res.json()
       });
@@ -65,5 +68,6 @@ export class EventService {
   // leaveEvent(user,event){
   //   return this.http.update(`${this.BASE_URL}/api/user`)
   // }
+
 
 }

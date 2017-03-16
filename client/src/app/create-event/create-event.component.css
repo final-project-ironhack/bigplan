@@ -5,6 +5,14 @@
   box-shadow: none;
 }
 
+.img-user {
+  border-radius: 50%;
+  margin: 0px 30px;
+  float:left;
+  width: 50px;
+  border: 3px solid #FF8F61;
+}
+
 textarea, input, button { outline: none; }
 
 a, a:active, a:hover {
@@ -19,7 +27,19 @@ a, a:active, a:hover {
   color:  #FF8F61;
 }
 
+.btn-block {
+  margin-top: 70px;
+  background-color: transparent;
+  color: #FF8F61;
+  border: 1px solid #FF8F61;
+  border-radius: 50px;
+}
 
+.btn-block:hover {
+  background-color: #FF8F61;
+  color: #00346B;
+
+}
 
 .body {
   color: ##FF8F61;
@@ -48,7 +68,8 @@ a, a:active, a:hover {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-image: url("../assets/img/002.png");
+  background-image: url("http://creamreader.com/bigplan/004.png");
+  background-size: cover;
 }
 
 .background-img {
@@ -116,6 +137,7 @@ a, a:active, a:hover {
   border: none;
   border-radius: 0;
   border-bottom: solid 1px #FF8F61;
+  margin-top: 15px;
 }
 
 

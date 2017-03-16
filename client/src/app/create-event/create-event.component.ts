@@ -12,6 +12,7 @@ import { SessionService } from '../session.service';
 })
 export class CreateEventComponent implements OnInit {
   user: any;
+  error: string;
   formInfo = {
     name: '',
     category: '',
@@ -31,7 +32,6 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit() {
     const instance = this;
-
     this.session.isLoggedIn()
       .subscribe(
       (user) => { console.log(user); this.successCb(user) }
@@ -48,6 +48,24 @@ export class CreateEventComponent implements OnInit {
         location: pos,
         creator: this.user._id
       };
+
+/*
+  goBack() {
+    this.session.login(this.formInfo)
+      .subscribe(
+      (user) => {
+        this.successCb(user),
+          this.loggedin.checkLogged(user);
+          console.log('id found', user._id)
+          this.router.navigate(['home/' + user._id]);
+          //this.router.navigate(['sign-up']);
+      },
+      (err) => this.errorCb(err)
+      );
+  }
+*/
+
+
 
       this.eventService.createEvent(eventObject).subscribe((event) => {
         this.router.navigate(['home/' + this.user._id + '/event-creator-info']);
@@ -74,5 +92,32 @@ export class CreateEventComponent implements OnInit {
 
   successCb(user) {
     this.user = user;
+  /*
+    logout() {
+      this.session.logout()
+        .subscribe(
+        () =>
+          this.successCb(null),
+        (err) => this.errorCb(err)
+        );
+
+    }
+
+    logUser(){
+      console.log(this.user);
+    }
+
+    successCb(user) {
+      console.log('USER:::::::::::::::::', user)
+      this.user = user;
+    }
+
+    errorCb(err) {
+      this.error = err;
+      this.user = null;
+    }
+    */
+
+
   }
 }
