@@ -6,7 +6,8 @@ let router = express.Router();
 //Woks but need checkout
 router.post('/create-event',controller.createEvent);
 //Works!
-router.put('/edit-event/:id', controller.editEvent);
+//router.put('/edit-event/:id', controller.editEvent);
+
 //Works!
 router.put('/finish-event/:id', controller.finishEvent);
 //Works!

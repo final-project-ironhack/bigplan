@@ -38,14 +38,13 @@ export class EventComponent implements OnInit {
   ngOnChanges(changes: any) {
   }
 
-  joinEvent() {
-    const eventId = 0;
-    console.log('USER', this.user);
-    console.log('event',this.event);
-    this.eventService.joinEventById(this.user,this.event).subscribe();
-    let param = eventId;
-    //this.router.navigate(['event-info/' + eventId]);
-  }
+  // joinEvent() {
+  //   const eventId = 0;
+  //   console.log('USER', this.user);
+  //   console.log('event',this.event);
+  //   let param = eventId;
+  //   //this.router.navigate(['event-info/' + eventId]);
+  // }
   successCb(user) {
     this.user = user;
     this.error = null;

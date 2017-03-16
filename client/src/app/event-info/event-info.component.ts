@@ -30,30 +30,32 @@ export class EventInfoComponent implements OnInit {
   ngOnInit() {
     this.session.isLoggedIn()
       .subscribe(
-      (user) => { console.log('USER',user); this.successCb(user) }
+      (user) => { console.log('USER', user); this.successCb(user) }
       );
 
     let eventId;
-      this.route.params.subscribe(paramsForEvent => {
+    this.route.params.subscribe(paramsForEvent => {
       this.eventService.getEventById(paramsForEvent)
         .subscribe((eventSelected) => {
-          this.event = eventSelected;
-          // console.log('PARTICIPANTE', this.event[0].participant)
 
+          this.event = eventSelected[0];
+          console.log('aaaaa')
           //Apuntarte
-          this.eventService.joinEventById(this.user,this.event).subscribe();
+          this.eventService.joinEventById(this.user, this.event);
 
 
           //Buscar creador
-          this.userService.getUserById(this.event[0].creator)
+          this.userService.getUserById(this.event.creator)
             .subscribe((userCreator) => {
               this.creator = userCreator;
-              if (this.event[0].participant.length !== 0) {
+              console.log('IMPORTANTE', this.creator)
+
+              if (this.event.participant.length !== 0) {
                 for (let i = 0; i < this.event.length; i++) {
                   console.log('I', i)
-                  console.log('caracola', this.event[0].participant[i])
+                  console.log('caracola', this.event.participant[i])
 
-                  this.userService.getUserById(this.event[0].participant[i])
+                  this.userService.getUserById(this.event.participant[i])
                     .subscribe((participant) => {
                       console.log('::::::::::::.', participant)
 
@@ -73,8 +75,8 @@ export class EventInfoComponent implements OnInit {
           this.event = eventSelected;
           if (this.event.status === false) {
             console.log('El evento ha sido desactivado')
-            this.router.navigate(['home/'+this.user.id]);
-          }else{
+            this.router.navigate(['home/' + this.user.id]);
+          } else {
             console.log('El evento sigue activo')
           }
         });
