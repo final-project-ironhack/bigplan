@@ -46,7 +46,9 @@ export class EventService {
   joinEventById(user,event) {
     console.log('user::::',user);
     console.log('event:::::',event);
-    return this.http.put(`${this.BASE_URL}/api/event/go-event`, {user_id:user._id, event_id:event}, this.options)
+    let dupla = {user_id:user._id, event_id:event._id};
+    console.log(dupla)
+    return this.http.put(`${this.BASE_URL}/api/event/go-event`,dupla, this.options)
       .map((res) => {
         return res.json();
       })

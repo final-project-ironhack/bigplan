@@ -52,6 +52,8 @@ exports.createEvent = (req, res, next) => {
 };
 
 exports.goEvent = (req, res, next) => {
+  console.log('///////////////////////////////////////////////////////');
+  console.log('IMPORTANTE::::::::::::::::::::::::::::::::::::::::::::::::::', req.body);
     const eventId = req.body.event_id;
     const userId = req.body.user_id;
     console.log('PARAMS:::::::::::::::::::::::', req.body);
@@ -62,7 +64,7 @@ exports.goEvent = (req, res, next) => {
 
     }, {
         $push: {
-            participant: eventId
+            participant: userId
         }
     }, (err, user) => {
         if (err) {
@@ -75,7 +77,7 @@ exports.goEvent = (req, res, next) => {
         _id: userId
     }, {
         $push: {
-            assistedEvents: userId
+            assistedEvents: eventId
         }
     }, (err, user) => {
       if(fail){

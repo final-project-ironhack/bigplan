@@ -41,17 +41,18 @@ export class EventInfoComponent implements OnInit {
           this.event = eventSelected[0];
           console.log('aaaaa')
           //Apuntarte
-          this.eventService.joinEventById(this.user, this.event);
+          this.eventService.joinEventById(this.user, this.event).subscribe();
 
 
           //Buscar creador
           this.userService.getUserById(this.event.creator)
             .subscribe((userCreator) => {
               this.creator = userCreator;
-              console.log('IMPORTANTE', this.creator)
 
               if (this.event.participant.length !== 0) {
-                for (let i = 0; i < this.event.length; i++) {
+                console.log('IMPORTANTE', this.event.participant.length)
+
+                for (let i = 0; i < this.event.participant.length; i++) {
                   console.log('I', i)
                   console.log('caracola', this.event.participant[i])
 
@@ -72,10 +73,10 @@ export class EventInfoComponent implements OnInit {
     this.route.params.subscribe(paramsForEvent => {
       this.eventService.getEventById(paramsForEvent)
         .subscribe((eventSelected) => {
-          this.event = eventSelected;
+          //this.event = eventSelected;
           if (this.event.status === false) {
-            console.log('El evento ha sido desactivado')
-            this.router.navigate(['home/' + this.user.id]);
+            console.log('El evento ha sido desactivado');
+            this.router.navigate(['home/' + this.user._id]);
           } else {
             console.log('El evento sigue activo')
           }
