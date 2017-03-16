@@ -30,8 +30,8 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  getEventById(id) {
-    return this.http.get(`${this.BASE_URL}/api/event/get-event-by-id`)
+  getEventById(obj) {
+    return this.http.get(`${this.BASE_URL}/api/event/get-event-by-id/` + obj.id)
       .map((res) => {
         return res.json()
       });

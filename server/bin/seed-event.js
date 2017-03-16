@@ -14,8 +14,8 @@ const events = [
       rating: [],
       location: { lat: 40.416749, lng: -3.283201 },
 
-      // creator:
-      // participant: []
+       creator: '58c42d415026b872a93cc89d',
+       participant: []
   },
 
   {
@@ -28,8 +28,8 @@ const events = [
       rating: [],
       location: { lat: 40.459749, lng: -3.186251 },
 
-      // creator:
-      // participant: []
+       creator: '58c42d415026b872a93cc89d',
+       participant: []
   },
 
   {
@@ -42,8 +42,8 @@ const events = [
       rating: [],
       location: { lat: 40.455749, lng: -3.686601 },
 
-      // creator:
-      // participant: []
+      creator: '58c42d415026b872a93cc89d',
+       participant: []
   },
 
   {
@@ -56,8 +56,8 @@ const events = [
       rating: [],
       location: { lat: 40.449749, lng: -3.686401 },
 
-      // creator:
-      // participant: []
+       creator: '58c42d415026b872a93cc89d',
+       participant: []
   },
 
 
@@ -71,8 +71,8 @@ const events = [
       rating: [],
       location: { lat: 40.429249, lng: -3.526201 },
 
-      // creator:
-      // participant: []
+       creator: '58c42d415026b872a93cc89d',
+       participant: []
   },
 
 
@@ -86,8 +86,8 @@ const events = [
       rating: [],
       location: { lat: 40.239749, lng: -3.626101 },
 
-      // creator:
-      // participant: []
+       creator: '58c42d415026b872a93cc89d',
+       participant: []
   },
 
   {
@@ -99,9 +99,8 @@ const events = [
     status: true,
     rating: [],
     location: { lat: 40.839749, lng: -3.677201 },
-
-    // creator:
-    // participant: []
+     creator: '58c42d415026b872a93cc89d',
+     participant: []
   },
 ];
 Event.create(events, (err, docs) => {

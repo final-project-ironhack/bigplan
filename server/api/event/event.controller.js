@@ -122,7 +122,8 @@ exports.getAllEvents = (req, res, next) => {
 };
 
 exports.getEventById = (req,res,next) => {
-  eventModel.find({ _id: req.headers.id }, (err, eventSelected) => {
+  console.log('params',req.params)
+  eventModel.find({ _id: req.params.id }, (err, eventSelected) => {
     if(err){
       return res.status(500).json(err);
     }

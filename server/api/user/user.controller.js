@@ -32,7 +32,7 @@ const bcryptSalt = 10;
 */
 
 exports.getUserLogged = function(req, res, next){
-  userModel
+  User
     .findOne({_id: req.session.currentUser._id}).exec((err, user) => {
       if(err){
         return next(err);
@@ -103,7 +103,7 @@ exports.logInUser = function(req, res, next) {
 			res.status(200).json(req.user);
 		});
 	})(req, res, next);
-};  
+};
 
 exports.logOutUser = function(req, res) {
     req.logout();
@@ -165,7 +165,7 @@ exports.getAllUsers = (req, res, next) => {
 
 
 exports.getUserById = (req, res, next) => {
-  userModel.findOne({}, (err, user) => {
+  User.findOne({_id: req.params.id}, (err, user) => {
     if(err){
       return res.status(500).json({
         message: 'user not found',
