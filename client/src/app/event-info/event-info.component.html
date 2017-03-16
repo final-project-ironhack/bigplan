@@ -17,4 +17,11 @@
 
 <!-- Nombre de los participantes-->
 
-<a > </a><button type="button" name="button">Left</button>
+<h4 *ngIf='participants'>Participants</h4>
+<div *ngFor="let participant of participants">
+  <div class="event-info">
+    <h5> {{participant.name}}</h5>
+
+  </div>
+</div>
+<a > </a><button type="button" name="button">Abandonar</button>
