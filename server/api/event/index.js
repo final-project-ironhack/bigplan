@@ -18,6 +18,8 @@ router.delete('/remove-event/:id', controller.removeEvent);
 
 router.put('/go-event', controller.goEvent);
 
+// router.put('/leave-event',controller.leaveEvent);
+
 // router.get('/get-event-params', controller.getEventByParams);
 
 //router.get('/get-event-params', controller.getEventByParams);

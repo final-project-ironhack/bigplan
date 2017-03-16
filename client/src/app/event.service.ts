@@ -25,7 +25,7 @@ export class EventService {
     return this.http.post(`${this.BASE_URL}/api/event/create-event`, event, this.options)
       .map((res) => {
         console.log('EVENT.............................................:' + res.json());
-         return res.json();
+        return res.json();
       })
       .catch(this.handleError);
   }
@@ -35,11 +35,16 @@ export class EventService {
       .map((res) => {
         return res.json()
       });
-    }
-    joinEventById(id){
-      return this.http.post(`${this.BASE_URL}/api/event/get-event-by-id`, id,this.options)
-        .map((res) => {
-          return res.json();
-        })
-    }
+  }
+  joinEventById(id) {
+    return this.http.post(`${this.BASE_URL}/api/event/get-event-by-id`, id, this.options)
+      .map((res) => {
+        return res.json();
+      })
+  }
+
+  // leaveEvent(user,event){
+  //   return this.http.update(`${this.BASE_URL}/api/user`)
+  // }
+
 }

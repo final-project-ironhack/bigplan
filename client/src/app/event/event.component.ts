@@ -29,5 +29,5 @@ export class EventComponent implements OnInit {
     let param = eventId;
     this.router.navigate(['event-info/'+eventId]);
   }
-
+  
 }

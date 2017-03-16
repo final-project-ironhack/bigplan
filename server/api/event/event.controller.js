@@ -175,6 +175,10 @@ function updateEvents() {
     });
 }
 
+// function leaveEvent(user, event){
+//   eventModel.find
+// }
+
 //
 // io.on('eventCreated', (socket) => {
 //     io.send("updateSocketListOfEvents", clientListNames);
