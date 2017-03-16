@@ -3,6 +3,6 @@
 <div id="map"></div>
 
 <div id="infobar">
-<app-event [eventDetail]="sse"></app-event>
+<app-event *ngIf="sse" [eventDetail]="sse"></app-event>
 
 </div>
