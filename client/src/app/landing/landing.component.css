@@ -131,7 +131,7 @@ h3 {
 }
 
 .info-col p {
-  color: #fff;
+  color: #ccc;
   padding-top: 10%;
   padding-right: 0;
   font-size: 15px;
@@ -151,9 +151,22 @@ h3 {
 
 footer {
   background-color: #111;
-  position: relative;
+  position: fixed;
+  bottom:0;
   width: 100vw;
   height: 70px;
+}
+
+footer h3 {
+  padding: 20px;
+}
+
+.copyright {
+  font-size: 11px;
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  color: #ccc
 }
 
 @media screen and (max-width: 480px) {
@@ -167,7 +180,9 @@ footer {
   font-family: 'Work Sans', sans-serif;
   font-size: 14px;
   padding-top: 16px;
+  padding-left: 15px;
   margin: 0;
+  background: none;
 }
 
 .btn-logout:hover {

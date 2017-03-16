@@ -6,10 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./main-navbar.component.css']
 })
 export class MainNavbarComponent implements OnInit {
-  
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }

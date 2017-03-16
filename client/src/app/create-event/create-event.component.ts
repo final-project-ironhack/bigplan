@@ -12,6 +12,7 @@ import { SessionService } from '../session.service';
 })
 export class CreateEventComponent implements OnInit {
   user: any;
+  error: string;
   formInfo = {
     name: '',
     category: '',
@@ -37,6 +38,20 @@ export class CreateEventComponent implements OnInit {
       (user) => { console.log(user); this.successCb(user) }
       );
   };
+
+  goBack() {
+    this.session.login(this.formInfo)
+      .subscribe(
+      (user) => {
+        this.successCb(user),
+          this.loggedin.checkLogged(user);
+          console.log('id found', user._id)
+          this.router.navigate(['home/' + user._id]);
+          //this.router.navigate(['sign-up']);
+      },
+      (err) => this.errorCb(err)
+      );
+  }
 
     createEvent(){
       this.getBrowserPosition().then((pos) => {
@@ -71,6 +86,16 @@ export class CreateEventComponent implements OnInit {
       });
     }
 
+    logout() {
+      this.session.logout()
+        .subscribe(
+        () =>
+          this.successCb(null),
+        (err) => this.errorCb(err)
+        );
+
+    }
+
     logUser(){
       console.log(this.user);
     }
@@ -78,6 +103,11 @@ export class CreateEventComponent implements OnInit {
     successCb(user) {
       console.log('USER:::::::::::::::::', user)
       this.user = user;
+    }
+
+    errorCb(err) {
+      this.error = err;
+      this.user = null;
     }
 
   }

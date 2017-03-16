@@ -1,15 +1,17 @@
+import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-  import { EventService } from './../event.service';
-declare function require(name: string);
-var GoogleMapsLoader = require('google-maps');
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SessionService } from '../session.service';
+import { EventService } from './../event.service';
 import { EventComponent } from '../event/event.component';
+import { LoggedinService } from '../loggedin.service';
+
 //socket.io
 //import { FormControl } from '@angular/common';
 import { UpdateEventsService } from '../update-events.service';
-import { NgModule } from '@angular/core';
-import {Router} from '@angular/router';
+declare function require(name: string);
+var GoogleMapsLoader = require('google-maps');
 
 @Component({
   //moduleId: module.id,
@@ -33,6 +35,7 @@ export class MainBoardComponent implements OnInit {
   constructor(
     private session: SessionService,
     private route: ActivatedRoute,
+    private loggedin: LoggedinService,
     private EventService: EventService,
     //socket.io
     //private UpdateEventsService: UpdateEventsService,
@@ -47,17 +50,22 @@ export class MainBoardComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.session.isLoggedIn()
       .subscribe(
       (user) => { console.log(user); this.successCb(user) }
       );
+
+
       //socket.io
     //const updateEvent = this.UpdateEventsService;
     const eventS = this.EventService;
     GoogleMapsLoader.KEY = 'AIzaSyBmHIjgfyzkhCKmCgMBGJgsr7Ad4rRuiAY';
     const instance = this;
+
+
     GoogleMapsLoader.load(function(google) {
+
+
 
       var styles = [
         {
@@ -176,16 +184,19 @@ export class MainBoardComponent implements OnInit {
         }
       ];
       // if available, fetches browser geolocalitzacion
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        console.log(pos);
+      // navigator.geolocation.getCurrentPosition(function(position) {
+      //   var pos = {
+      //     lat: position.coords.latitude,
+      //     lng: position.coords.longitude
+      //   };
+      //   console.log(pos);
+
+        const madrid = { lat: 40.438212, lng: -3.6813352000000004 };
+        // map.setCenter(madrid);
 
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: pos,
+          zoom: 14,
+          center: madrid,
           zoomControl: false,
           scaleControl: false,
           streetViewControl: false,
@@ -194,7 +205,7 @@ export class MainBoardComponent implements OnInit {
 
         ///infoWindow.setPosition(pos);
         // infoWindow.setContent('Location found.');
-//        map.setCenter(pos);
+//
 
 //         //socket.io
 //         /*this.connection = this.UpdateEventsService.updateEvent()
@@ -278,13 +289,14 @@ export class MainBoardComponent implements OnInit {
               map.setOptions({ styles: styles });
               marker.addListener('click',
               function() {
+                map.panTo(this.position);
                 console.log("YUHU CLICK");
                 instance.changeSelectedEvent(e);
               });
             });
           });
       });
-    });
+    // });
   }
 
   successCb(user) {

@@ -48,7 +48,8 @@ a, a:active, a:hover {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-image: url("../assets/img/002.png");
+  background-image: url("../assets/img/003.png");
+  background-size: cover;
 }
 
 .background-img {
