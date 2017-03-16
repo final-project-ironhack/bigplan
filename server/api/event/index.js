@@ -12,7 +12,7 @@ router.put('/finish-event/:id', controller.finishEvent);
 //Works!
 router.get('/get-all-events', controller.getAllEvents);
 //toTest
-router.get('/get-event-by-id', controller.getEventById);
+router.get('/get-event-by-id/:id', controller.getEventById);
 //Works!
 router.delete('/remove-event/:id', controller.removeEvent);
 
