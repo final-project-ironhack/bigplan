@@ -88,31 +88,20 @@ h3 {
 }
 
 .info-container {
-  background-image: url("../assets/img/002.png");
+  background-image: url("http://creamreader.com/bigplan/002.png");
   padding: 0;
   margin-top: -40px;
   margin-left: 0;
   margin-right: 0;
   width: 100vw;
-  height: 500px;
+  height: 650px;
   position: relative;
   text-align: center;
   color: #FF8F61;
 }
 
 .info-container-2 {
-  background-image: url("../assets/img/mobile.png");
-  background-size:100%;
-  display:block;
-  padding: 0;
-  margin-top: -40px;
-  margin-left: 0;
-  margin-right: 0;
-  width: 100vw;
-  height: 500px;
-  position: relative;
-  text-align: center;
-  color: #FF8F61;
+  display: none;
 }
 
 .info-col {
@@ -160,7 +149,6 @@ footer {
 footer h3 {
   padding: 20px;
 }
-
 .copyright {
   font-size: 11px;
   position: fixed;
@@ -169,10 +157,54 @@ footer h3 {
   color: #ccc
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 990px) {
+
+  .copyright {
+    width: 50%;
+  }
+
+  .navbar-default {
+    position: relative;
+    margin-top: -50px;
+  }
+
+  .navbar-default li:first-child {
+  margin-top: 50px;
+  }
+
+  .info-container {
+    height: 500px;
+  }
+
   .jumbotron h1 {
     font-size: 70px;
-  }
+    }
+
+   video {
+     display: none;
+   }
+
+   .big-logo-mob {
+     font-size: 80px;
+     margin-top: 120px;
+   }
+
+   .info-container-2 {
+     display : block;
+     background-image: url("../assets/img/002.png");
+     background-size: cover;
+     display:block;
+     padding: 0;
+     margin-top: -40px;
+     margin-left: 0;
+     margin-right: 0;
+     width: 100vw;
+     height: 300px;
+     position: relative;
+     text-align: center;
+     color: #FF8F61;
+   }
+
 }
 
 .btn-logout {
