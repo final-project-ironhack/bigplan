@@ -36,6 +36,15 @@ export class EventService {
         return res.json()
       });
   }
+
+  getEventByCreatorId(obj){
+    console.log('OBJETO',obj._id)
+    return this.http.get(`${this.BASE_URL}/api/event/get-event-by-creator-id/` + obj._id)
+      .map((res) => {
+        return res.json();
+      });
+  }
+
   joinEventById(id) {
     return this.http.post(`${this.BASE_URL}/api/event/get-event-by-id`, id, this.options)
       .map((res) => {

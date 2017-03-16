@@ -1,3 +1,28 @@
 <p>
   event-creator-page works!
 </p>
+
+<!--Informacion del evento  -->
+<div *ngFor="let item of event">
+  <div class="event-info">
+    <h3> {{item.name}}</h3>
+    <h4> {{item.category}}</h4>
+    <h5> {{item.description}}</h5>
+  </div>
+</div>
+
+<!--Nombre del creador del eventos -->
+
+<h3 *ngIf='creator'>Creador: {{creator.name}}</h3>
+
+
+<!-- Nombre de los participantes-->
+
+<h4 *ngIf='participants'>Participants</h4>
+<div *ngFor="let participant of participants">
+  <div class="event-info">
+    <h5> {{participant.name}}</h5>
+  </div>
+</div>
+<!-- <button (click)='leave()' type="button" name="button">Abandonar</button> -->
+<button (click)='update()' type="button" name="button">Actualizar</button>

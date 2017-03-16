@@ -122,7 +122,7 @@ exports.getAllEvents = (req, res, next) => {
 };
 
 exports.getEventById = (req,res,next) => {
-  console.log('params',req.params)
+  console.log('params',req.params);
   eventModel.find({ _id: req.params.id }, (err, eventSelected) => {
     if(err){
       return res.status(500).json(err);
@@ -132,6 +132,15 @@ exports.getEventById = (req,res,next) => {
   });
 };
 
+exports.getEventByCreatorId = (req, res, next) => {
+  eventModel.findOne({ creator: req.params.id, status: true}, (err,eventSelected) => {
+    if(err){
+      return res.status(500).json(err);
+    }
+    console.log('Event by id found', eventSelected);
+    return res.status(200).json(eventSelected);
+  });
+};
 
 //Commented because it crashed when not logged-in
 // exports.getEventByParams((req, res, next) => {
