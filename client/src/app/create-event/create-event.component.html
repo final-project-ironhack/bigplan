@@ -15,11 +15,12 @@
       </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><a routerLink="/log-in"></a></li>
+      <li>
+        <a routerLink="/log-in"></a>
+      </li>
       <li><button (click)="logout()" class="btn btn-lg btn-primary btn-block btn-logout" type="submit"></button></li>
       <li><a routerLink="/">Go back to Map</a></li>
-        </ul>
-
+    </ul>
   </div>
 </nav>
 
@@ -31,7 +32,7 @@
           <h3>BigPlan</h3>
         </div>
 
-        <form  #myForm="ngForm">
+        <form #myForm="ngForm">
           <input type="text" name="name" [(ngModel)]="formInfo.name" class="form-control" placeholder="Name your plan" required />
 
           <select name="category" [(ngModel)]="formInfo.category" class="form-control">

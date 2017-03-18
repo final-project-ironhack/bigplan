@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Rx';
+import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
-import { UserService } from '../user.service'
+import { Observable } from 'rxjs/Rx';
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SessionService } from '../session.service';
+import { UserService } from '../user.service'
+import 'rxjs/add/operator/map';
+
 @Component({
   selector: 'app-event-creator-page',
   templateUrl: './event-creator-page.component.html',
@@ -18,35 +19,25 @@ export class EventCreatorPageComponent implements OnInit {
   participants: Array<any> = [];
   creator: any;
 
-
-
   constructor(
-    private session: SessionService,
-    private router: Router,
-    private userService: UserService,
     private eventService: EventService,
-    private route: ActivatedRoute
-
-  ) {
-
-  }
+    private route: ActivatedRoute,
+    private router: Router,
+    private session: SessionService,
+    private userService: UserService,
+  ) { }
 
   ngOnInit() {
     this.session.isLoggedIn()
       .subscribe(
       (user) => {
-        this.successCb(user)
-
+        this.successCb(user);
         this.eventService.getEventByCreatorId(user)
           .subscribe((eventSelected) => {
             this.creator = user;
             this.event = eventSelected;
-            console.log('oaskdkasdfjasdhfjaf')
-            console.log('caracolilla', this.event)
             if (this.event.participant.length !== 0) {
-
               for (let i = 0; i < this.event.participant.length; i++) {
-
                 this.userService.getUserById(this.event.participant[i])
                   .subscribe((participant) => {
                     this.participants.push(participant);
@@ -56,18 +47,14 @@ export class EventCreatorPageComponent implements OnInit {
           });
 
       });
-
   };
   successCb(user) {
     this.user = user;
-    console.log('ESTE USUARIO', user)
     this.error = null;
   }
 
   finishEvent() {
-    console.log('*/*/*/*/*/*/*/')
-    console.log('EVENTOTOOO',this.event)
     this.eventService.closeEvent(this.event).subscribe();
-    this.router.navigate(['/home/'+this.creator._id]);
+    this.router.navigate(['/home/' + this.creator._id]);
   }
 }

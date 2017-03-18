@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
-import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { LoggedinService } from '../loggedin.service';
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SessionService } from '../session.service';
 
 @Component({
@@ -22,19 +22,17 @@ export class CreateEventComponent implements OnInit {
   coords = {};
 
   constructor(
-    private router: Router,
+    private eventService: EventService,
     private loggedin: LoggedinService,
-    private session: SessionService,
-    private eventService: EventService
-  ) {
-
-  };
+    private router: Router,
+    private session: SessionService
+  ) { };
 
   ngOnInit() {
     const instance = this;
     this.session.isLoggedIn()
       .subscribe(
-      (user) => { console.log(user); this.successCb(user) }
+      (user) => { this.successCb(user) }
       );
   };
   createEvent() {
@@ -48,24 +46,6 @@ export class CreateEventComponent implements OnInit {
         location: pos,
         creator: this.user._id
       };
-
-/*
-  goBack() {
-    this.session.login(this.formInfo)
-      .subscribe(
-      (user) => {
-        this.successCb(user),
-          this.loggedin.checkLogged(user);
-          console.log('id found', user._id)
-          this.router.navigate(['home/' + user._id]);
-          //this.router.navigate(['sign-up']);
-      },
-      (err) => this.errorCb(err)
-      );
-  }
-*/
-
-
 
       this.eventService.createEvent(eventObject).subscribe((event) => {
         this.router.navigate(['home/' + this.user._id + '/event-creator-info']);
@@ -86,38 +66,7 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
-  logUser() {
-    console.log(this.user);
-  }
-
   successCb(user) {
     this.user = user;
-  /*
-    logout() {
-      this.session.logout()
-        .subscribe(
-        () =>
-          this.successCb(null),
-        (err) => this.errorCb(err)
-        );
-
-    }
-
-    logUser(){
-      console.log(this.user);
-    }
-
-    successCb(user) {
-      console.log('USER:::::::::::::::::', user)
-      this.user = user;
-    }
-
-    errorCb(err) {
-      this.error = err;
-      this.user = null;
-    }
-    */
-
-
   }
 }

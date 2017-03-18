@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { EventService } from './../event.service';
 
 @Component({
@@ -9,9 +9,7 @@ import { EventService } from './../event.service';
   providers: [EventService]
 })
 export class EventListComponent implements OnInit {
-
-event: any
-
+  event: any
   constructor(
     private route: ActivatedRoute,
     private EventService: EventService
@@ -22,5 +20,5 @@ event: any
       .subscribe((event) => {
         this.event = event;
       });
-    }
+  }
 }

@@ -1,8 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../session.service';
-import { Router } from '@angular/router';
 import { LoggedinService } from '../loggedin.service';
+import { Router } from '@angular/router';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-log-in',
@@ -10,13 +9,13 @@ import { LoggedinService } from '../loggedin.service';
   styleUrls: ['./log-in.component.css'],
 })
 export class LogInComponent implements OnInit {
-  user: any;
+  error: string;
   formInfo = {
     username: '',
     password: ''
   };
-  error: string;
   privateData: any = '';
+  user: any;
 
   constructor(
     private loggedin: LoggedinService,
@@ -28,9 +27,9 @@ export class LogInComponent implements OnInit {
       .subscribe(
       (user) => this.successCb(user)
       );
-      if(this.user){
-        this.router.navigate(['home/' + this.user._id]);
-      }
+    if (this.user) {
+      this.router.navigate(['home/' + this.user._id]);
+    }
   }
 
   login() {
@@ -39,9 +38,7 @@ export class LogInComponent implements OnInit {
       (user) => {
         this.successCb(user),
           this.loggedin.checkLogged(user);
-          console.log('id found', user._id)
-          this.router.navigate(['/home/' + user._id]);
-          //this.router.navigate(['sign-up']);
+        this.router.navigate(['/home/' + user._id]);
       },
       (err) => this.errorCb(err)
       );
@@ -52,9 +49,10 @@ export class LogInComponent implements OnInit {
       .subscribe(
       () =>
         this.successCb(null),
-      (err) => this.errorCb(err)
+      (err) =>
+        this.errorCb(err)
       );
-  }
+  };
 
   errorCb(err) {
     this.error = err;

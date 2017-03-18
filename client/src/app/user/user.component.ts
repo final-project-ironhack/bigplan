@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 
 @Component({
@@ -16,14 +16,10 @@ export class UserComponent implements OnInit {
     private UserService: UserService
   ) { }
 
-// In develop status
   ngOnInit() {
     this.UserService.getUserLogged()
       .subscribe((user) => {
         this.user = user;
       });
-
   }
-
-
 }
