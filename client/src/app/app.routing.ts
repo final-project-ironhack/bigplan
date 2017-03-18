@@ -30,6 +30,6 @@ export const routes: Routes = [
   { path: 'user/events-attended/:id', component: EventsAttendedComponent },
 
   //Paths for EVENTS
-  { path: 'event-list', component: EventListComponent },
   { path: 'home/:id/event/:id', component: EventComponent },
+  { path: 'event-list', component: EventListComponent },
 ];
