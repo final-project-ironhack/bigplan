@@ -4,6 +4,8 @@ const eventModel = require('./event.model');
 const userModel = require('../user/user.model');
 
 //socket.io
+const express = require('express');
+const app = express;
 const SOCKET_IO_PORT = 8888;
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
@@ -49,13 +51,11 @@ exports.createEvent = (req, res, next) => {
                 }
             });
             //socket.io
-            io.sockets.on('connection', (socket) => {
-                socket.on('new-event-created', (data) => {
+            io.sockets.on('connect', (socket) => {
                     io.sockets.emit('new-event', eventCreated);
                     console.log('new event emitted');
                 });
             });
-        });
 };
 
 exports.goEvent = (req, res, next) => {
