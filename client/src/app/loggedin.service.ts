@@ -7,21 +7,21 @@ export class LoggedinService {
   userLogged = new EventEmitter();
   constructor() { }
 
-  getEmitter() {
-    return this.userLogged;
+  checkLogged(user) {
+    console.log('USERUSER: ', user);
+    this.user = user;
+    this.userLogged.emit(user);
   }
 
-  isLoggedIn(): boolean {
-    return this.user != undefined ? true : false;
+  getEmitter() {
+    return this.userLogged;
   }
 
   getUser() {
     return this.user;
   }
 
-  checkLogged(user) {
-    console.log('USERUSER: ',user);
-    this.user = user;
-    this.userLogged.emit(user);
+  isLoggedIn(): boolean {
+    return this.user != undefined ? true : false;
   }
 }

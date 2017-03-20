@@ -16,11 +16,9 @@ const User = require('./api/user/user.model');
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const app = express();
-//socket.io
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
 
 require("dotenv").config();
+
 const whitelist = [
     'http://localhost:4200',
 ];

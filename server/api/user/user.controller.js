@@ -9,37 +9,17 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
 
-/*exports.createUser = (req, res, next) => {
-  const newUser = new User({
-    email: req.body.email,
-    password: req.body.password,
-    username: req.body.username,
-    name: req.body.name,
-    description: req.body.description
-  });
-
-  newUser.save((err, card) => {
-    if(err){
-      console.log(err);
-      return res.send(500);
-    }
-  });
-  res.json({
-    message: 'user succesfully created',
-    user: newUser
-  });
-};
-*/
-
-exports.getUserLogged = function(req, res, next){
-  User
-    .findOne({_id: req.session.currentUser._id}).exec((err, user) => {
-      if(err){
-        return next(err);
-      }else{
-        return res.status(200).json(user);
-      }
-      });
+exports.getUserLogged = function(req, res, next) {
+    User
+        .findOne({
+            _id: req.session.currentUser._id
+        }).exec((err, user) => {
+            if (err) {
+                return next(err);
+            } else {
+                return res.status(200).json(user);
+            }
+        });
 };
 
 exports.createUser = function(req, res, next) {
@@ -80,7 +60,6 @@ exports.createUser = function(req, res, next) {
                             message: 'something went wrong.'
                         });
                     }
-                    console.log(req.user);
                     res.status(200).json(req.user);
                 });
             }
@@ -89,20 +68,24 @@ exports.createUser = function(req, res, next) {
 };
 
 exports.logInUser = function(req, res, next) {
-	passport.authenticate('local', function(err, user, info) {
-		if (err) { return next(err); }
+    passport.authenticate('local', function(err, user, info) {
+        if (err) {
+            return next(err);
+        }
 
-		if (!user) { return res.status(401).json(info); }
+        if (!user) {
+            return res.status(401).json(info);
+        }
 
-		req.login(user, function(err) {
-			if (err) {
-				return res.status(500).json({
-					message: 'something went wrong :('
-				});
-			}
-			res.status(200).json(req.user);
-		});
-	})(req, res, next);
+        req.login(user, function(err) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'something went wrong :('
+                });
+            }
+            res.status(200).json(req.user);
+        });
+    })(req, res, next);
 };
 
 exports.logOutUser = function(req, res) {
@@ -120,20 +103,15 @@ exports.loggedIn = function(req, res) {
     });
 };
 
-/*authController.get("/private", (req, res) => {
-  if(req.isAuthenticated()) {
-    return res.json({ message: 'This is a private message' });
-  }
-
-  return res.status(403).json({ message: 'Unauthorized' });
-});
-*/
-
 exports.getPrivateData = (req, res, next) => {
-  if(req.isAuthenticated()) {
-    return res.status(200).json({message: 'You are authenticate'});
-  }
-  return res.status(403).json({ message: 'Unauthorized' });
+    if (req.isAuthenticated()) {
+        return res.status(200).json({
+            message: 'You are authenticate'
+        });
+    }
+    return res.status(403).json({
+        message: 'Unauthorized'
+    });
 };
 
 exports.editUser = (req, res, next) => {
@@ -165,18 +143,20 @@ exports.getAllUsers = (req, res, next) => {
 
 
 exports.getUserById = (req, res, next) => {
-  User.findOne({_id: req.params.id}, (err, user) => {
-    if(err){
-      return res.status(500).json({
-        message: 'user not found',
-        error: err
-      });
-    } else {
-      return res.status(200).json(
-        user
-      );
-    }
-  });
+    User.findOne({
+        _id: req.params.id
+    }, (err, user) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'user not found',
+                error: err
+            });
+        } else {
+            return res.status(200).json(
+                user
+            );
+        }
+    });
 };
 
 

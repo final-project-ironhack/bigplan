@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Http, Response } from '@angular/http';
-import { EventService } from './event.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../environments/environment'
-
-
+import { EventEmitter } from '@angular/core';
+import { EventService } from './event.service';
+import { Http, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class EventInfoService {
@@ -18,7 +16,4 @@ export class EventInfoService {
     private route: ActivatedRoute,
     private eventService: EventService
   ) { }
-
-
-
 }

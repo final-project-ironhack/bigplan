@@ -31,7 +31,6 @@ import { UserService } from './user.service';
     AppComponent,
     CreateEventComponent,
     EventsAttendedComponent,
-
     EventComponent,
     EventCreatorPageComponent,
     EventListComponent,
