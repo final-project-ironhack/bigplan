@@ -17,7 +17,6 @@ import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { RaitingUserComponent } from './raiting-user/raiting-user.component';
-import { RaitingEventComponent } from './raiting-event/raiting-event.component';
 import { SessionService } from "./session.service";
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
