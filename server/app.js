@@ -16,10 +16,17 @@ const User = require('./api/user/user.model');
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const app = express();
+
 //socket.io
+const SOCKET_IO_PORT = 8888;
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+//HTTP Server
+http.listen(SOCKET_IO_PORT, () => {
+  console.log('listening on *: 8888');
+});
+//
 require("dotenv").config();
 const whitelist = [
     'http://localhost:4200',

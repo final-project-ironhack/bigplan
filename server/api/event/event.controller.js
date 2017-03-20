@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const eventModel = require('./event.model');
 const userModel = require('../user/user.model');
 
-// let Server = require('socket.io');
-// //add options as params to server if want change pings
-// let io = new Server();
+//socket.io
+const SOCKET_IO_PORT = 8888;
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 let listOfEvents;
 
@@ -27,7 +28,7 @@ exports.createEvent = (req, res, next) => {
                 participant: [],
                 location: req.body.location
             };
-            console.log(eventCreated);
+
             eventModel.create(eventCreated, (err, event) => {
                 if (err) {
                     return next(err);
@@ -40,7 +41,6 @@ exports.createEvent = (req, res, next) => {
                         }
                     }, (err) => {
                         if (err) return next(err);
-                        //socket.io
                         updateEvents();
                         return res.status(200).json({
                             message: "eventCreated"
@@ -48,15 +48,20 @@ exports.createEvent = (req, res, next) => {
                     });
                 }
             });
+            //socket.io
+            io.sockets.on('connection', (socket) => {
+                socket.on('new-event-created', (data) => {
+                    io.sockets.emit('new-event', eventCreated);
+                    console.log('new event emitted');
+                });
+            });
         });
 };
 
 exports.goEvent = (req, res, next) => {
-  console.log('///////////////////////////////////////////////////////');
-  console.log('IMPORTANTE::::::::::::::::::::::::::::::::::::::::::::::::::', req.body);
+
     const eventId = req.body.event_id;
     const userId = req.body.user_id;
-    console.log('PARAMS:::::::::::::::::::::::', req.body);
     let fail = false;
 
     eventModel.update({
@@ -68,8 +73,8 @@ exports.goEvent = (req, res, next) => {
         }
     }, (err, user) => {
         if (err) {
-          fail = true;
-          msg='falla en user';
+            fail = true;
+            msg = 'falla en user';
         }
     });
 
@@ -80,38 +85,23 @@ exports.goEvent = (req, res, next) => {
             assistedEvents: eventId
         }
     }, (err, user) => {
-      if(fail){
-        fail=true;
-        msg='falla en user';
-      }
+        if (fail) {
+            fail = true;
+            msg = 'falla en user';
+        }
     });
-    if(fail){
-      return res.status(400).json({
-        message: msg
-      });
-    }else{
-      return res.status(200).json({
-        message: 'update succesfully'
-      });
+    if (fail) {
+        return res.status(400).json({
+            message: msg
+        });
+    } else {
+        return res.status(200).json({
+            message: 'update succesfully'
+        });
     }
 };
 
-// exports.ed400tEvent = (req, res, next) => {
-//     eventModel.findByIdAndUpdate(eventId, {
-//         $set: req.body
-//     }, (err, user) => {
-//         if (err) {
-//             return res.status(400).json({
-//                 message: 'Unable to update event',
-//                 error: err
-//             });
-//         } else {
-//             return res.status(200).json({
-//                 message: 'event update'
-//             });
-//         }
-//     });
-// };
+
 
 exports.finishEvent = (req, res) => {
     console.log('asdasd');
@@ -152,7 +142,6 @@ exports.getEventById = (req, res, next) => {
         if (err) {
             return res.status(500).json(err);
         }
-        console.log('Event by id found', eventSelected);
         return res.status(200).json(eventSelected);
     });
 };
@@ -169,20 +158,6 @@ exports.getEventByCreatorId = (req, res, next) => {
         return res.status(200).json(eventSelected);
     });
 };
-
-//Commented because it crashed when not logged-in
-// exports.getEventByParams((req, res, next) => {
-//     editEvent.find({
-//         _id: params.id
-//     }, (err, event) => {
-//         if (err) {
-//             return res.status(500).json(err);
-//         }
-//         return res.status(200).json(event);
-//     });
-// });
-
-
 
 exports.removeEvent = (req, res, next) => {
     eventModel.findById(req.params.id, (err, event) => {

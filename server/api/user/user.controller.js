@@ -31,15 +31,17 @@ const bcryptSalt = 10;
 };
 */
 
-exports.getUserLogged = function(req, res, next){
-  User
-    .findOne({_id: req.session.currentUser._id}).exec((err, user) => {
-      if(err){
-        return next(err);
-      }else{
-        return res.status(200).json(user);
-      }
-      });
+exports.getUserLogged = function(req, res, next) {
+    User
+        .findOne({
+            _id: req.session.currentUser._id
+        }).exec((err, user) => {
+            if (err) {
+                return next(err);
+            } else {
+                return res.status(200).json(user);
+            }
+        });
 };
 
 exports.createUser = function(req, res, next) {
@@ -89,20 +91,24 @@ exports.createUser = function(req, res, next) {
 };
 
 exports.logInUser = function(req, res, next) {
-	passport.authenticate('local', function(err, user, info) {
-		if (err) { return next(err); }
+    passport.authenticate('local', function(err, user, info) {
+        if (err) {
+            return next(err);
+        }
 
-		if (!user) { return res.status(401).json(info); }
+        if (!user) {
+            return res.status(401).json(info);
+        }
 
-		req.login(user, function(err) {
-			if (err) {
-				return res.status(500).json({
-					message: 'something went wrong :('
-				});
-			}
-			res.status(200).json(req.user);
-		});
-	})(req, res, next);
+        req.login(user, function(err) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'something went wrong :('
+                });
+            }
+            res.status(200).json(req.user);
+        });
+    })(req, res, next);
 };
 
 exports.logOutUser = function(req, res) {
@@ -130,10 +136,14 @@ exports.loggedIn = function(req, res) {
 */
 
 exports.getPrivateData = (req, res, next) => {
-  if(req.isAuthenticated()) {
-    return res.status(200).json({message: 'You are authenticate'});
-  }
-  return res.status(403).json({ message: 'Unauthorized' });
+    if (req.isAuthenticated()) {
+        return res.status(200).json({
+            message: 'You are authenticate'
+        });
+    }
+    return res.status(403).json({
+        message: 'Unauthorized'
+    });
 };
 
 exports.editUser = (req, res, next) => {
@@ -165,18 +175,20 @@ exports.getAllUsers = (req, res, next) => {
 
 
 exports.getUserById = (req, res, next) => {
-  User.findOne({_id: req.params.id}, (err, user) => {
-    if(err){
-      return res.status(500).json({
-        message: 'user not found',
-        error: err
-      });
-    } else {
-      return res.status(200).json(
-        user
-      );
-    }
-  });
+    User.findOne({
+        _id: req.params.id
+    }, (err, user) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'user not found',
+                error: err
+            });
+        } else {
+            return res.status(200).json(
+                user
+            );
+        }
+    });
 };
 
 

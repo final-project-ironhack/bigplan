@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { LoggedinService } from '../loggedin.service';
