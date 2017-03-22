@@ -33,7 +33,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 // Mongoose configuration
-mongoose.connect("mongodb://localhost/big-plan");
+mongoose.connect(process.app.env);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
