@@ -6,7 +6,6 @@ import { LoggedinService } from '../loggedin.service';
 import { NgModule, ChangeDetectorRef} from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SessionService } from '../session.service';
-import { UpdateEventsService } from '../update-events.service';
 
 declare function require(name: string);
 
@@ -16,7 +15,7 @@ const GoogleMapsLoader = require('google-maps');
   selector: 'app-main-board',
   templateUrl: './main-board.component.html',
   styleUrls: ['./main-board.component.css'],
-  providers: [EventService, UpdateEventsService],
+  providers: [EventService],
 })
 export class MainBoardComponent implements OnInit {
   error: string;
@@ -179,9 +178,6 @@ export class MainBoardComponent implements OnInit {
         mapTypeControl: false,
       });
 
-      function goDoSomething(d) {
-        console.log(d.getAttribute("data-event-id"));
-      }
 
       eventS.getEventList()
         .subscribe((events) => {
@@ -199,28 +195,27 @@ export class MainBoardComponent implements OnInit {
               url: '#'
             });
 
-            marker.setValues = ({ type: "identificador", id: e._id });
-            const contentString =
-              '<div data-id-event=' + e._id + ' id="content">' +
-              '<div id="siteNotice">' +
-              '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
-              '<h2 id="event-name" class="event-name" style="color:red">' + e.name + '</h2>' +
-              '<p>' + e.description + '</p>' +
-              '<a routerLink="/log-in">holi</a>' +
-              '<a class="clickme">CLICKME</a>' +
-              '<h5 id="user-name" class="user-name"> ' + e.creator + ' </h5>' +
-              '</div>';
+            // marker.setValues = ({ type: "identificador", id: e._id });
+            // const contentString =
+            //   '<div data-id-event=' + e._id + ' id="content">' +
+            //   '<div id="siteNotice">' +
+            //   '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
+            //   '<h2 id="event-name" class="event-name" style="color:red">' + e.name + '</h2>' +
+            //   '<p>' + e.description + '</p>' +
+            //   '<a routerLink="/log-in">holi</a>' +
+            //   '<a class="clickme">CLICKME</a>' +
+            //   '<h5 id="user-name" class="user-name"> ' + e.creator + ' </h5>' +
+            //   '</div>';
 
-            const infowindow = new google.maps.InfoWindow({
-              content: contentString,
-              maxWidth: 200,
-            });
+            // const infowindow = new google.maps.InfoWindow({
+            //   content: contentString,
+            //   maxWidth: 200,
+            // });
 
             map.setOptions({ styles: styles });
             marker.addListener('click',
               function() {
                 map.panTo(this.position);
-                console.log("YUHU CLICK");
                 instance.changeSelectedEvent(e);
               });
           });

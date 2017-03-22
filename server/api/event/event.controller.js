@@ -118,7 +118,6 @@ exports.getAllEvents = (req, res, next) => {
 };
 
 exports.getEventById = (req, res, next) => {
-    console.log('params', req.params);
     eventModel.find({
         _id: req.params.id
     }, (err, eventSelected) => {
