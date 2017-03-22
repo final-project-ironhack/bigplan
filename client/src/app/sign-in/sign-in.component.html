@@ -1,0 +1,18 @@
+<div class="container">
+
+  <h1> Authentication Sample </h1>
+  <form *ngIf="!user">
+    <h2>Signup </h2>
+    <label> Username </label>
+    <input type="text" [(ngModel)]="formInfo.username" name="username"/>
+    <br>
+    <label> Password </label>
+    <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+
+    <button (click)="signup()"> signup </button>
+  </form>
+
+  <div  *ngIf="user">
+    <app-main-board></app-main-board>
+  </div>
+</div>

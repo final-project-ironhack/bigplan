@@ -1,0 +1,75 @@
+/*Blue #00346B*/
+/*Orange #FF8F61*/
+
+.navbar-default {
+  font-family: 'Work Sans', sans-serif;
+  height: 0px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: ##FF8F61;
+}
+
+.menu {
+    width: 95%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.img-user {
+  border-radius: 50%;
+  margin: 8px 10px;
+  float:left;
+  width: 25px;
+}
+
+
+.logo {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 24px;
+  color: #FF8F61;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+.logo h3 {
+  margin-top: 0px;
+  padding-left: 110px;
+  color: #FF8F61;
+}
+
+h5.logo {
+  margin-top: 3px;
+  margin-bottom: 0px;
+  float:left;
+}
+
+.create-event-button {
+  margin: 5px 10px;
+  float:right;
+  width: 30px;
+  height: 30px;
+}
+
+#map {
+  height: 100vh;
+  width: 100vw;
+  float: left;
+}
+
+@media screen and (max-width: 480px) {
+#map {
+  height: 100vh;
+  width: 100vw;
+ }
+}
+
+/*#infobar{
+  float:left;
+  width: 30vw;
+  padding-top: 80px;
+}*/
