@@ -15,7 +15,7 @@ exports.getUserLogged = function(req, res, next) {
             _id: req.session.currentUser._id
         }).exec((err, user) => {
             if (err) {
-                return next(err);
+                return res.status(400).json(error);
             } else {
                 return res.status(200).json(user);
             }
@@ -51,13 +51,13 @@ exports.createUser = function(req, res, next) {
         newUser.save((err) => {
             if (err) {
                 res.status(400).json({
-                    message: "Something went wrong"
+                    error
                 });
             } else {
                 req.login(newUser, function(err) {
                     if (err) {
-                        return res.status(500).json({
-                            message: 'something went wrong.'
+                        return res.status(400).json({
+                            error
                         });
                     }
                     res.status(200).json(req.user);
@@ -74,13 +74,13 @@ exports.logInUser = function(req, res, next) {
         }
 
         if (!user) {
-            return res.status(401).json(info);
+            return res.status(400).json(info);
         }
 
         req.login(user, function(err) {
             if (err) {
                 return res.status(500).json({
-                    message: 'something went wrong :('
+                    error
                 });
             }
             res.status(200).json(req.user);
@@ -125,7 +125,7 @@ exports.editUser = (req, res, next) => {
                 error: err
             });
         }
-        res.json({
+        res.status(200).json({
             message: 'user succesfully updated',
             //user: user
         });
@@ -135,9 +135,11 @@ exports.editUser = (req, res, next) => {
 exports.getAllUsers = (req, res, next) => {
     User.find({}, (err, users) => {
         if (err) {
-            return res.json(err);
+            return res.status(400).json(err);
+        } else {
+            return res.status(200).json(users);
+
         }
-        return res.json(users);
     });
 };
 
@@ -147,7 +149,7 @@ exports.getUserById = (req, res, next) => {
         _id: req.params.id
     }, (err, user) => {
         if (err) {
-            return res.status(500).json({
+            return res.status(400).json({
                 message: 'user not found',
                 error: err
             });
@@ -163,14 +165,16 @@ exports.getUserById = (req, res, next) => {
 exports.removeUser = (req, res, next) => {
     User.findById(req.params.id, (err, user) => {
         if (err) {
-            res.json({
+            res.status(400).json({
                 message: 'impossible to remove user',
                 error: err
             });
         } else {
             user.remove((err) => {
-                if (err) return next(err);
-                res.json({
+                if (err) {
+                    return res.status(400).json(err);
+                }
+                res.status(200).json({
                     message: 'user removed'
                 });
             });

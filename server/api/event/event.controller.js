@@ -24,7 +24,9 @@ exports.createEvent = (req, res, next) => {
             };
             eventModel.create(eventCreated, (err, event) => {
                 if (err) {
-                    return next(err);
+                    return res.status(400).json({
+                      message: 'error creating event'
+                    });
                 } else {
                     userModel.update({
                         _id: req.body.creator
@@ -34,7 +36,9 @@ exports.createEvent = (req, res, next) => {
                         }
                     }, (err) => {
                         if (err) {
-                            return next(err);
+                            return res.status(400).json({
+                              message: 'error updating user'
+                            });
 
                         } else {
                             return res.status(200).json({
@@ -110,7 +114,7 @@ exports.finishEvent = (req, res) => {
 exports.getAllEvents = (req, res, next) => {
     eventModel.find({}, (err, events) => {
         if (err) {
-            return res.status(500).json(err);
+            return res.status(400).json(err);
         }
         listOfEvents = events;
         return res.status(200).json(events);
@@ -122,7 +126,7 @@ exports.getEventById = (req, res, next) => {
         _id: req.params.id
     }, (err, eventSelected) => {
         if (err) {
-            return res.status(500).json(err);
+            return res.status(400).json(err);
         }
         return res.status(200).json(eventSelected);
     });
@@ -134,7 +138,7 @@ exports.getEventByCreatorId = (req, res, next) => {
         status: true
     }, (err, eventSelected) => {
         if (err) {
-            return res.status(500).json(err);
+            return res.status(400).json(err);
         }
         return res.status(200).json(eventSelected);
     });
