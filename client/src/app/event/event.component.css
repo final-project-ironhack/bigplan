@@ -30,6 +30,8 @@
   color: #FF8F61;
   opacity: 0.8;
   overflow: auto;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
 }
 
 .event-img {
@@ -38,7 +40,7 @@
 
 @media screen and (max-width: 1024px) {
   .infobox {
-    padding: 3%;
+    padding: 4%;
     z-index: 100;
     position: fixed;
     top: 50vh;
@@ -47,6 +49,9 @@
     color: #FF8F61;
     height: 50vh;
     opacity: 0.8;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    border-bottom-left-radius: 0;
   }
 }
 
