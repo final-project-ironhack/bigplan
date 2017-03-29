@@ -18,8 +18,6 @@ export class EventCreatorPageComponent implements OnInit {
   participants: Array<any> = [];
   creator: any;
 
-
-
   constructor(
     private session: SessionService,
     private router: Router,
@@ -27,9 +25,7 @@ export class EventCreatorPageComponent implements OnInit {
     private eventService: EventService,
     private route: ActivatedRoute
 
-  ) {
-
-  }
+  ) { }
 
   ngOnInit() {
     this.session.isLoggedIn()
@@ -40,11 +36,9 @@ export class EventCreatorPageComponent implements OnInit {
         this.eventService.getEventByCreatorId(user)
           .subscribe((eventSelected) => {
             this.creator = user;
-            this.event = eventSelected;
+            this.event = eventSelected[eventSelected.length - 1];
             if (this.event.participant.length !== 0) {
-
               for (let i = 0; i < this.event.participant.length; i++) {
-
                 this.userService.getUserById(this.event.participant[i])
                   .subscribe((participant) => {
                     this.participants.push(participant);
@@ -63,6 +57,6 @@ export class EventCreatorPageComponent implements OnInit {
 
   finishEvent() {
     this.eventService.closeEvent(this.event).subscribe();
-    this.router.navigate(['/home/'+this.creator._id]);
+    this.router.navigate(['/home/' + this.creator._id]);
   }
 }
