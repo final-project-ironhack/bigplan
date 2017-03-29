@@ -165,7 +165,7 @@ export class MainBoardComponent implements OnInit {
             }
           ]
         }
-      ];
+       ];
 
       const madrid = { lat: 40.438212, lng: -3.6813352000000004 };
 
