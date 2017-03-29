@@ -7,8 +7,6 @@ import { EventService } from './../event.service';
 import { EventComponent } from '../event/event.component';
 import { LoggedinService } from '../loggedin.service';
 
-//socket.io
-//import { FormControl } from '@angular/common';
 declare function require(name: string);
 var GoogleMapsLoader = require('google-maps');
 
@@ -19,7 +17,6 @@ var GoogleMapsLoader = require('google-maps');
   styleUrls: ['./main-board.component.css'],
   providers: [EventService],
 })
-
 
 export class MainBoardComponent implements OnInit {
   uri: any;
@@ -36,8 +33,6 @@ export class MainBoardComponent implements OnInit {
     private route: ActivatedRoute,
     private loggedin: LoggedinService,
     private EventService: EventService,
-    //socket.io
-    //private UpdateEventsService: UpdateEventsService,
     private router: Router,
     private cd: ChangeDetectorRef
   ) { }
@@ -56,8 +51,7 @@ export class MainBoardComponent implements OnInit {
       );
 
 
-      //socket.io
-    //const updateEvent = this.UpdateEventsService;
+
     const eventS = this.EventService;
     GoogleMapsLoader.KEY = 'AIzaSyBmHIjgfyzkhCKmCgMBGJgsr7Ad4rRuiAY';
     var instance = this;
@@ -205,40 +199,8 @@ export class MainBoardComponent implements OnInit {
 
         ///infoWindow.setPosition(pos);
         // infoWindow.setContent('Location found.');
-//
 
-//         //socket.io
-//         /*this.connection = this.UpdateEventsService.updateEvent()
-//         .subscribe((events) => {
-//           events.map((e) => {
-//             console.log(e);
-//             const marker = new google.maps.Marker({
-//                 position: e.location,
-//                 map: map,
-//                 animation: google.maps.Animation.DROP,
-//                 icon: image
-//               });
-//
-//               const contentString =
-//                 '<div id="content">' +
-//                 '<div id="siteNotice">' +
-//                 '</div>' + '<img src="https://ca.slack-edge.com/T02CQ4EN4-U3KPHFCUW-807f02da0a86-72">' +
-//                 '<h2 id="event-name" class="event-name" style="color:red">'+ e.name + '</h2>' +
-//                 '<p>'+ e.description +'</p>' +
-//                 '<h5 id="user-name" class="user-name"> '+ e.creator +' </h5>' +
-//                 '</div>';
-//
-//               const infowindow = new google.maps.InfoWindow({
-//                 content: contentString,
-//                 maxWidth: 200,
-//               });
-//
-//
-//             marker.addListener('click',
-//                 () => infowindow.open(map, marker));
-//           });
-//         });
-// */
+
         function goDoSomething(d) {
           console.log(d.getAttribute("data-event-id"));
         }
@@ -252,11 +214,6 @@ export class MainBoardComponent implements OnInit {
                 return;
               }
               const image = {url: '../assets/img/' + e.category +'.png',}
-
-              // console.log(e);
-              // console.log(e.category);
-              // console.log(e._id);
-              //console.log('USER||||||||||||||||||||||||||',this.user);
 
                 let marker = new google.maps.Marker({
                 position: e.location,
