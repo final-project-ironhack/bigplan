@@ -19,16 +19,35 @@
     "@angular/http": "^2.3.1",
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
+<<<<<<< HEAD
     "@angular/router": "^3.3.1",
     "core-js": "^2.4.1",
     "rxjs": "^5.0.1",
+=======
+    "@angular/router": "3.3.1",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.20",
+    "@types/google-maps": "^3.2.0",
+    "@types/jquery": "^2.0.40",
+    "@types/socket.io-client": "^1.4.29",
+    "core-js": "^2.4.1",
+    "google-maps": "^3.2.1",
+    "google-maps-infobox": "^1.1.14",
+    "js-info-bubble": "^0.8.0",
+    "lodash": "^4.17.4",
+    "rxjs": "^5.0.1",
+    "socket.io-client": "^1.7.3",
+>>>>>>> fb20aaf134d1f580ccb231d36df67efc97209706
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.3.1",
     "@types/jasmine": "2.5.38",
+<<<<<<< HEAD
     "@types/node": "^6.0.42",
+=======
+    "@types/node": "^6.0.65",
+>>>>>>> fb20aaf134d1f580ccb231d36df67efc97209706
     "angular-cli": "1.0.0-beta.28.3",
     "codelyzer": "~2.0.0-beta.1",
     "jasmine-core": "2.5.2",

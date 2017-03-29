@@ -4,9 +4,17 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+<<<<<<< HEAD
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
+=======
+    "dev": "nodemon ./bin/www",
+    "debug": "nodemon --inspect --debug  ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+>>>>>>> fb20aaf134d1f580ccb231d36df67efc97209706
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.1",
@@ -14,8 +22,18 @@
     "dotenv": "^4.0.0",
     "ejs": "~2.5.5",
     "express": "~4.14.1",
+<<<<<<< HEAD
     "mongoose": "^4.8.6",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.2"
+=======
+    "express-session": "^1.15.1",
+    "mongoose": "^4.8.6",
+    "morgan": "~1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "~2.3.2",
+    "socket.io": "^1.7.3"
+>>>>>>> fb20aaf134d1f580ccb231d36df67efc97209706
   }
 }

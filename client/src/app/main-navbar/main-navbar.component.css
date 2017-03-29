@@ -1,0 +1,153 @@
+* {
+  font-family: 'Work Sans', sans-serif;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+a, a:active, a:hover {
+ color:  #FF8F61;
+ font-size: 16px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color:  #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:  #FF8F61;
+}
+
+.body {
+  color: ##FF8F61;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.navbar-default {
+  font-family: 'Work Sans', sans-serif;
+  height: 0px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: #FF8F61;
+}
+
+.navbar-default li:nth-child(4) {
+  padding-right: 100px;
+}
+
+.img-user {
+  border-radius: 50%;
+  margin: 0px 30px;
+  float:left;
+  width: 50px;
+  border: 3px solid #FF8F61;
+}
+
+.container {
+  top: 0px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/img/002.png");
+  background-size: cover;
+}
+
+.background-img {
+  top: 0;
+  left: 0;
+  z-index: -99;
+}
+
+.logo {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 24px;
+  color: #FF8F61;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+
+.logo h3 {
+  margin-top: 0px;
+  padding-left: 110px;
+  color: #FF8F61;
+}
+
+.btn-block {
+  margin-top: 70px;
+  background-color: transparent;
+  color: #FF8F61;
+  border: 1px solid #FF8F61;
+  border-radius: 50px;
+}
+
+.btn-block:hover {
+  background-color: #FF8F61;
+  color: #00346B;
+}
+
+.logged-in {
+  width: 100vw;
+  height: 100ch;
+}
+
+.btn-logout {
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-logout:hover {
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="submit"]:focus,
+button:focus,
+button:hover,
+button:active,
+button:link,
+button:visited,
+button,
+.uneditable-input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   background: none !important;
+}
+
+.responsive {display: none}
+
+@media screen and (max-width: 990px) {
+  .navbar-right { display: none;
+  }
+  .responsive {display: block }
+}

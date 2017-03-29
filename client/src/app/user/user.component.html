@@ -1,0 +1,16 @@
+<app-user-menu></app-user-menu>
+
+<div class="container">
+  <div class="info-container">
+<h3> User details </h3>
+   <div *ngFor="let item of user">
+     <div class="user-info">
+       <h5> {{item.name}}</h5>
+       <h5> {{item.username}}</h5>
+       <h5> {{item.email}}</h5>
+       <h5> {{item.description}}</h5>
+
+     </div>
+   </div>
+</div>
+</div>
